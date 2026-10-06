@@ -1,16 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Roofers Local 58 - Colorado Springs</title>
 
-  <meta name="description" content="Roofers Local 58 represents commercial roofers throughout Colorado and portions of Wyoming. Apprenticeship opportunities, contractor partnerships, training, and union careers.">
+  <meta
+    name="description"
+    content="Roofers Local 58 represents commercial roofers throughout Colorado and portions of Wyoming. Apprenticeship opportunities, contractor partnerships, training, and union careers.">
 
-  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/4/46/Flag_of_Colorado.svg">
+  <link
+    rel="icon"
+    href="https://upload.wikimedia.org/wikipedia/commons/4/46/Flag_of_Colorado.svg">
 
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    rel="stylesheet">
+
+  <style>
+    .local58-video {
+      height: 500px;
+      border: 0;
+    }
+
+    .sponsor-card {
+      min-height: 180px;
+    }
+
+    #local58-map {
+      color-scheme: light;
+      --navy: #1e3a8a;
+      --red: #b91c1c;
+      --gray: #f3f4f6;
+      --text: #374151;
+      margin: 0;
+      background: var(--gray);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    #local58-map * {
+      box-sizing: border-box;
+    }
+
+    #local58-map .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 24px;
+    }
+
+    #local58-map .map-heading {
+      margin: 0 0 24px;
+      color: var(--navy);
+      font-size: 1.875rem;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    #local58-map .content {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+      background: white;
+      border-left: 4px solid var(--red);
+      border-radius: 4px;
+      padding: 24px;
+      box-shadow: 0 1px 3px #0000001a, 0 1px 2px #0000000f;
+    }
+
+    #local58-map figure {
+      margin: 0;
+      min-width: 0;
+    }
+
+    #local58-map svg {
+      display: block;
+      width: 100%;
+      max-height: 540px;
+      height: auto;
+      margin: auto;
+    }
+
+    #local58-map .county {
+      fill: var(--navy);
+      stroke: #ffffff75;
+      stroke-width: 0.65;
+      vector-effect: non-scaling-stroke;
+    }
+
+    #local58-map .county.outside {
+      fill: #e5e7eb;
+      stroke: #c3c8d1;
+    }
+
+    #local58-map .state-outline {
+      fill: none;
+      stroke: #6b7280;
+      stroke-width: 1;
+      vector-effect: non-scaling-stroke;
+    }
+
+    #local58-map .state-label {
+      fill: #4b5563;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      pointer-events: none;
+    }
+
+    #local58-map .state-label.co {
+      fill: #fff;
+      font-size: 29px;
+    }
+
+    #local58-map .city {
+      pointer-events: none;
+    }
+
+    #local58-map .city-dot {
+      fill: var(--red);
+      stroke: #fff;
+      stroke-width: 1.5;
+    }
+
+    #local58-map .city-label {
+      fill: #fff;
+      font-size: 20px;
+      font-weight: 500;
+      paint-order: stroke;
+      stroke: var(--navy);
+      stroke-width: 3px;
+      stroke-linejoin: round;
+    }
+
+    #local58-map .coverage p {
+      font-size: 1.125rem;
+      margin: 0 0 24px;
+    }
+
+    #local58-map .coverage h2 {
+      font-size: 1.5rem;
+      line-height: 1.3;
+      color: var(--navy);
+      margin: 0 0 8px;
+      font-weight: 700;
+    }
+
+    #local58-map .coverage ul {
+      margin: 0;
+      padding-left: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 20px;
+      font-size: 1.125rem;
+    }
+
+    #local58-map .coverage li::marker {
+      color: var(--red);
+    }
+
+    #local58-map figcaption {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      font-size: 0.875rem;
+      margin-top: 8px;
+    }
+
+    #local58-map figcaption span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #local58-map .key {
+      width: 14px;
+      height: 14px;
+      background: var(--navy);
+      display: inline-block;
+      border: 1px solid var(--navy);
+      border-radius: 2px;
+    }
+
+    #local58-map .key.outside {
+      background: #e5e7eb;
+      border-color: #9ca3af;
+    }
+
+    #local58-map .source {
+      font-size: 0.8125rem;
+      margin: 16px 0 0;
+      color: #6b7280;
+    }
+
+    #local58-map .source a {
+      color: inherit;
+      text-underline-offset: 2px;
+    }
+
+    #local58-map a:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 700px) {
+      .local58-video {
+        height: 260px;
+      }
+
+      #local58-map .section {
+        padding: 28px 16px;
+      }
+
+      #local58-map .content {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 20px 16px;
+      }
+
+      #local58-map .coverage {
+        grid-row: 1;
+      }
+
+      #local58-map .coverage p {
+        margin-bottom: 20px;
+      }
+
+      #local58-map .coverage ul {
+        gap: 8px 16px;
+      }
+
+      #local58-map svg {
+        max-height: 500px;
+      }
+
+      #local58-map figcaption {
+        font-size: 0.875rem;
+        gap: 8px 16px;
+      }
+    }
+
+    @media print {
+      #local58-map .section {
+        padding: 0;
+      }
+
+      #local58-map .content {
+        box-shadow: none;
+      }
+
+      #local58-map .county {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
 </head>
 
 <body class="bg-white font-sans">
@@ -19,8 +268,15 @@
   <header class="bg-blue-900 text-white p-4 flex items-center justify-between sticky top-0 z-50 shadow-md">
 
     <div class="flex items-center space-x-4">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Flag_of_Colorado.svg" alt="Colorado Flag" class="h-8">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_Wyoming.svg" alt="Wyoming Flag" class="h-8">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/4/46/Flag_of_Colorado.svg"
+        alt="Colorado Flag"
+        class="h-8">
+
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_Wyoming.svg"
+        alt="Wyoming Flag"
+        class="h-8">
     </div>
 
     <div class="flex items-center">
@@ -44,7 +300,7 @@
   <!-- UNION LOGO -->
   <section class="bg-white text-center py-8">
     <img
-      src="https://tse2.mm.bing.net/th/id/OIP.1J_HBUFaN1Q2-x6HMMbFggAAAA?pid=Api"
+      src="roofers-logo-2x.png"
       alt="United Union of Roofers Logo"
       class="mx-auto h-24">
   </section>
@@ -86,16 +342,13 @@
     </h2>
 
     <div class="max-w-5xl mx-auto">
-
       <iframe
-        class="w-full h-[500px] rounded shadow"
+        class="local58-video w-full rounded shadow"
         src="https://www.youtube.com/embed/N-p1VSD03UA"
         title="Roofers Local 58 Video"
-        frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
-
     </div>
 
   </section>
@@ -107,48 +360,70 @@
       News &amp; Announcements
     </h2>
 
-    <!-- BBQ THANK YOU -->
+    <!-- CSALC TRUNK OR TREAT -->
     <div class="bg-gray-100 border-l-4 border-red-700 p-6 rounded shadow mb-6">
 
       <h3 class="text-2xl font-bold text-blue-900 mb-3">
-        Thank You for a Successful Family Appreciation BBQ!
+        🎃 CSALC Trunk or Treat
       </h3>
 
       <p class="text-gray-700 text-lg mb-4">
-        Roofers Local 58 thanks all of our sponsors for helping make our 2nd Annual Family Appreciation BBQ a success. Your generous support helped bring our Members, Retirees, Apprentices, Signatory Contractors, and their families together for a day of food, fellowship, and fun.
+        Join the Colorado Springs Area Labor Council for Trunk or Treat!
+        Members and their families are invited to enjoy this free community event.
       </p>
 
-      <p class="text-gray-700 text-lg mb-4">
-        Thank you to everyone who attended and to the volunteers who helped make it happen. We appreciate the businesses, fellow Unions, labor organizations, and community partners who supported our Local and our families.
-      </p>
+      <div class="grid md:grid-cols-2 gap-6 text-lg text-gray-700 mb-6">
 
-      <p class="text-gray-700 text-lg mb-6">
-        Check out the photos from the event on our Facebook page!
-      </p>
+        <div>
+          <strong>📅 Date</strong><br>
+          Saturday, October 24, 2026
+        </div>
+
+        <div>
+          <strong>🕑 Time</strong><br>
+          2:00 PM – 5:00 PM
+        </div>
+
+        <div>
+          <strong>🎟️ Admission</strong><br>
+          Free and open to the public
+        </div>
+
+        <div>
+          <strong>Presented By</strong><br>
+          Colorado Springs Area Labor Council
+        </div>
+
+      </div>
 
       <a
-        href="https://www.facebook.com/share/p/19Ji9CuJ8U/"
+        href="https://www.csalc.net/TrunkorTreat"
         target="_blank"
         rel="noopener noreferrer"
         class="inline-block bg-red-700 text-white px-6 py-3 rounded font-semibold hover:bg-red-800">
-        View BBQ Photos on Facebook
+        View CSALC Event Details
       </a>
 
       <figure class="mt-8 max-w-4xl mx-auto">
+
         <a
-          href="ChatGPT Image Sep 16, 2026, 03_24_17 PM.png"
+          href="https://www.csalc.net/TrunkorTreat"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Open the 2026 BBQ sponsor thank-you flyer full size">
+          aria-label="Visit the CSALC Trunk or Treat event page">
+
           <img
-            src="ChatGPT Image Sep 16, 2026, 03_24_17 PM.png"
-            alt="Thank you to the Platinum, Gold, Silver, Food, and Raffle Prize sponsors of Roofers Local 58's Family Appreciation BBQ"
+            src="csalc-trunk-or-treat-2026.png"
+            alt="Trunk or Treat, Saturday October 24, 2026, 2 PM to 5 PM. Free and open to the public. Sponsored by the Colorado Springs Area Labor Council."
             loading="lazy"
-            class="w-full h-auto rounded-lg shadow-lg border border-gray-300 hover:opacity-95 transition-opacity">
+            class="w-full h-auto rounded-lg shadow-lg border border-gray-300">
+
         </a>
+
         <figcaption class="text-sm text-gray-600 text-center mt-3">
-          Thank you to our sponsors for supporting our Members and their families. Click the flyer to view it full size.
+          Click the flyer for event details from the Colorado Springs Area Labor Council.
         </figcaption>
+
       </figure>
 
     </div>
@@ -163,7 +438,10 @@
         </h3>
 
         <p class="text-lg text-blue-100">
-          Roofers Local 58 sincerely thanks the businesses, labor organizations, fellow Unions, and community partners who supported our 2nd Annual Family Appreciation BBQ. Their generosity helped make the event a success for our Members and their families.
+          Roofers Local 58 sincerely thanks the businesses, labor organizations,
+          fellow Unions, and community partners who supported our 2nd Annual
+          Family Appreciation BBQ. Their generosity helped make the event a
+          success for our Members and their families.
         </p>
 
       </div>
@@ -177,7 +455,7 @@
 
         <div class="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
 
-          <div class="bg-white p-6 rounded-lg shadow flex items-center justify-center min-h-[180px]">
+          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
             <img
               src="Local 11.png"
               alt="Roofers Local 11 - Platinum Sponsor"
@@ -185,7 +463,7 @@
               class="max-h-36 max-w-full object-contain">
           </div>
 
-          <div class="bg-white p-6 rounded-lg shadow flex items-center justify-center min-h-[180px]">
+          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
             <img
               src="jamar.svg"
               alt="The Jamar Company - Platinum Sponsor"
@@ -206,7 +484,7 @@
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
 
-          <div class="bg-white p-6 rounded-lg shadow flex items-center justify-center min-h-[170px]">
+          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
             <img
               src="colorado_afl-cio_logo_1.jpg.webp"
               alt="Colorado AFL-CIO - Gold Sponsor"
@@ -214,7 +492,7 @@
               class="max-h-32 max-w-full object-contain">
           </div>
 
-          <div class="bg-white p-6 rounded-lg shadow flex items-center justify-center min-h-[170px]">
+          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
             <img
               src="roofers-logo-2x.png"
               alt="United Union of Roofers, Waterproofers and Allied Workers - Gold Sponsor"
@@ -222,7 +500,7 @@
               class="max-h-32 max-w-full object-contain">
           </div>
 
-          <div class="bg-white p-6 rounded-lg shadow flex items-center justify-center min-h-[170px]">
+          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
             <img
               src="roofer_local30_bulldog_logo.png"
               alt="Roofers Local 30 - Gold Sponsor"
@@ -230,7 +508,7 @@
               class="max-h-32 max-w-full object-contain">
           </div>
 
-          <div class="bg-white p-6 rounded-lg shadow flex items-center justify-center min-h-[170px]">
+          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
             <img
               src="CBCTC.webp"
               alt="Colorado Building and Construction Trades Council - Gold Sponsor"
@@ -251,7 +529,7 @@
 
         <div class="grid sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
 
-          <div class="bg-white p-6 rounded-lg shadow flex items-center justify-center min-h-[180px]">
+          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
             <img
               src="American income life insurance.png"
               alt="American Income Life - Silver Sponsor"
@@ -259,7 +537,7 @@
               class="max-h-28 max-w-full object-contain">
           </div>
 
-          <div class="bg-white p-6 rounded-lg shadow flex items-center justify-center min-h-[180px]">
+          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
             <img
               src="ChatGPT Image Aug 21, 2026, 07_46_14 AM.png"
               alt="Roofers Local 123 - Silver Sponsor"
@@ -267,7 +545,7 @@
               class="max-h-40 max-w-full object-contain">
           </div>
 
-          <div class="bg-white p-6 rounded-lg shadow flex items-center justify-center min-h-[180px]">
+          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
             <img
               src="fdffa13f-38fb-4809-9c17-ba9be258bfa8.png"
               alt="Roofers and Waterproofers Local 27 - Silver Sponsor"
@@ -286,12 +564,14 @@
           Food Sponsor
         </h4>
 
-        <div class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow flex items-center justify-center min-h-[160px]">
+        <div class="sponsor-card max-w-xl mx-auto bg-white p-6 rounded-lg shadow flex items-center justify-center">
+
           <img
             src="Final-Wingstop-Logo-Green-Web_(2).png"
             alt="Wingstop - Food Sponsor"
             loading="lazy"
             class="max-h-28 max-w-full object-contain">
+
         </div>
 
       </div>
@@ -305,7 +585,7 @@
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
 
-          <div class="bg-white p-6 rounded-lg shadow flex items-center justify-center min-h-[160px]">
+          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
             <img
               src="boss hammer logo.jpg"
               alt="Boss Hammer Co. - Raffle Prize Sponsor"
@@ -313,7 +593,7 @@
               class="max-h-28 max-w-full object-contain">
           </div>
 
-          <div class="bg-white p-6 rounded-lg shadow flex items-center justify-center min-h-[160px]">
+          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
             <img
               src="scheels-logo-png_seeklogo-123417.png"
               alt="Scheels - Raffle Prize Sponsor"
@@ -321,7 +601,7 @@
               class="max-h-24 max-w-full object-contain">
           </div>
 
-          <div class="bg-white p-6 rounded-lg shadow flex items-center justify-center min-h-[160px]">
+          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
             <img
               src="785-7856241_gaf-logo-gaf-materials-corporation.png"
               alt="GAF - Raffle Prize Sponsor"
@@ -329,7 +609,7 @@
               class="max-h-24 max-w-full object-contain">
           </div>
 
-          <div class="bg-white p-6 rounded-lg shadow flex items-center justify-center min-h-[160px]">
+          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
             <img
               src="de3797dd81-dewalt-logo-dewalt-logo-download.png"
               alt="DeWalt - Raffle Prize Sponsor"
@@ -341,7 +621,7 @@
 
       </div>
 
-      <!-- SPONSOR CONTACT -->
+      <!-- SPONSOR CONTACT AND BBQ PHOTOS -->
       <div class="mt-8 bg-white p-5 rounded-lg border border-gray-300 text-gray-700">
 
         <h4 class="text-xl font-bold text-blue-900 mb-3">
@@ -349,8 +629,24 @@
         </h4>
 
         <p class="mb-4">
-          We appreciate every sponsor who contributed to this year's BBQ. If you are interested in being s sponsor in next year's event, please contact the Local.
+          We appreciate every sponsor who contributed to this year's BBQ.
+          If you are interested in being a sponsor at next year's event,
+          please contact the Local.
         </p>
+
+        <p class="mb-4">
+          Thank you to our sponsors, attendees, and volunteers for making our
+          2nd Annual Family Appreciation BBQ a success. Check out the event
+          photos on our Facebook page!
+        </p>
+
+        <a
+          href="https://www.facebook.com/share/p/19Ji9CuJ8U/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-red-700 text-white px-6 py-3 rounded font-semibold hover:bg-red-800 mb-6">
+          View BBQ Photos on Facebook
+        </a>
 
         <p class="font-semibold text-blue-900">
           Contact Ray Gallegos Jr.
@@ -382,7 +678,9 @@
       </h3>
 
       <p class="text-gray-700 text-lg">
-        Membership Meetings are held on the <strong>2nd Monday of every month</strong> at the Union Hall beginning at <strong>7:30 PM</strong>.
+        Membership Meetings are held on the
+        <strong>2nd Monday of every month</strong> at the Union Hall beginning
+        at <strong>7:30 PM</strong>.
       </p>
 
     </div>
@@ -395,7 +693,9 @@
       </h3>
 
       <p class="text-gray-700 text-lg mb-6">
-        Roofers Local 58 signatory contractors offer competitive hourly wages, with employer-paid benefits provided in addition to the wage rates shown below.
+        Roofers Local 58 signatory contractors offer competitive hourly wages,
+        with employer-paid benefits provided in addition to the wage rates
+        shown below.
       </p>
 
       <div class="overflow-x-auto mb-6">
@@ -432,7 +732,9 @@
               <td class="py-3 px-4 border">$40.00/hr</td>
               <td class="py-3 px-4 border">
                 $6.43/hr<br>
-                <span class="text-sm text-gray-600">Includes NRIPP pension contribution</span>
+                <span class="text-sm text-gray-600">
+                  Includes NRIPP pension contribution
+                </span>
               </td>
             </tr>
 
@@ -443,7 +745,9 @@
               <td class="py-3 px-4 border">$40.00/hr</td>
               <td class="py-3 px-4 border">
                 $6.43/hr<br>
-                <span class="text-sm text-gray-600">Includes NRIPP pension contribution</span>
+                <span class="text-sm text-gray-600">
+                  Includes NRIPP pension contribution
+                </span>
               </td>
             </tr>
 
@@ -454,7 +758,11 @@
       </div>
 
       <p class="text-gray-700 text-lg mb-5">
-        Central States Roofing provides $5.88/hr in employer-paid benefits for Journeymen and Foremen but does not participate in the NRIPP pension. Monument Roofing of Colorado and The Jamar Company provide $6.43/hr in employer-paid benefits, including an NRIPP pension contribution. Rates are subject to the applicable collective bargaining agreement.
+        Central States Roofing provides $5.88/hr in employer-paid benefits
+        for Journeymen and Foremen but does not participate in the NRIPP pension.
+        Monument Roofing of Colorado and The Jamar Company provide $6.43/hr
+        in employer-paid benefits, including an NRIPP pension contribution.
+        Rates are subject to the applicable collective bargaining agreement.
       </p>
 
       <a
@@ -475,27 +783,44 @@
     </h2>
 
     <p class="text-gray-700 text-lg mb-4">
-      Roofers Local 58 is a proud affiliate of the United Union of Roofers, Waterproofers, and Allied Workers, dedicated to representing skilled tradespeople throughout Colorado and portions of Wyoming.
+      Roofers Local 58 is a proud affiliate of the United Union of Roofers,
+      Waterproofers, and Allied Workers, dedicated to representing skilled
+      tradespeople throughout Colorado and portions of Wyoming.
     </p>
 
     <p class="text-gray-700 text-lg mb-4">
-      Our members specialize in commercial and industrial roofing, waterproofing, sheet metal work, and other essential building trades that help keep businesses, schools, hospitals, and public facilities protected throughout our jurisdiction.
+      Our members specialize in commercial and industrial roofing,
+      waterproofing, sheet metal work, and other essential building trades
+      that help keep businesses, schools, hospitals, and public facilities
+      protected throughout our jurisdiction.
     </p>
 
     <p class="text-gray-700 text-lg mb-4">
-      Local 58 is committed to providing safe working conditions, fair wages, quality benefits, retirement security, and ongoing training opportunities for our members. Through collective bargaining agreements and industry partnerships, we help ensure roofing professionals are able to build long-term careers while maintaining high standards of craftsmanship and professionalism.
+      Local 58 is committed to providing safe working conditions, fair wages,
+      quality benefits, retirement security, and ongoing training opportunities
+      for our members. Through collective bargaining agreements and industry
+      partnerships, we help ensure roofing professionals are able to build
+      long-term careers while maintaining high standards of craftsmanship
+      and professionalism.
     </p>
 
     <p class="text-gray-700 text-lg mb-4">
-      Our organization works closely with signatory contractors to supply skilled manpower, support apprenticeship development, and promote a highly trained workforce capable of handling modern commercial roofing systems including TPO, PVC, EPDM, modified bitumen, waterproofing, and sheet metal applications.
+      Our organization works closely with signatory contractors to supply
+      skilled manpower, support apprenticeship development, and promote a
+      highly trained workforce capable of handling modern commercial roofing
+      systems including TPO, PVC, EPDM, modified bitumen, waterproofing,
+      and sheet metal applications.
     </p>
 
     <p class="text-gray-700 text-lg">
-      Whether you're an experienced tradesperson looking to advance your career or someone interested in entering the roofing industry for the first time, Roofers Local 58 provides access to apprenticeship training, career pathways, safety education, and a strong union brotherhood built on professionalism, hard work, and pride in the trade.
+      Whether you're an experienced tradesperson looking to advance your
+      career or someone interested in entering the roofing industry for the
+      first time, Roofers Local 58 provides access to apprenticeship training,
+      career pathways, safety education, and a strong union brotherhood built
+      on professionalism, hard work, and pride in the trade.
     </p>
 
     <div class="mt-6">
-
       <a
         href="https://unionroofers.com/"
         target="_blank"
@@ -503,7 +828,6 @@
         class="inline-block bg-blue-900 text-white px-6 py-2 rounded">
         Learn More
       </a>
-
     </div>
 
   </section>
@@ -516,7 +840,9 @@
     </h2>
 
     <p class="text-gray-700 text-lg mb-4">
-      Roofers Local 58 offers a 3-year apprenticeship program designed to help individuals build a long-term career in the commercial roofing industry. No prior roofing experience is required to apply.
+      Roofers Local 58 offers a 3-year apprenticeship program designed to
+      help individuals build a long-term career in the commercial roofing
+      industry. No prior roofing experience is required to apply.
     </p>
 
     <div class="bg-gray-100 border-l-4 border-blue-900 p-6 rounded shadow mb-6">
@@ -543,28 +869,16 @@
               <td class="py-3 px-4 border font-semibold">
                 Monument Roofing of Colorado/Jamar
               </td>
-
-              <td class="py-3 px-4 border">
-                $21.48/hr
-              </td>
-
-              <td class="py-3 px-4 border">
-                $5.98/hr
-              </td>
+              <td class="py-3 px-4 border">$21.48/hr</td>
+              <td class="py-3 px-4 border">$5.98/hr</td>
             </tr>
 
             <tr class="bg-gray-50">
               <td class="py-3 px-4 border font-semibold">
                 Central States Roofing
               </td>
-
-              <td class="py-3 px-4 border">
-                $22.05/hr
-              </td>
-
-              <td class="py-3 px-4 border">
-                $5.79/hr
-              </td>
+              <td class="py-3 px-4 border">$22.05/hr</td>
+              <td class="py-3 px-4 border">$5.79/hr</td>
             </tr>
 
           </tbody>
@@ -576,19 +890,26 @@
     </div>
 
     <p class="text-gray-700 text-lg mb-4">
-      Apprentices receive raises every 6 months based on attendance, classroom participation, job performance, and completion of monthly reports.
+      Apprentices receive raises every 6 months based on attendance,
+      classroom participation, job performance, and completion of monthly reports.
     </p>
 
     <p class="text-gray-700 text-lg mb-4">
-      Apprenticeship training includes OSHA 10 Construction Safety certification, hands-on field experience, classroom instruction, and exposure to multiple commercial roofing systems including TPO, PVC, EPDM, modified bitumen, waterproofing, and sheet metal applications.
+      Apprenticeship training includes OSHA 10 Construction Safety
+      certification, hands-on field experience, classroom instruction,
+      and exposure to multiple commercial roofing systems including TPO,
+      PVC, EPDM, modified bitumen, waterproofing, and sheet metal applications.
     </p>
 
     <p class="text-gray-700 text-lg mb-4">
-      Apprentices also gain access to high-demand jobs throughout Colorado and Wyoming—especially for individuals eligible to work on military bases and correctional facilities.
+      Apprentices also gain access to high-demand jobs throughout Colorado
+      and Wyoming—especially for individuals eligible to work on military
+      bases and correctional facilities.
     </p>
 
     <p class="text-gray-700 text-lg mb-6">
-      Benefits include healthcare coverage, retirement contributions, and long-term career opportunities with signatory union contractors.
+      Benefits include healthcare coverage, retirement contributions,
+      and long-term career opportunities with signatory union contractors.
     </p>
 
     <a
@@ -635,15 +956,26 @@
     </h2>
 
     <p class="text-gray-700 text-lg mb-4">
-      Are you a roofing contractor looking to grow your business, attract skilled labor, and stay competitive in today’s market? Becoming a signatory contractor with Roofers Local 58 gives your company access to a trained workforce, apprenticeship pipeline, industry safety standards, and long-term labor stability.
+      Are you a roofing contractor looking to grow your business, attract
+      skilled labor, and stay competitive in today’s market? Becoming a
+      signatory contractor with Roofers Local 58 gives your company access
+      to a trained workforce, apprenticeship pipeline, industry safety
+      standards, and long-term labor stability.
     </p>
 
     <p class="text-gray-700 text-lg mb-4">
-      Local 58 works directly with contractors throughout Colorado and portions of Wyoming to help staff projects with skilled commercial roofers trained in modern roofing systems including TPO, PVC, EPDM, modified bitumen, waterproofing, and sheet metal applications.
+      Local 58 works directly with contractors throughout Colorado and
+      portions of Wyoming to help staff projects with skilled commercial
+      roofers trained in modern roofing systems including TPO, PVC, EPDM,
+      modified bitumen, waterproofing, and sheet metal applications.
     </p>
 
     <p class="text-gray-700 text-lg mb-4">
-      Our apprenticeship program helps develop the next generation of roofers through hands-on field training, classroom instruction, OSHA safety certification, and continuing education opportunities. Apprentices are registered with the State of Colorado and can be utilized on prevailing wage projects.
+      Our apprenticeship program helps develop the next generation of roofers
+      through hands-on field training, classroom instruction, OSHA safety
+      certification, and continuing education opportunities. Apprentices
+      are registered with the State of Colorado and can be utilized on
+      prevailing wage projects.
     </p>
 
     <div class="bg-white border-l-4 border-red-700 p-6 rounded shadow mb-6">
@@ -653,7 +985,6 @@
       </h3>
 
       <ul class="list-disc list-inside text-gray-700 text-lg space-y-3">
-
         <li>Access to trained Journeymen and registered Apprentices</li>
         <li>OSHA-trained workforce with emphasis on safety, professionalism, and productivity</li>
         <li>Ability to utilize apprentices on prevailing wage projects</li>
@@ -662,27 +993,29 @@
         <li>Labor compliance support for prevailing wage projects and certified payroll requirements</li>
         <li>Drug-free workplace expectations and professional code of conduct standards</li>
         <li>Access to training opportunities including OSHA, equipment, and specialized roofing training</li>
-
       </ul>
 
     </div>
 
     <p class="text-gray-700 text-lg mb-4">
-      Local 58 contractors maintain full control of their businesses. Our role is to help provide manpower, training resources, labor stability, and support when needed. Existing employees can remain with your company and become members of the union with waived initiation fees for current workers.
+      Local 58 contractors maintain full control of their businesses.
+      Our role is to help provide manpower, training resources, labor stability,
+      and support when needed. Existing employees can remain with your company
+      and become members of the union with waived initiation fees for current workers.
     </p>
 
     <p class="text-gray-700 text-lg mb-6">
-      Whether your company is looking to expand, improve workforce retention, meet prevailing wage requirements, or strengthen training and safety standards, Roofers Local 58 is ready to help your business succeed.
+      Whether your company is looking to expand, improve workforce retention,
+      meet prevailing wage requirements, or strengthen training and safety
+      standards, Roofers Local 58 is ready to help your business succeed.
     </p>
 
     <div class="flex flex-wrap gap-4">
-
       <a
         href="#contact"
         class="inline-block bg-red-700 text-white px-6 py-3 rounded font-semibold">
         Contact Us About Signatory Opportunities
       </a>
-
     </div>
 
   </section>
@@ -696,7 +1029,7 @@
 
     <div class="space-y-6">
 
-      <!-- CSR -->
+      <!-- CENTRAL STATES ROOFING -->
       <div class="bg-gray-100 p-4 flex flex-col md:flex-row items-center rounded shadow">
 
         <img
@@ -728,11 +1061,20 @@
             Visit Website
           </a>
 
+          <a
+            href="https://www.facebook.com/CentralStatesRoofing"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Central States Roofing on Facebook"
+            class="text-blue-700 hover:underline mt-2 ml-4 inline-block">
+            Facebook
+          </a>
+
         </div>
 
       </div>
 
-      <!-- MROC -->
+      <!-- MONUMENT ROOFING -->
       <div class="bg-gray-100 p-4 flex flex-col md:flex-row items-center rounded shadow">
 
         <img
@@ -764,16 +1106,25 @@
             Visit Website
           </a>
 
+          <a
+            href="https://www.facebook.com/profile.php?id=61586202955551"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Monument Roofing of Colorado on Facebook"
+            class="text-blue-700 hover:underline mt-2 ml-4 inline-block">
+            Facebook
+          </a>
+
         </div>
 
       </div>
 
-      <!-- JAMAR -->
+      <!-- THE JAMAR COMPANY -->
       <div class="bg-gray-100 p-4 flex flex-col md:flex-row items-center rounded shadow">
 
         <img
-          src="https://uspto.report/TM/85451518/mark"
-          alt="Jamar Company Logo"
+          src="jamar.svg"
+          alt="The Jamar Company Logo"
           loading="lazy"
           class="h-12 w-auto md:mr-6 mb-4 md:mb-0">
 
@@ -800,6 +1151,15 @@
             Visit Website
           </a>
 
+          <a
+            href="https://www.facebook.com/TheJamarCompany"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="The Jamar Company on Facebook"
+            class="text-blue-700 hover:underline mt-2 ml-4 inline-block">
+            Facebook
+          </a>
+
         </div>
 
       </div>
@@ -808,170 +1168,240 @@
 
   </section>
 
-  <!-- JURISDICTION -->
-<section id="jurisdiction" class="py-8 px-3 md:px-20 bg-gray-100">
-<style>
-#local58-map{color-scheme:light;--navy:#1e3a8a;--red:#b91c1c;--gray:#f3f4f6;--text:#374151}
-#local58-map *{box-sizing:border-box}
-#local58-map{margin:0;background:var(--gray);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
-#local58-map .section{max-width:1200px;margin:auto;padding:40px 24px}
-#local58-map .map-heading{margin:0 0 24px;color:var(--navy);font-size:1.875rem;line-height:1.2;font-weight:700}
-#local58-map .content{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:32px;align-items:center;background:white;border-left:4px solid var(--red);border-radius:4px;padding:24px;box-shadow:0 1px 3px #0000001a,0 1px 2px #0000000f}
-#local58-map figure{margin:0;min-width:0}
-#local58-map svg{display:block;width:100%;max-height:540px;height:auto;margin:auto}
-#local58-map .county{fill:var(--navy);stroke:#ffffff75;stroke-width:.65;vector-effect:non-scaling-stroke}
-#local58-map .county.outside{fill:#e5e7eb;stroke:#c3c8d1}
-#local58-map .state-outline{fill:none;stroke:#6b7280;stroke-width:1;vector-effect:non-scaling-stroke}
-#local58-map .state-label{fill:#4b5563;font-size:24px;font-weight:700;letter-spacing:2px;pointer-events:none}
-#local58-map .state-label.co{fill:#fff;font-size:29px}
-#local58-map .county-label{fill:#fff;font-size:18px;font-weight:600;paint-order:stroke;stroke:var(--navy);stroke-width:2px;stroke-linejoin:round;pointer-events:none}
-#local58-map .city{pointer-events:none}
-#local58-map .city-dot{fill:var(--red);stroke:#fff;stroke-width:1.5}
-#local58-map .city-label{fill:#fff;font-size:20px;font-weight:500;paint-order:stroke;stroke:var(--navy);stroke-width:3px;stroke-linejoin:round}
-#local58-map .coverage p{font-size:1.125rem;margin:0 0 24px}
-#local58-map .coverage h2{font-size:1.5rem;line-height:1.3;color:var(--navy);margin:0 0 8px;font-weight:700}
-#local58-map .coverage ul{margin:0;padding-left:22px;display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;font-size:1.125rem}
-#local58-map .coverage li::marker{color:var(--red)}
-#local58-map figcaption{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 24px;font-size:.875rem;margin-top:8px}
-#local58-map figcaption span{display:flex;align-items:center;gap:8px}
-#local58-map .key{width:14px;height:14px;background:var(--navy);display:inline-block;border:1px solid var(--navy);border-radius:2px}
-#local58-map .key.outside{background:#e5e7eb;border-color:#9ca3af}
-#local58-map .source{font-size:.8125rem;margin:16px 0 0;color:#6b7280}
-#local58-map .source a{color:inherit;text-underline-offset:2px}
-#local58-map a:focus-visible{outline:3px solid var(--red);outline-offset:3px}
-@media(max-width:700px){#local58-map .section{padding:28px 16px}
-#local58-map .content{grid-template-columns:1fr;gap:28px;padding:20px 16px}
-#local58-map .coverage{grid-row:1}
-#local58-map .coverage p{margin-bottom:20px}
-#local58-map .coverage ul{gap:8px 16px}
-#local58-map svg{max-height:500px}
-#local58-map .county-label{font-size:20px}
-#local58-map figcaption{font-size:.875rem;gap:8px 16px}}
-@media print{#local58-map .section{padding:0}
-#local58-map .content{box-shadow:none}
-#local58-map .county{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
-</style>
-<div id="local58-map"><div class="section">
-  <h2 class="map-heading">Our Jurisdiction</h2>
-  <div class="content">
-    <figure>
-      <svg viewBox="0 0 720 760" role="img" aria-labelledby="map-title map-description">
-        <title id="map-title">Roofers Local 58 jurisdiction</title>
-        <desc id="map-description">All of Colorado is shaded navy. In Wyoming, Albany, Converse, Goshen, Laramie, Natrona, Niobrara, and Platte counties are shaded navy. Other Wyoming counties are gray.</desc>
-        <path class="county" data-id="08001" d="M466.86,486.52L466.86,487.14L497.68,487.33L542.54,487.17L542.59,464.91L460.68,465.01L460.25,466.13L460.24,467.1L459.64,467.24L460.22,467.4L460.22,467.71L459.63,467.71L459.48,466.94L459.62,466.63L458.44,466.63L458.59,467.54L458.44,467.55L458.37,469.05L459.05,469.25L459.05,469.56L459.64,469.56L459.65,469.86L458.44,469.87L458.46,471.73L458.07,471.72L458.07,471.91L457.24,471.72L457.25,472.33L456.05,472.33L456.04,482.81L457.83,482.81L457.83,482.56L458.05,482.52L458.14,482.81L461.0,482.82L461.18,482.7L461.08,482.43L461.46,482.19L461.45,482.82L463.27,482.51L463.27,482.82L464.14,482.81L464.14,483.43L465.66,483.43L465.64,482.19L466.87,482.2L466.88,480.96L468.05,480.96L468.06,482.19L472.88,482.2L472.88,478.49L476.73,478.21L476.77,473.87L478.51,473.89L478.52,472.95L479.23,472.95L479.23,472.33L480.03,472.35L480.03,472.95L483.16,472.98L483.16,473.6L485.17,473.63L485.16,475.13L484.81,475.13L484.8,475.83L483.91,475.82L483.87,480.15L481.59,480.13L481.59,480.95L480.89,480.94L480.9,480.11L474.71,480.06L474.7,482.19L476.51,482.19L476.5,484.67L474.57,484.67L474.57,484.47L474.08,484.48L474.08,484.06L473.48,484.05L473.48,484.37L470.49,484.37L470.49,484.67L470.18,484.67L470.18,484.91L468.68,484.72L468.68,485.62L469.29,485.91L467.17,485.91L467.16,486.53L466.86,486.52Z" fill-rule="evenodd"><title>Adams County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08003" d="M392.7,671.23L392.72,689.97L411.71,689.99L427.3,672.68L427.57,672.36L427.59,671.83L428.27,671.17L427.68,670.52L427.68,669.94L427.24,669.56L427.77,669.21L427.63,668.25L427.43,668.05L427.88,667.16L427.83,666.33L428.17,664.74L428.8,663.65L428.83,662.49L428.53,661.31L428.78,660.14L430.09,659.14L430.38,657.26L430.08,656.39L392.75,656.66L392.7,671.23Z" fill-rule="evenodd"><title>Alamosa County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08005" d="M455.97,501.82L496.23,502.17L542.5,501.94L542.54,487.17L497.68,487.33L466.86,487.14L466.74,488.08L467.04,488.44L467.46,488.38L467.46,488.96L467.76,489.01L467.76,489.69L468.06,489.62L468.06,490.24L467.76,490.7L467.99,490.55L468.06,490.85L467.31,490.7L465.93,490.95L465.65,490.69L465.87,491.16L465.65,491.16L465.65,491.47L466.25,491.16L466.25,491.78L466.56,491.78L466.56,492.09L466.26,492.09L466.25,492.4L465.66,492.38L465.54,491.75L465.58,492.24L465.36,492.29L465.64,492.55L465.65,493.32L466.26,493.32L466.51,493.58L466.49,493.32L466.83,493.32L467.4,493.64L467.32,492.94L467.74,492.71L468.05,493.05L468.04,493.94L468.74,493.9L469.26,494.21L467.44,495.24L467.45,494.69L467.15,494.55L467.14,495.56L466.83,495.76L466.82,497.02L465.02,497.02L465.03,495.78L464.43,495.18L463.83,495.18L463.84,494.56L462.34,494.56L462.42,494.25L462.05,494.25L462.06,493.84L461.46,493.93L461.46,493.47L461.15,493.31L459.43,493.31L459.2,493.43L459.17,493.92L458.75,493.92L459.05,493.31L459.04,492.54L458.44,492.38L458.44,493.92L457.98,493.92L457.98,494.24L457.33,494.22L457.38,494.54L457.23,494.54L457.22,495.35L457.53,495.43L457.53,495.65L457.22,495.79L457.22,496.25L457.82,496.4L457.82,496.64L457.01,496.79L456.61,496.69L456.62,496.39L456.02,496.39L455.97,501.82ZM465.62,496.91L465.69,497.01L465.63,496.79L465.62,496.91ZM465.7,491.78L465.95,491.98L465.95,491.78L465.7,491.78ZM465.17,492.09L465.17,492.27L465.35,492.27L465.17,492.09ZM463.99,490.39L463.99,490.45L464.06,490.45L463.99,490.39ZM463.94,492.71L464.18,493.17L464.55,493.29L464.53,493.94L465.04,494.29L464.75,492.86L464.37,492.55L463.94,492.71ZM463.7,492.84L463.85,493.33L464.13,493.2L463.7,492.84ZM463.26,490.03L463.26,490.76L463.4,490.74L463.27,490.95L463.55,491.01L463.53,490.74L464.06,490.85L464.03,490.55L463.69,490.45L463.68,490.24L464.14,490.23L463.85,489.62L463.26,489.62L463.26,490.03ZM463.69,490.55L463.84,490.55L463.84,490.7L463.69,490.55Z" fill-rule="evenodd"><title>Arapahoe County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08007" d="M300.0,692.74L300.05,720.34L338.88,720.34L339.35,720.99L364.64,720.91L363.81,719.07L357.38,708.42L356.85,703.76L351.65,700.9L351.65,686.0L349.57,685.95L349.57,686.63L322.72,686.96L322.72,684.36L300.02,684.38L300.0,692.74Z" fill-rule="evenodd"><title>Archuleta County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08009" d="M617.46,665.57L583.04,665.6L583.12,687.86L582.62,687.88L582.35,705.34L582.39,720.34L599.79,720.37L607.31,720.77L649.44,720.95L649.47,665.52L617.46,665.57Z" fill-rule="evenodd"><title>Baca County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08011" d="M604.51,627.02L604.47,612.52L562.23,612.66L562.34,638.6L562.23,650.33L561.99,650.33L561.95,665.58L604.13,665.58L604.1,650.29L604.58,650.22L604.51,627.02Z" fill-rule="evenodd"><title>Bent County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08013" d="M448.78,472.35L450.0,472.36L450.01,471.08L450.61,471.08L450.61,470.16L451.22,470.17L451.23,468.93L451.67,469.11L452.42,468.69L451.69,469.18L452.43,469.24L452.43,469.86L451.83,469.86L451.82,470.66L452.43,471.37L452.17,470.86L452.44,470.47L453.61,470.47L453.6,469.86L454.53,469.86L454.53,469.24L454.83,469.27L454.83,468.63L453.8,468.45L454.32,468.31L455.08,467.51L456.06,466.93L456.06,465.01L455.89,465.01L455.88,464.7L455.91,442.75L440.86,442.66L435.35,442.79L433.61,443.09L424.02,442.78L417.49,442.86L417.65,443.44L418.09,443.76L417.06,443.86L416.48,445.95L416.85,446.31L416.4,446.36L416.38,447.35L415.93,447.81L415.93,448.99L416.39,449.32L416.3,449.71L416.62,450.57L416.32,450.95L416.57,451.56L417.32,452.15L418.62,452.61L418.63,453.08L419.01,453.3L418.99,453.93L419.24,454.2L419.06,454.52L419.21,454.93L418.69,455.4L418.56,455.92L418.86,456.76L418.6,457.83L418.82,458.1L418.64,458.66L418.27,458.82L418.42,459.33L417.91,459.48L417.63,460.06L418.51,461.13L418.31,462.05L417.52,463.01L417.58,463.25L416.96,463.63L415.15,463.75L415.06,465.26L415.57,465.49L415.29,466.27L415.46,466.78L415.11,467.59L415.25,468.45L415.45,468.55L414.85,469.31L415.02,469.59L414.91,470.01L415.56,470.64L430.07,470.8L431.19,470.27L431.79,470.84L432.34,470.85L432.55,471.1L432.88,470.61L433.35,470.84L433.89,470.57L433.9,472.44L448.78,472.35ZM452.44,468.76L452.85,468.54L453.61,468.62L452.44,468.76ZM454.17,468.49L456.05,468.62L456.06,467.93L455.75,467.7L455.75,467.18L454.17,468.49Z" fill-rule="evenodd"><title>Boulder County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08014" d="M448.78,473.39L448.84,474.27L450.79,474.45L450.7,474.22L451.17,474.36L451.19,473.54L449.98,473.53L450.0,472.35L452.48,472.34L452.99,472.81L453.02,473.35L453.24,473.56L454.04,473.63L454.85,473.56L454.84,472.95L455.44,472.95L455.44,472.35L457.25,472.33L457.24,471.72L458.07,471.91L458.07,471.72L458.46,471.73L458.44,469.87L459.65,469.86L459.64,469.56L459.05,469.56L459.05,469.25L458.37,469.05L458.44,467.55L458.59,467.54L458.44,466.63L459.62,466.63L459.48,466.94L459.63,467.71L460.22,467.71L460.22,467.4L459.64,467.24L460.24,467.1L460.25,466.13L460.68,465.01L461.93,465.01L461.95,461.28L460.79,461.3L460.73,462.54L460.32,462.54L460.32,462.84L459.52,462.84L459.66,463.03L459.52,463.28L459.72,463.29L459.51,463.76L460.12,463.76L460.12,464.38L458.94,464.38L458.95,464.99L456.06,465.01L456.06,466.93L453.76,468.57L454.83,468.63L454.83,469.27L454.53,469.24L454.53,469.86L453.6,469.86L453.61,470.47L452.44,470.47L452.17,470.86L452.43,471.37L451.82,470.66L451.83,469.86L452.43,469.86L452.43,469.24L451.69,469.18L452.42,468.69L451.67,469.11L451.23,468.93L451.22,470.17L450.61,470.16L450.61,471.08L450.01,471.08L450.0,472.37L448.81,472.65L448.78,473.39ZM454.15,468.49L455.75,467.18L455.75,467.7L456.06,467.93L456.05,468.62L454.15,468.49ZM460.74,462.52L460.74,462.21L461.19,462.22L461.18,462.52L460.74,462.52ZM452.44,468.72L453.61,468.62L453.03,468.52L452.44,468.72Z" fill-rule="evenodd"><title>Broomfield County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08015" d="M356.75,547.05L357.22,548.02L357.01,548.37L357.04,549.78L356.73,550.31L356.97,550.88L358.15,550.96L359.62,550.25L359.85,550.84L361.28,551.78L361.7,552.8L361.27,553.55L361.39,553.93L362.64,554.73L362.82,555.52L365.35,557.76L367.14,557.38L367.58,556.53L368.17,556.26L368.68,557.26L369.39,557.75L369.91,557.61L370.02,557.05L370.76,556.46L371.01,556.72L371.06,557.84L371.24,558.09L372.28,557.55L373.05,558.04L373.7,557.65L374.28,557.71L374.58,559.28L374.28,559.59L374.19,560.16L373.76,560.24L373.65,561.03L372.81,561.62L372.79,562.49L371.78,562.65L371.81,563.23L371.43,563.88L370.7,564.36L370.58,565.06L369.8,565.24L369.07,564.67L368.49,565.11L368.57,565.86L368.07,566.44L368.59,567.24L368.7,567.91L368.45,568.24L368.64,568.94L368.29,570.04L368.56,570.8L368.24,571.33L368.46,573.3L368.02,573.9L367.9,574.79L366.73,574.89L366.18,575.77L367.09,577.16L367.08,577.66L367.66,579.28L367.63,579.82L368.39,580.39L369.02,580.12L369.42,580.28L369.45,580.8L370.82,580.9L370.48,581.42L370.47,582.05L371.83,582.95L371.8,583.68L372.14,584.23L372.03,584.65L372.66,585.59L372.52,585.76L372.63,586.15L373.09,586.85L372.39,589.07L372.47,589.85L373.22,590.86L372.86,591.63L373.11,592.3L374.0,593.23L374.2,592.9L375.21,593.13L375.69,594.58L376.57,594.96L376.69,595.98L377.2,596.58L377.71,596.5L377.62,597.21L378.13,597.65L379.46,597.87L379.2,598.38L379.36,599.26L390.35,599.18L391.49,597.44L391.23,596.92L391.46,596.36L391.87,596.59L392.47,596.24L393.24,596.65L394.0,596.57L394.08,597.06L394.53,597.24L399.2,592.39L401.23,592.11L401.32,591.7L401.09,591.19L401.43,590.27L401.28,589.93L401.4,588.61L402.06,588.36L402.1,587.66L402.61,587.44L402.58,586.75L402.13,586.45L402.22,585.54L402.89,584.62L403.01,583.65L402.51,582.39L402.0,582.16L401.66,582.31L400.51,581.35L400.93,580.85L400.8,580.3L401.15,579.76L400.3,579.09L400.35,578.71L400.01,578.53L400.19,577.63L398.8,576.96L398.73,576.5L397.63,576.42L397.15,576.1L397.67,575.15L398.68,574.25L398.59,573.95L398.85,573.7L398.68,573.34L398.88,572.73L398.57,571.94L398.99,571.79L399.2,570.9L399.13,570.22L398.79,569.87L399.76,569.33L399.74,568.74L400.04,568.6L399.93,568.39L400.69,567.96L400.96,566.78L401.22,566.56L398.96,563.72L399.13,563.24L398.87,562.71L400.03,561.02L399.0,559.87L398.49,560.09L397.47,559.84L396.87,560.14L396.54,559.12L397.42,558.19L396.72,557.75L396.73,557.42L396.11,557.11L395.34,557.36L393.42,555.01L391.48,555.09L390.99,555.93L389.77,555.3L389.4,555.54L388.09,555.24L387.92,553.92L388.52,552.4L388.18,551.65L388.22,551.21L385.88,550.32L384.36,550.88L383.92,550.17L383.74,549.22L382.82,548.63L383.05,548.33L382.88,547.64L383.5,546.85L383.35,545.81L382.95,545.36L358.1,545.21L357.92,545.99L356.86,546.33L356.75,547.05Z" fill-rule="evenodd"><title>Chaffee County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08017" d="M617.01,583.04L649.27,582.88L649.15,546.14L628.53,546.26L606.17,546.84L577.45,546.94L577.37,576.51L576.84,576.51L576.81,583.12L584.43,582.9L617.01,583.04Z" fill-rule="evenodd"><title>Cheyenne County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08019" d="M412.91,480.17L412.92,480.5L412.34,480.99L412.17,481.64L410.25,482.49L409.05,481.85L408.13,481.76L407.53,482.28L407.39,482.78L406.83,482.92L406.59,483.28L405.23,482.95L404.76,483.09L404.54,482.38L403.42,482.33L403.21,482.11L402.44,482.34L402.43,482.99L402.11,483.53L402.5,484.95L402.9,485.52L402.62,486.16L402.77,487.13L402.33,487.88L401.21,488.22L400.89,489.26L400.27,489.72L400.06,490.65L400.39,491.39L399.93,492.81L400.95,493.77L401.85,493.57L402.04,494.02L402.61,494.21L402.95,493.66L403.91,493.35L404.94,495.31L405.4,495.14L405.83,495.5L406.71,495.44L406.96,496.21L408.49,495.98L409.06,496.43L409.18,497.54L409.61,498.16L409.61,498.64L409.26,499.0L408.05,499.64L407.55,500.49L406.04,500.94L405.6,501.37L405.72,501.73L406.16,502.06L421.68,501.78L433.83,501.96L433.84,486.54L433.34,486.18L432.39,486.66L432.31,485.87L431.97,485.81L430.53,486.05L428.7,485.53L427.79,485.71L427.52,485.64L427.66,485.11L426.85,485.19L425.03,484.53L424.25,483.69L424.34,483.07L422.29,481.59L422.21,480.96L422.56,480.44L422.33,480.14L421.2,480.68L420.75,480.51L420.54,480.13L420.04,480.09L419.06,479.27L418.77,478.33L417.36,477.85L415.7,478.03L415.11,477.63L414.73,478.74L413.63,478.8L412.91,480.17Z" fill-rule="evenodd"><title>Clear Creek County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08021" d="M388.8,720.79L413.3,720.71L413.33,720.4L412.78,719.77L412.89,719.21L411.52,719.14L411.59,718.87L411.24,718.61L411.3,718.09L410.57,718.13L410.07,717.22L410.23,716.87L409.96,716.82L409.9,716.46L410.17,716.26L410.37,715.59L409.98,714.86L410.86,713.66L411.87,711.7L411.3,710.63L411.36,708.83L412.47,707.06L412.05,706.26L412.58,705.01L412.36,704.3L411.99,704.07L412.18,703.37L411.97,703.15L411.95,702.3L411.56,701.81L411.7,701.39L411.49,700.74L411.84,700.4L411.87,699.9L411.52,699.17L411.74,698.63L412.08,698.42L412.07,697.76L412.96,696.97L412.67,696.18L412.81,695.97L413.19,696.05L413.2,695.66L412.79,695.13L412.62,694.4L412.27,694.59L412.04,694.28L412.1,693.66L411.75,693.43L412.03,693.12L411.55,692.79L411.48,692.17L411.23,691.94L411.32,691.5L411.07,691.03L411.71,689.99L392.72,689.97L392.7,686.23L363.88,686.37L363.88,686.17L363.19,686.16L351.65,686.0L351.65,700.9L356.85,703.76L357.38,708.42L363.81,719.07L364.64,720.91L388.8,720.79Z" fill-rule="evenodd"><title>Conejos County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08023" d="M411.07,691.07L411.54,692.78L412.03,693.12L411.75,693.43L412.1,693.66L412.03,694.27L412.27,694.59L412.62,694.4L413.21,695.98L412.7,696.06L412.97,696.95L412.07,697.76L412.08,698.42L411.74,698.63L411.52,699.17L411.87,699.9L411.84,700.4L411.49,700.74L411.7,701.39L411.56,701.81L411.95,702.3L411.97,703.15L412.18,703.37L411.99,704.07L412.36,704.3L412.58,705.03L412.05,706.26L412.45,706.86L412.43,707.31L411.66,708.13L411.36,708.83L411.3,710.63L411.88,711.66L410.86,713.66L409.98,714.86L410.37,715.59L410.17,716.26L409.9,716.46L409.96,716.82L410.23,716.87L410.07,717.22L410.57,718.13L411.3,718.09L411.24,718.61L411.59,718.87L411.52,719.14L412.89,719.22L412.78,719.77L413.33,720.4L413.25,720.68L449.5,720.75L449.55,695.41L448.88,695.75L448.82,695.57L448.96,694.79L448.73,692.89L448.98,692.36L448.67,691.67L448.91,691.16L448.6,689.59L448.81,688.88L448.6,688.44L448.84,687.91L448.74,687.3L449.35,686.45L450.55,686.25L450.93,686.0L451.12,685.52L450.5,684.98L450.4,683.88L450.13,683.84L450.02,682.81L449.45,681.5L448.93,681.67L448.18,681.5L448.31,681.11L448.1,679.88L447.75,679.57L448.23,679.05L448.04,678.53L448.37,677.9L448.27,677.01L448.45,676.68L448.04,674.9L447.65,674.43L447.7,673.85L447.99,673.86L447.94,673.65L446.94,672.29L446.86,671.85L445.43,670.79L446.36,669.77L447.04,669.95L446.89,668.53L447.61,667.93L447.41,667.61L446.51,667.65L445.68,667.04L445.24,667.48L444.29,667.52L443.93,667.27L443.82,666.8L443.18,666.63L443.05,665.86L442.31,666.02L441.55,665.34L441.15,665.38L441.02,664.95L440.49,664.74L440.36,664.33L439.2,665.18L438.29,665.63L437.27,665.71L436.66,666.22L435.67,665.94L434.99,666.91L434.62,667.04L434.31,667.72L433.74,668.15L433.22,667.76L431.04,668.28L430.69,669.26L430.21,669.81L430.26,670.1L429.27,670.83L427.93,671.37L427.59,671.83L427.57,672.36L411.27,690.46L411.45,690.66L411.07,691.07Z" fill-rule="evenodd"><title>Costilla County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08025" d="M539.9,625.62L548.14,625.59L548.14,620.65L555.2,620.56L555.15,612.68L555.68,612.69L555.7,611.93L555.69,606.11L555.35,606.11L555.5,591.3L548.54,591.17L548.54,590.78L520.22,590.79L520.07,598.16L520.17,612.96L519.93,613.05L519.95,622.78L520.52,622.79L520.67,623.21L521.94,623.29L523.03,622.85L523.55,623.09L524.02,622.76L524.7,623.25L525.29,623.31L525.16,623.82L525.33,624.0L526.74,624.14L527.92,624.66L528.6,624.15L528.91,624.56L529.24,624.6L529.4,624.47L529.29,623.83L529.72,623.76L530.2,624.09L530.06,624.57L531.52,624.64L532.27,624.28L533.56,624.74L534.24,625.6L535.12,625.59L535.77,625.22L536.34,625.67L539.9,625.62Z" fill-rule="evenodd"><title>Crowley County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08027" d="M408.27,612.69L408.77,613.82L408.84,614.64L410.68,615.79L410.89,616.68L412.16,617.44L412.37,618.14L412.76,618.25L413.46,619.48L413.96,619.76L414.54,620.95L415.34,621.05L415.72,621.59L416.22,621.71L416.4,622.22L416.01,622.83L416.4,624.3L416.89,625.1L417.21,625.25L416.98,625.76L416.97,626.69L417.34,627.12L417.36,627.48L418.54,628.76L418.59,629.17L419.17,629.52L419.1,630.36L419.77,630.71L420.07,632.0L420.31,632.5L420.71,632.61L421.11,634.12L420.63,634.51L420.62,634.82L422.08,637.12L421.95,638.04L422.35,638.18L423.46,639.34L424.01,639.45L424.59,638.95L425.38,639.21L426.62,640.43L427.14,641.74L429.07,644.12L431.17,643.97L432.21,644.59L432.89,644.57L435.23,642.39L436.09,641.88L437.15,641.65L438.15,640.71L439.08,640.45L439.76,641.01L440.15,641.79L440.16,642.69L441.26,643.76L441.87,643.1L442.64,641.58L442.5,641.02L443.41,639.37L444.16,638.91L444.13,638.41L444.92,638.32L445.12,637.9L445.62,637.76L445.71,636.88L446.18,636.75L446.21,636.12L446.79,635.89L446.61,635.18L446.95,634.6L448.62,633.64L449.95,634.72L449.61,635.18L449.66,635.92L449.95,636.37L450.38,636.36L450.5,636.54L450.33,636.96L451.02,637.5L450.72,638.11L451.33,638.58L451.36,639.4L452.48,640.06L453.8,639.62L454.05,639.02L454.46,639.25L455.21,639.99L455.33,642.23L456.25,642.44L456.29,613.29L439.93,613.27L424.28,612.75L408.27,612.69Z" fill-rule="evenodd"><title>Custer County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08029" d="M281.15,546.07L279.47,544.62L277.04,543.57L276.05,543.62L275.84,543.31L274.77,544.1L273.2,544.53L272.71,544.99L272.06,544.69L269.89,545.06L267.9,545.04L267.58,545.64L264.78,547.72L264.3,548.8L263.69,549.16L263.52,548.85L263.3,548.94L262.26,550.43L260.68,551.84L261.18,552.88L261.15,553.27L258.94,556.4L258.36,556.75L257.73,556.5L257.74,556.87L257.46,557.21L257.7,558.1L257.32,558.01L256.96,558.54L256.08,558.46L255.39,559.05L242.41,564.68L242.43,578.39L298.83,578.34L298.84,531.59L298.12,531.78L297.57,532.56L297.02,532.87L297.38,533.3L296.74,533.21L296.16,533.48L296.13,534.63L295.14,534.96L294.48,534.71L294.19,535.13L293.5,535.36L292.88,536.1L292.0,536.38L291.56,536.98L291.22,536.96L290.59,537.54L290.37,538.15L289.98,538.08L288.49,540.12L288.58,540.62L287.86,540.98L287.71,541.53L287.26,541.6L286.82,542.65L285.19,543.29L284.61,544.3L284.64,544.58L284.11,544.51L283.93,544.78L283.59,544.5L283.18,544.84L283.23,545.21L282.46,545.55L282.42,545.91L281.82,546.45L281.15,546.07Z" fill-rule="evenodd"><title>Delta County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08031" d="M452.39,496.76L452.55,497.01L453.59,497.01L453.59,496.77L454.2,496.75L454.08,496.41L454.25,496.41L454.56,497.01L455.27,497.49L453.22,497.51L453.22,497.86L455.72,497.85L455.78,497.3L456.02,497.3L455.87,497.01L456.02,496.56L455.64,496.15L455.66,495.77L456.03,495.77L456.02,496.39L456.62,496.39L456.7,496.72L457.82,496.64L457.82,496.4L457.22,496.25L457.22,495.79L457.53,495.65L457.53,495.43L457.22,495.35L457.23,494.54L457.38,494.54L457.33,494.22L457.98,494.24L457.98,493.92L458.44,493.92L458.44,492.38L458.89,492.38L459.05,493.31L458.75,493.92L459.17,493.92L459.2,493.43L459.43,493.31L461.15,493.31L461.46,493.47L461.46,493.93L462.06,493.84L462.05,494.25L462.42,494.25L462.34,494.56L463.84,494.56L463.83,495.18L464.43,495.18L465.03,495.78L465.02,497.02L466.82,497.02L466.83,495.76L467.14,495.56L467.15,494.55L467.45,494.69L467.44,495.24L469.26,494.21L468.74,493.9L468.04,493.94L468.05,493.05L467.74,492.71L467.32,492.94L467.4,493.64L466.83,493.32L466.49,493.32L466.51,493.58L466.26,493.32L465.65,493.32L465.64,492.55L465.36,492.29L465.58,492.24L465.54,491.75L465.66,492.38L466.25,492.4L466.26,492.09L466.56,492.09L466.56,491.78L466.25,491.78L466.25,491.16L465.65,491.47L465.65,491.16L465.87,491.16L465.65,490.69L465.93,490.95L467.31,490.7L468.06,490.85L467.99,490.55L467.76,490.7L468.06,490.24L468.06,489.62L467.76,489.69L467.76,489.01L467.46,488.96L467.46,488.38L467.04,488.44L466.74,488.08L466.86,486.52L467.16,486.53L467.17,485.91L469.29,485.91L468.68,485.62L468.68,484.72L470.18,484.91L470.18,484.67L470.49,484.67L470.49,484.37L473.48,484.37L473.48,484.05L474.08,484.06L474.08,484.48L474.57,484.47L474.57,484.67L476.5,484.67L476.51,482.19L474.7,482.19L474.71,480.06L480.9,480.11L480.89,480.94L481.59,480.95L481.59,480.13L483.87,480.15L483.91,475.82L484.8,475.83L484.81,475.13L485.16,475.13L485.17,473.63L483.16,473.6L483.16,472.98L480.03,472.95L480.03,472.35L479.23,472.33L479.23,472.95L478.52,472.95L478.51,473.89L476.77,473.87L476.73,478.21L472.88,478.49L472.88,482.2L468.06,482.19L468.05,480.96L466.88,480.96L466.87,482.2L465.64,482.19L465.66,483.43L464.14,483.43L464.14,482.81L463.27,482.82L463.27,482.51L461.45,482.82L461.46,482.19L461.08,482.43L461.18,482.7L461.0,482.82L458.14,482.81L458.05,482.52L457.83,482.56L457.83,482.81L455.32,482.81L455.43,483.43L456.04,483.43L456.04,487.59L455.88,487.63L456.04,487.75L456.04,492.06L455.74,492.07L455.74,492.38L455.43,492.32L455.43,492.69L456.03,492.69L456.03,493.3L454.23,493.11L454.22,493.79L455.13,494.23L454.91,494.85L455.73,494.56L456.01,494.72L455.39,494.85L455.39,495.16L454.83,495.16L454.52,495.72L454.74,495.96L453.6,495.78L453.6,496.09L452.39,496.09L452.39,496.76ZM465.62,497.02L465.63,496.79L465.7,497.01L465.62,497.02ZM454.21,496.1L454.26,496.04L454.26,496.1L454.21,496.1ZM455.37,494.66L455.43,494.56L455.43,494.66L455.37,494.66ZM455.28,494.52L455.35,494.5L455.35,494.54L455.28,494.52ZM464.0,492.84L464.37,492.55L464.75,492.86L465.04,494.29L464.53,493.94L464.55,493.29L464.0,492.84ZM463.7,492.93L463.85,492.83L464.13,493.2L463.85,493.33L463.7,492.93ZM465.17,492.27L465.35,492.09L465.35,492.27L465.17,492.27ZM465.81,491.86L465.95,491.78L465.95,491.98L465.81,491.86ZM463.99,490.45L464.0,490.39L464.06,490.45L463.99,490.45ZM463.26,490.04L463.26,489.62L463.85,489.62L464.14,490.23L463.68,490.24L463.69,490.45L464.03,490.55L464.06,490.85L463.53,490.74L463.55,491.01L463.27,490.95L463.4,490.74L463.26,490.76L463.26,490.04ZM463.69,490.55L463.84,490.7L463.84,490.55L463.69,490.55Z" fill-rule="evenodd"><title>Denver County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08033" d="M221.75,666.6L250.66,666.5L259.82,665.99L268.68,665.92L269.32,665.66L269.51,665.13L268.72,662.55L268.36,662.17L268.67,661.82L268.76,661.08L269.69,660.22L270.79,660.56L271.26,659.99L272.48,659.71L272.52,659.38L272.99,659.18L274.65,659.39L274.92,658.87L274.75,658.58L274.75,657.47L275.36,656.79L275.63,656.01L275.55,655.65L275.08,655.37L275.7,654.35L274.9,653.44L274.06,653.5L273.77,653.04L273.91,652.6L273.68,652.06L272.91,651.68L271.81,650.25L270.73,650.34L270.16,649.84L269.92,649.22L268.56,649.49L267.77,648.44L267.43,647.43L264.77,647.54L263.69,647.95L263.0,648.78L262.37,647.88L260.92,648.87L260.57,648.84L260.44,648.15L259.53,647.57L258.72,647.83L258.63,648.41L257.93,649.04L257.75,649.51L257.3,648.96L257.12,649.35L255.51,649.49L254.99,650.01L253.28,650.48L253.12,649.54L252.18,648.59L252.01,647.08L251.48,645.77L250.84,645.51L250.23,644.63L250.28,644.22L214.3,644.14L214.06,645.38L199.83,645.37L199.74,679.09L207.85,666.57L221.75,666.6Z" fill-rule="evenodd"><title>Dolores County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08035" d="M457.69,539.09L481.11,539.12L481.25,501.98L456.33,501.96L455.59,502.47L454.73,503.77L454.46,504.47L454.42,506.6L453.99,507.07L453.9,508.14L453.11,508.83L451.9,508.83L451.98,509.16L451.63,509.18L450.79,510.05L450.92,510.83L451.42,511.3L451.57,511.78L451.35,512.67L451.51,513.19L450.18,514.48L448.47,515.43L448.92,516.82L448.53,517.02L448.31,517.51L448.56,517.74L448.34,517.99L448.67,518.29L448.75,519.35L448.06,520.4L447.94,521.21L447.39,521.7L447.77,522.02L447.37,522.22L447.54,522.53L447.33,523.15L446.7,523.75L446.86,524.43L446.11,524.76L446.45,525.15L446.17,525.13L446.25,525.31L445.8,525.93L445.87,526.25L445.55,526.51L445.62,526.95L445.28,527.23L445.51,527.93L444.99,527.97L445.1,528.33L444.81,528.53L444.4,528.41L444.18,528.8L444.43,529.13L444.31,529.37L443.61,529.7L443.17,529.43L443.04,530.08L442.52,530.66L442.76,532.21L441.75,532.47L441.59,532.93L441.31,533.02L440.87,534.49L440.97,534.94L440.58,535.41L440.22,535.46L440.16,535.91L439.67,536.07L439.32,536.54L439.18,537.73L438.7,537.75L438.77,538.48L438.29,539.12L457.69,539.09Z" fill-rule="evenodd"><title>Douglas County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08037" d="M323.67,505.49L323.71,518.98L367.83,519.34L368.58,518.86L369.52,517.71L370.77,518.12L371.4,519.45L372.23,519.92L372.63,520.04L373.43,519.58L375.21,519.31L375.78,519.41L376.19,519.73L376.25,520.1L376.87,520.17L376.99,520.39L378.58,519.33L379.1,519.7L380.2,518.4L380.65,518.29L380.73,517.83L381.94,517.83L381.71,517.45L382.18,516.98L382.3,516.44L381.23,515.39L381.15,515.05L380.46,514.73L380.27,513.87L380.88,513.22L380.06,512.18L379.9,511.4L379.06,510.56L379.07,509.57L379.45,508.49L378.55,508.01L379.2,507.24L379.39,506.5L378.79,505.89L378.78,504.88L379.27,503.81L380.02,503.45L380.78,504.91L381.65,505.02L381.74,503.59L382.5,503.3L382.61,502.74L382.01,502.63L381.71,501.48L381.42,501.22L381.71,499.45L382.24,498.58L383.34,498.88L383.81,498.3L383.91,496.18L383.42,494.63L381.27,494.43L381.09,493.75L380.14,493.8L379.78,493.28L379.89,492.24L378.54,492.2L378.14,491.46L378.34,490.84L378.26,490.45L377.74,490.2L377.4,490.61L376.54,490.21L376.06,488.81L374.32,487.74L373.68,486.36L373.25,486.05L373.16,485.54L372.46,486.1L371.86,486.13L371.19,485.27L370.46,484.84L370.11,484.02L370.24,483.1L369.73,482.89L369.76,482.41L369.45,482.06L369.46,481.58L369.07,480.96L368.76,479.61L368.01,478.53L368.01,477.79L367.42,476.49L367.34,475.47L367.72,475.06L367.6,472.93L366.94,471.98L367.31,471.42L355.47,471.4L354.97,471.43L354.97,471.95L323.69,471.92L323.67,505.49Z" fill-rule="evenodd"><title>Eagle County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08041" d="M457.3,539.09L457.71,547.67L457.53,550.17L457.7,551.38L457.62,561.31L455.19,561.27L454.82,567.21L463.31,567.46L463.2,591.02L520.2,590.79L520.35,576.16L520.12,561.31L520.37,539.21L457.3,539.09Z" fill-rule="evenodd"><title>El Paso County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08039" d="M541.99,527.71L542.03,501.94L496.23,502.17L481.25,501.98L481.11,539.12L520.37,539.21L520.12,561.3L541.69,561.47L541.54,542.98L541.59,539.22L541.98,539.2L541.99,527.71Z" fill-rule="evenodd"><title>Elbert County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08043" d="M394.4,597.73L394.74,598.39L395.12,598.56L395.43,599.48L396.25,599.5L396.93,600.39L397.75,600.94L397.82,601.45L398.59,602.01L398.78,603.02L399.63,603.77L400.37,603.99L401.1,605.08L402.06,605.75L403.16,608.35L404.32,609.85L405.07,610.54L405.45,610.35L406.82,611.96L408.07,612.28L408.27,612.69L424.28,612.75L439.93,613.27L463.28,613.26L463.17,579.92L456.25,579.72L453.58,580.11L444.04,580.14L444.23,575.9L397.16,576.22L398.73,576.5L398.8,576.96L400.19,577.63L400.01,578.53L400.35,578.71L400.3,579.09L401.15,579.76L400.8,580.3L400.93,580.85L400.51,581.35L401.66,582.31L402.0,582.16L402.54,582.43L403.06,584.13L402.22,585.54L402.13,586.45L402.58,586.75L402.61,587.44L402.1,587.66L402.06,588.36L401.4,588.61L401.28,589.93L401.43,590.27L401.09,591.19L401.32,591.7L401.2,592.16L399.2,592.39L394.47,597.3L394.4,597.73Z" fill-rule="evenodd"><title>Fremont County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08045" d="M274.2,518.97L323.71,518.98L323.69,471.92L328.81,471.93L328.93,464.78L328.59,464.77L328.59,457.24L310.63,457.3L310.51,472.26L303.26,472.04L303.25,479.64L286.4,479.49L280.43,479.92L270.71,479.92L270.71,491.03L231.13,491.11L231.14,494.8L209.23,494.79L209.23,493.92L199.24,493.92L199.26,518.93L274.2,518.97Z" fill-rule="evenodd"><title>Garfield County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08047" d="M414.44,475.34L414.74,476.82L415.34,477.83L416.56,478.01L417.07,477.76L418.77,478.33L419.06,479.27L421.2,480.68L422.33,480.14L422.56,480.44L422.21,480.96L422.29,481.59L424.34,483.07L424.25,483.69L424.81,484.41L426.2,485.04L427.66,485.11L427.52,485.64L427.79,485.71L428.7,485.53L430.53,486.05L431.97,485.81L432.31,485.87L432.39,486.66L433.34,486.18L433.9,486.65L433.89,470.57L433.35,470.84L432.88,470.61L432.55,471.1L432.34,470.85L431.79,470.84L431.19,470.27L430.07,470.8L416.05,470.78L415.27,472.55L415.31,473.18L415.06,473.77L414.51,474.27L414.64,474.88L414.44,475.34Z" fill-rule="evenodd"><title>Gilpin County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08049" d="M402.44,482.34L403.21,482.11L403.42,482.33L404.54,482.38L404.76,483.09L405.23,482.95L406.59,483.28L406.83,482.92L407.39,482.78L407.53,482.28L408.13,481.76L409.05,481.85L410.39,482.48L412.18,481.63L412.34,480.99L412.92,480.5L412.96,479.96L413.63,478.8L414.28,478.93L414.77,478.69L415.11,477.63L414.44,475.34L414.64,474.88L414.51,474.27L415.06,473.77L415.31,473.18L415.27,472.55L416.09,470.71L415.59,470.66L414.9,469.93L415.02,469.59L414.85,469.27L415.45,468.55L415.25,468.45L415.11,467.59L415.46,466.78L415.29,466.27L415.57,465.64L415.06,465.26L415.15,463.75L416.96,463.63L417.58,463.25L417.52,463.01L418.31,462.05L418.51,461.13L417.63,460.06L417.91,459.48L418.42,459.33L418.27,458.82L418.64,458.66L418.82,458.1L418.6,457.83L418.86,456.76L418.56,455.92L418.69,455.4L419.21,454.93L419.06,454.52L419.24,454.2L418.99,453.93L419.01,453.3L418.63,453.08L418.62,452.61L417.32,452.15L416.57,451.56L416.32,450.95L416.62,450.57L416.3,449.71L416.39,449.32L415.93,448.95L415.93,447.81L416.38,447.35L416.4,446.36L416.85,446.31L416.48,445.95L417.06,443.86L418.09,443.76L417.65,443.44L417.43,442.79L416.55,442.25L415.89,442.21L415.62,441.81L415.68,441.29L415.82,441.29L415.74,440.82L415.36,440.49L415.7,440.19L415.3,440.03L415.4,439.25L415.07,439.08L415.13,438.77L414.36,438.47L414.64,437.94L414.38,437.43L413.65,437.32L412.73,436.6L412.16,435.53L411.77,435.3L411.42,435.46L410.75,435.04L408.89,432.61L408.63,432.02L408.65,431.11L406.96,428.92L407.15,428.48L407.04,427.82L407.7,426.96L407.58,426.54L407.78,425.52L407.36,424.95L407.6,424.65L404.54,423.64L404.05,424.16L403.62,424.09L402.83,424.53L402.17,424.46L401.69,425.4L401.83,426.86L401.43,428.29L401.73,428.71L401.79,429.48L401.51,429.89L401.43,430.92L401.32,431.09L400.32,430.83L399.88,431.75L399.04,432.31L398.65,432.26L398.64,432.93L399.25,433.38L399.17,433.86L398.16,434.37L397.81,435.4L397.11,435.23L396.77,434.55L396.08,434.0L394.52,434.23L394.48,433.52L394.03,433.26L393.31,433.68L392.91,433.62L391.71,434.6L391.16,434.63L389.72,435.48L389.61,435.21L388.7,434.92L386.6,436.43L386.43,436.94L385.63,436.78L384.82,435.87L384.27,435.75L384.0,435.82L383.67,436.6L383.07,437.24L381.28,437.02L380.44,437.51L379.87,437.12L379.5,436.32L379.09,436.04L378.93,435.22L378.16,434.31L377.37,434.93L376.83,434.49L376.42,434.66L376.04,435.29L376.05,435.98L376.34,436.3L375.98,436.92L375.62,436.87L375.58,437.07L374.59,436.32L373.58,436.13L372.32,434.55L371.3,434.65L370.47,435.04L370.19,435.61L369.27,435.67L368.87,435.23L368.13,435.0L367.04,435.22L366.75,435.54L365.87,434.86L365.93,434.11L365.47,433.8L365.39,433.04L365.22,432.76L364.83,432.74L364.96,432.4L364.74,432.01L364.31,431.89L364.56,430.67L363.76,430.0L363.38,430.68L363.04,430.77L362.43,431.55L362.32,432.11L361.89,431.75L361.48,432.2L361.2,433.62L360.86,433.96L360.54,433.43L359.67,433.55L359.3,432.85L358.19,432.81L357.62,432.49L357.25,432.64L357.03,432.42L356.52,433.02L355.89,432.74L355.91,432.11L355.55,431.57L355.43,430.55L354.81,429.38L354.98,428.69L355.26,428.45L355.17,428.29L354.2,428.25L353.45,427.6L353.33,427.14L353.29,435.96L354.61,435.96L354.56,449.8L354.31,449.8L354.31,464.85L355.01,465.03L354.97,471.43L369.83,471.45L369.82,472.35L376.3,472.35L376.29,471.93L379.03,472.29L380.34,473.47L381.29,475.19L381.96,475.44L382.34,476.61L382.82,477.05L384.23,478.2L385.62,478.68L386.01,478.71L386.36,478.35L387.19,478.47L387.71,479.33L389.82,481.48L389.94,482.37L390.21,482.61L390.01,483.12L391.01,485.24L390.99,485.98L391.25,486.19L391.05,486.47L391.39,487.11L391.46,488.46L392.55,489.2L393.06,490.84L393.51,491.46L394.39,491.73L394.8,491.58L395.46,491.92L395.8,491.63L396.99,491.27L397.67,491.35L398.37,490.98L398.72,491.51L400.03,490.7L400.27,489.72L400.89,489.26L401.11,488.33L402.33,487.88L402.77,487.13L402.62,486.16L402.9,485.52L402.5,484.95L402.11,483.53L402.43,482.99L402.44,482.34Z" fill-rule="evenodd"><title>Grand County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08051" d="M330.95,602.56L330.95,599.02L379.36,599.26L379.2,598.38L379.46,597.87L378.13,597.65L377.62,597.21L377.71,596.5L377.2,596.58L376.69,595.98L376.57,594.96L375.69,594.58L375.21,593.13L374.2,592.9L374.0,593.23L373.11,592.3L372.86,591.63L373.22,590.86L372.47,589.85L372.39,589.07L373.09,586.85L372.63,586.15L372.52,585.76L372.66,585.59L372.03,584.65L372.14,584.23L371.8,583.68L371.83,582.95L370.47,582.05L370.48,581.42L370.82,580.9L369.45,580.8L369.42,580.28L369.02,580.12L368.39,580.39L367.63,579.82L367.66,579.28L367.08,577.66L367.09,577.16L366.18,575.77L366.73,574.89L367.9,574.79L368.02,573.9L368.46,573.3L368.24,571.33L368.56,570.8L368.29,570.04L368.64,568.94L368.45,568.24L368.7,567.91L368.59,567.24L368.07,566.44L368.57,565.86L368.49,565.11L369.07,564.67L369.8,565.24L370.58,565.06L370.7,564.36L371.43,563.88L371.81,563.23L371.78,562.65L372.79,562.49L372.81,561.62L373.65,561.03L373.76,560.24L374.19,560.16L374.28,559.59L374.58,559.28L374.28,557.71L373.7,557.65L373.05,558.04L372.28,557.55L371.24,558.09L371.06,557.84L371.01,556.72L370.76,556.46L370.02,557.05L369.91,557.61L369.39,557.75L368.68,557.26L368.17,556.26L367.58,556.53L367.14,557.38L365.35,557.76L362.82,555.52L362.64,554.73L361.39,553.93L361.27,553.55L361.7,552.8L361.28,551.78L359.85,550.84L359.62,550.25L358.15,550.96L357.57,550.75L357.0,550.9L356.73,550.31L355.87,550.5L355.74,550.14L355.13,549.83L354.76,549.1L354.25,548.89L354.22,548.5L353.57,548.25L353.46,547.9L353.68,547.3L353.12,546.36L352.57,546.57L351.92,546.24L351.25,546.3L350.58,545.4L349.89,545.47L349.6,546.09L347.65,546.23L347.09,546.52L347.36,547.85L346.28,548.5L345.85,549.44L344.96,550.2L344.86,551.25L344.05,551.48L343.71,551.99L342.75,551.72L342.09,552.04L340.91,551.31L339.87,549.34L338.82,549.64L338.83,550.62L338.42,550.96L336.89,550.77L336.75,550.1L336.26,550.21L335.16,549.62L334.55,548.91L333.26,548.65L333.28,547.62L331.76,547.52L331.24,547.23L330.89,546.54L331.2,545.94L331.65,545.71L331.58,545.03L331.87,544.67L331.7,544.12L331.18,544.24L330.19,542.96L328.66,542.06L326.73,540.03L312.84,540.04L312.59,538.51L312.12,537.82L311.96,537.01L311.23,536.77L310.52,536.07L309.58,535.99L308.29,535.41L307.89,534.41L306.79,533.2L306.54,532.25L306.79,531.41L306.63,530.47L307.13,529.81L306.81,529.2L305.91,528.81L305.65,528.33L305.28,528.61L303.57,528.21L303.34,528.29L303.39,529.63L302.02,530.5L300.5,530.65L299.89,530.1L299.66,530.94L299.23,531.55L298.84,531.59L298.87,609.55L290.2,609.55L290.88,611.44L291.35,611.8L291.64,612.93L292.44,613.64L293.05,613.8L293.25,614.8L293.72,615.6L293.67,617.14L294.02,617.39L294.23,619.3L294.88,621.73L294.74,622.45L294.47,622.71L330.92,622.73L330.95,602.56Z" fill-rule="evenodd"><title>Gunnison County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08053" d="M293.0,635.9L293.45,637.19L293.29,637.93L294.44,638.14L294.85,639.03L296.78,640.02L296.43,640.96L296.66,641.65L296.52,641.96L297.0,642.51L297.04,643.15L297.58,643.65L297.19,644.05L297.08,644.55L296.72,644.68L296.56,645.98L297.2,646.39L297.72,647.42L297.44,648.68L297.83,649.33L297.8,649.99L299.81,650.36L300.88,651.44L301.06,652.27L301.49,652.75L301.39,653.39L301.57,653.8L301.19,654.22L301.0,655.14L300.02,654.96L300.02,684.38L322.72,684.36L323.03,662.91L321.67,662.86L322.16,649.82L322.11,640.45L322.67,640.54L323.88,640.07L324.38,639.06L325.07,639.57L325.49,639.21L326.26,639.12L326.63,638.54L327.1,638.73L327.37,639.31L328.25,639.61L329.35,639.12L330.41,639.8L330.59,638.97L330.95,638.99L330.92,622.73L294.47,622.71L294.11,623.67L294.42,623.82L294.78,624.61L294.96,625.84L294.67,626.83L295.03,627.77L295.64,628.59L296.74,628.43L297.8,629.31L298.17,630.06L297.44,630.38L297.45,631.67L296.88,631.93L296.47,632.5L296.5,632.8L296.31,632.94L296.52,633.31L296.34,633.74L296.43,634.49L295.87,635.21L295.25,635.31L294.11,634.71L293.71,635.2L293.31,635.3L293.3,635.77L293.0,635.9Z" fill-rule="evenodd"><title>Hinsdale County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08055" d="M427.23,669.45L427.68,669.94L427.7,670.57L428.27,671.17L429.17,670.88L430.26,670.1L430.21,669.81L430.69,669.26L431.04,668.28L433.22,667.76L433.74,668.15L434.31,667.72L434.62,667.04L434.99,666.91L435.67,665.94L436.66,666.22L437.27,665.71L438.29,665.63L439.2,665.18L440.36,664.33L440.49,664.74L441.02,664.95L441.15,665.38L441.55,665.34L442.31,666.02L443.05,665.86L443.18,666.63L443.82,666.8L443.93,667.27L444.29,667.52L445.24,667.48L445.68,667.04L446.51,667.65L447.41,667.61L447.61,667.93L446.89,668.53L447.04,669.95L446.36,669.77L445.43,670.79L446.86,671.85L446.94,672.29L447.94,673.65L447.99,673.86L447.7,673.85L447.65,674.43L448.04,674.9L448.45,676.68L448.27,677.01L448.37,677.9L448.04,678.53L448.23,679.05L447.75,679.57L448.1,679.88L448.31,681.11L448.18,681.5L448.93,681.67L449.45,681.5L450.02,682.81L450.13,683.84L450.4,683.88L450.5,684.98L451.12,685.52L450.93,686.0L450.55,686.25L449.42,686.38L448.73,687.35L448.84,687.91L448.6,688.44L448.81,688.91L448.6,689.59L448.91,691.16L448.67,691.67L448.98,692.36L448.73,692.89L448.96,694.79L448.82,695.57L448.88,695.75L450.99,694.72L451.22,695.09L452.04,695.14L453.14,694.51L453.4,693.57L454.66,693.39L455.08,692.61L456.2,692.18L457.1,691.28L457.87,691.39L457.94,689.99L459.14,689.44L459.79,688.37L460.51,688.57L461.3,688.34L462.41,687.23L462.88,687.04L463.44,687.21L463.78,686.7L464.18,686.57L466.94,687.52L469.84,686.42L470.06,686.71L470.58,686.68L472.06,686.06L472.3,686.31L473.11,686.3L474.05,685.76L475.58,685.71L475.57,685.12L476.36,684.19L477.06,684.02L477.11,683.76L477.36,683.81L477.99,683.12L479.04,682.91L478.68,682.04L478.73,680.37L479.25,679.59L478.97,679.04L479.25,678.94L479.33,678.34L479.64,678.14L481.99,678.2L483.37,676.87L483.84,675.24L488.44,671.44L488.46,668.49L494.47,657.31L494.35,656.7L499.57,652.39L501.13,650.78L482.16,643.71L458.57,645.35L458.44,644.99L457.22,644.22L457.33,643.31L456.97,643.38L456.9,643.07L455.96,642.27L455.33,642.23L455.21,639.99L454.46,639.25L454.05,639.02L453.8,639.62L452.48,640.06L451.36,639.4L451.33,638.58L450.72,638.11L451.02,637.5L450.33,636.96L450.5,636.54L450.38,636.36L449.95,636.37L449.66,635.92L449.61,635.18L449.95,634.72L448.62,633.64L446.95,634.6L446.61,635.18L446.79,635.89L446.21,636.12L446.18,636.75L445.71,636.88L445.62,637.76L445.12,637.9L444.92,638.32L444.13,638.41L444.16,638.91L443.41,639.37L442.5,641.02L442.64,641.58L441.87,643.1L441.26,643.76L440.16,642.69L440.15,641.79L439.76,641.01L439.08,640.45L438.15,640.71L437.15,641.65L436.09,641.88L435.23,642.39L432.89,644.57L432.21,644.59L431.17,643.97L429.06,644.1L428.72,645.47L430.52,645.62L431.15,646.34L431.4,647.31L431.88,647.81L431.78,648.23L431.92,648.55L431.47,649.84L431.5,651.86L430.23,652.63L430.59,654.03L430.54,654.77L430.05,655.66L430.18,655.97L429.92,656.24L430.38,657.26L430.21,657.79L430.28,658.74L429.48,659.77L428.78,660.14L428.53,661.31L428.83,662.49L428.8,663.65L428.17,664.74L427.83,666.33L427.88,667.16L427.43,668.05L427.63,668.25L427.77,669.21L427.23,669.45Z" fill-rule="evenodd"><title>Huerfano County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08057" d="M339.13,382.17L339.35,383.65L339.76,383.97L339.83,384.9L340.5,385.58L340.47,385.91L340.71,386.16L340.48,386.29L341.95,386.37L342.24,385.71L342.62,386.85L343.11,387.07L343.49,388.24L343.21,388.45L343.52,388.66L343.92,388.76L344.22,388.37L344.63,388.38L344.57,388.2L345.06,387.84L345.83,388.09L345.92,388.55L345.76,388.73L347.63,389.3L347.25,389.96L347.74,390.92L347.8,390.72L348.47,390.88L349.89,390.48L350.63,389.46L351.16,389.64L351.15,390.09L351.58,391.02L352.3,391.4L352.39,391.91L353.18,392.77L353.18,393.07L352.66,393.26L352.57,394.54L352.89,394.93L353.89,395.12L354.39,395.93L354.31,397.84L353.58,398.49L353.52,399.04L352.88,399.25L352.21,400.2L352.75,400.92L352.49,401.29L352.64,401.8L351.76,402.34L352.22,403.0L351.94,403.41L352.19,403.69L352.27,404.52L352.03,404.87L352.31,405.77L352.0,406.45L351.08,406.93L351.47,407.57L351.1,407.78L351.18,408.61L350.77,409.06L351.05,409.72L351.54,409.88L350.99,410.6L351.11,411.01L350.63,411.17L350.37,411.63L350.03,411.6L350.19,411.8L349.86,412.64L349.96,413.32L350.64,414.43L350.11,415.84L350.76,417.07L350.72,417.66L351.31,418.66L351.66,418.73L351.76,419.24L352.2,419.55L351.99,420.56L352.89,421.23L352.76,421.46L353.11,421.75L353.06,422.4L353.27,422.93L352.87,423.31L353.07,423.8L352.62,424.15L352.36,424.81L352.96,424.89L352.89,425.93L353.1,426.72L353.37,426.78L353.45,427.6L354.2,428.25L355.26,428.45L354.98,428.69L354.81,429.38L355.43,430.55L355.55,431.57L355.91,432.11L355.89,432.74L356.62,433.05L357.03,432.42L357.25,432.64L357.62,432.49L358.19,432.81L359.3,432.85L359.67,433.55L360.54,433.43L360.86,433.96L361.2,433.62L361.48,432.2L361.89,431.75L362.32,432.11L362.43,431.55L363.04,430.77L363.38,430.68L363.76,430.0L364.56,430.67L364.31,431.89L364.74,432.01L364.96,432.4L364.83,432.74L365.22,432.76L365.39,433.04L365.47,433.8L365.93,434.11L365.87,434.86L366.74,435.54L367.04,435.22L368.13,435.0L368.87,435.23L369.27,435.67L370.19,435.61L370.47,435.04L371.3,434.65L372.32,434.55L373.58,436.13L374.59,436.32L375.55,437.07L376.21,436.68L376.34,436.3L376.05,435.98L376.04,435.29L376.42,434.66L376.83,434.49L377.37,434.93L378.16,434.31L378.93,435.22L379.09,436.04L379.5,436.32L379.87,437.12L380.44,437.51L381.28,437.02L383.07,437.24L383.67,436.6L384.0,435.82L384.27,435.75L384.82,435.87L385.63,436.78L386.43,436.94L386.6,436.43L388.7,434.92L389.61,435.21L389.72,435.48L391.16,434.63L391.71,434.6L392.91,433.62L393.31,433.68L394.03,433.26L394.48,433.52L394.52,434.23L396.08,434.0L396.77,434.55L397.11,435.23L397.74,435.42L398.16,434.37L399.17,433.86L399.25,433.38L398.64,432.93L398.65,432.26L399.04,432.31L399.88,431.75L400.32,430.83L401.32,431.09L401.43,430.92L401.51,429.89L401.79,429.48L401.73,428.71L401.43,428.29L401.83,426.86L401.69,425.4L402.17,424.46L402.83,424.53L403.62,424.09L404.05,424.16L404.54,423.64L404.71,421.92L404.4,421.8L403.63,420.72L402.92,420.49L401.99,420.76L401.36,421.28L400.99,420.85L401.32,419.47L400.89,417.99L400.94,416.83L400.21,416.16L399.72,413.47L398.94,413.19L398.63,412.55L398.75,412.1L398.48,411.64L398.53,410.37L398.15,409.93L398.06,408.95L397.47,408.16L397.06,407.09L396.98,405.83L396.69,405.23L395.95,404.64L395.99,403.63L395.74,403.0L394.55,401.98L394.24,400.96L393.79,400.8L393.89,400.49L393.51,399.67L393.65,399.39L393.23,398.83L393.31,398.51L392.31,397.63L392.22,396.69L391.86,396.44L391.91,396.17L391.52,395.49L390.64,395.05L389.58,394.1L389.28,393.48L388.71,393.23L388.89,392.72L388.28,392.5L388.5,391.81L387.07,391.02L386.72,390.43L387.03,389.72L386.77,388.69L386.43,388.26L385.03,387.53L385.0,387.18L384.42,386.87L384.34,386.43L383.32,385.54L383.06,384.53L383.38,383.79L383.18,383.44L383.35,383.0L383.17,382.91L382.95,381.11L382.67,380.93L382.98,380.13L365.95,379.74L340.12,379.69L339.9,380.25L340.58,380.76L340.28,381.02L340.17,381.51L339.83,381.31L339.3,381.52L339.13,382.17Z" fill-rule="evenodd"><title>Jackson County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08059" d="M433.87,489.09L433.9,539.11L438.29,539.12L438.77,538.48L438.7,537.75L439.18,537.73L439.32,536.54L439.67,536.07L440.16,535.91L440.22,535.46L440.58,535.41L440.97,534.94L440.87,534.49L441.31,533.02L441.59,532.93L441.75,532.47L442.76,532.21L442.52,530.66L443.04,530.08L443.17,529.43L443.61,529.7L444.31,529.37L444.43,529.13L444.18,528.8L444.4,528.41L444.81,528.53L445.1,528.33L444.99,527.97L445.51,527.93L445.28,527.23L445.62,526.95L445.55,526.51L445.87,526.25L445.8,525.93L446.25,525.31L446.17,525.13L446.45,525.15L446.11,524.76L446.86,524.43L446.7,523.75L447.33,523.15L447.54,522.53L447.37,522.22L447.77,522.02L447.39,521.7L447.94,521.21L448.06,520.4L448.75,519.35L448.67,518.29L448.34,517.99L448.56,517.74L448.31,517.51L448.53,517.02L448.92,516.82L448.47,515.43L450.18,514.48L451.51,513.19L451.35,512.67L451.57,511.78L451.42,511.3L450.92,510.83L450.79,510.05L451.63,509.18L451.98,509.16L451.9,508.83L453.11,508.83L453.89,508.15L453.99,507.07L454.42,506.6L454.53,504.19L455.59,502.47L456.33,501.96L455.98,501.96L456.02,497.3L455.78,497.3L455.72,497.85L453.22,497.86L453.22,497.51L455.27,497.37L454.56,497.01L454.25,496.41L454.08,496.41L454.2,496.75L453.59,496.77L453.59,497.01L452.55,497.01L452.39,496.77L452.39,496.09L453.6,496.09L453.6,495.78L454.74,495.96L454.52,495.72L454.83,495.16L455.39,495.16L455.39,494.85L456.01,494.72L455.73,494.56L454.91,494.85L455.13,494.23L454.22,493.79L454.22,493.24L454.64,493.07L454.83,493.3L456.03,493.3L456.03,492.69L455.43,492.69L455.43,492.32L455.74,492.38L455.74,492.07L456.04,492.06L456.04,487.75L455.88,487.63L456.04,487.59L456.04,483.43L455.43,483.43L455.28,482.89L456.04,482.81L456.05,472.33L455.44,472.35L455.44,472.95L454.84,472.95L454.85,473.56L453.63,473.64L453.02,473.35L452.99,472.81L452.48,472.34L450.0,472.35L449.98,473.53L451.19,473.54L451.17,474.36L451.01,474.16L450.57,474.46L448.84,474.27L448.81,472.65L449.91,472.35L433.9,472.44L433.87,489.09ZM455.87,497.01L456.02,497.01L456.03,496.69L455.87,497.01ZM455.63,496.06L456.02,496.56L456.03,495.77L455.66,495.77L455.63,496.06ZM455.37,494.61L455.43,494.66L455.43,494.56L455.37,494.61ZM455.28,494.5L455.35,494.54L455.35,494.5L455.28,494.5ZM454.21,496.07L454.26,496.1L454.26,496.04L454.21,496.07Z" fill-rule="evenodd"><title>Jefferson County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08061" d="M612.43,612.48L649.29,612.38L649.25,582.89L612.29,583.08L584.43,582.9L576.81,583.12L576.81,590.54L555.5,590.67L555.35,606.11L555.69,606.11L555.68,612.69L612.43,612.48Z" fill-rule="evenodd"><title>Kiowa County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08063" d="M625.82,546.38L649.15,546.14L648.95,501.28L578.0,501.98L577.95,538.78L577.94,539.24L577.44,539.24L577.45,546.94L606.17,546.84L625.82,546.38Z" fill-rule="evenodd"><title>Kit Carson County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08067" d="M285.23,720.35L300.05,720.34L300.02,665.93L268.68,665.92L268.55,666.75L267.58,667.16L267.2,667.94L266.75,668.07L266.45,668.78L265.85,668.97L265.68,669.96L265.28,670.05L265.49,670.57L265.42,671.72L265.58,672.09L265.36,672.45L265.45,673.22L265.13,674.42L264.52,675.08L264.7,676.27L264.54,676.68L264.74,677.02L264.32,677.56L264.54,678.04L264.41,678.8L264.66,679.6L264.42,680.25L264.63,680.79L263.93,682.65L263.35,683.12L261.75,683.0L261.62,683.83L261.15,683.94L261.01,684.51L260.48,684.82L259.99,685.83L259.94,687.86L259.02,688.46L257.73,688.63L257.02,689.48L256.24,689.54L255.65,689.17L254.07,690.12L253.42,691.83L253.72,692.58L253.24,692.97L252.85,693.83L253.11,694.8L252.76,695.06L252.65,695.89L252.26,695.99L252.16,696.68L251.7,696.92L251.43,698.0L251.18,698.11L250.87,699.08L250.3,699.64L249.97,700.35L248.04,701.42L247.66,702.21L247.96,703.48L247.66,705.78L247.9,706.43L247.74,706.87L248.12,707.23L248.1,707.93L246.83,709.35L246.84,711.38L246.13,712.09L245.84,713.87L245.55,714.0L245.67,714.47L245.29,714.86L245.28,715.68L244.48,716.26L243.99,717.05L243.93,718.17L242.86,717.89L242.88,718.6L242.28,720.23L285.23,720.35Z" fill-rule="evenodd"><title>La Plata County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08065" d="M362.81,525.68L363.76,526.9L364.2,526.96L364.13,527.55L364.32,528.02L363.26,529.54L363.19,530.15L363.77,530.73L363.5,531.47L363.52,533.26L363.22,533.74L363.13,534.5L362.46,535.27L362.57,535.86L362.39,536.22L361.76,536.74L360.85,536.26L360.66,536.69L359.78,536.39L359.17,536.89L359.08,537.21L359.34,537.9L358.95,538.83L359.37,539.91L358.93,540.44L359.04,541.01L357.95,541.44L357.57,542.14L357.65,542.92L358.15,543.38L358.0,543.54L358.1,545.21L382.95,545.36L382.91,544.35L384.34,542.75L384.17,541.97L383.75,541.35L381.72,541.3L382.15,540.43L383.1,539.84L383.29,539.14L384.12,538.33L383.7,536.1L383.76,535.28L383.31,534.26L383.7,533.67L383.64,532.9L383.36,532.33L383.76,532.01L383.78,531.49L384.29,531.16L384.41,530.5L384.12,529.98L383.33,529.48L383.61,529.04L383.63,528.02L383.23,526.38L383.6,524.71L383.4,523.81L383.89,523.58L384.33,522.72L385.51,522.84L386.24,521.24L385.4,519.26L385.66,518.78L386.31,518.48L386.52,517.84L380.73,517.83L380.65,518.29L380.2,518.4L379.1,519.7L378.58,519.33L376.99,520.39L376.87,520.17L376.25,520.1L376.19,519.73L375.78,519.41L375.21,519.31L373.43,519.58L372.63,520.04L372.23,519.92L371.4,519.45L370.77,518.12L369.49,517.71L367.38,519.99L367.29,521.11L367.7,521.62L367.8,522.61L367.44,523.21L366.27,523.18L366.05,523.56L365.3,523.63L365.14,523.98L364.81,523.86L364.63,523.35L364.06,523.53L363.59,524.27L363.0,524.62L362.81,525.68Z" fill-rule="evenodd"><title>Lake County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08069" d="M444.21,442.74L455.91,442.75L455.81,435.3L462.95,435.32L463.09,380.08L382.91,380.24L382.67,380.93L382.95,381.11L383.17,382.91L383.35,383.0L383.18,383.44L383.38,383.79L383.06,384.53L383.32,385.54L384.34,386.43L384.42,386.87L385.0,387.18L385.03,387.53L386.43,388.26L386.79,388.72L387.03,389.72L386.72,390.43L386.83,390.66L387.31,391.2L388.5,391.81L388.28,392.5L388.89,392.72L388.82,393.36L389.28,393.48L389.58,394.1L391.52,395.49L391.91,396.17L391.86,396.44L392.22,396.69L392.31,397.63L393.31,398.51L393.23,398.83L393.65,399.39L393.51,399.67L393.89,400.49L393.79,400.8L394.24,400.96L394.55,401.98L395.83,403.14L395.95,404.64L396.69,405.23L396.98,405.83L397.06,407.09L397.47,408.16L398.06,408.95L398.15,409.93L398.53,410.37L398.48,411.64L398.75,412.1L398.63,412.55L398.94,413.19L399.72,413.47L400.21,416.16L400.94,416.83L400.89,417.99L401.32,419.47L400.93,420.59L401.11,421.11L401.36,421.28L401.99,420.76L402.92,420.49L403.63,420.72L404.4,421.8L404.71,421.92L404.54,423.64L407.6,424.65L407.36,424.95L407.78,425.52L407.58,426.54L407.7,426.96L407.04,427.82L407.15,428.48L406.96,428.92L408.6,431.01L408.66,432.15L409.73,433.95L410.05,434.01L410.14,434.41L411.12,435.32L412.16,435.53L412.62,436.49L413.65,437.32L414.38,437.43L414.64,437.94L414.36,438.47L415.13,438.77L415.07,439.08L415.4,439.25L415.3,440.03L415.7,440.19L415.36,440.49L415.74,440.82L415.82,441.29L415.68,441.29L415.62,441.81L415.89,442.21L416.68,442.3L417.49,442.86L424.02,442.78L433.61,443.09L435.35,442.79L444.21,442.74Z" fill-rule="evenodd"><title>Larimer County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08071" d="M560.57,720.41L582.39,720.34L582.35,705.34L582.62,687.88L583.12,687.86L583.04,665.6L519.95,665.54L519.88,657.87L501.13,650.78L499.57,652.39L494.35,656.7L494.47,657.31L488.46,668.49L488.44,671.44L483.84,675.24L483.37,676.87L481.99,678.2L479.64,678.14L479.33,678.34L479.25,678.94L478.97,679.04L479.25,679.59L478.73,680.37L478.68,682.04L479.04,682.91L477.99,683.12L477.36,683.81L477.11,683.76L477.06,684.02L476.36,684.19L475.57,685.12L475.58,685.71L474.05,685.76L473.11,686.3L472.3,686.31L472.06,686.06L470.58,686.68L470.06,686.71L469.84,686.42L466.94,687.52L464.23,686.56L463.78,686.7L463.44,687.21L462.83,687.04L461.3,688.34L460.51,688.57L459.74,688.39L459.14,689.44L457.94,689.99L457.87,691.39L457.1,691.28L456.2,692.18L455.08,692.61L454.66,693.39L453.4,693.57L453.12,694.51L452.04,695.14L451.22,695.09L450.99,694.72L449.55,695.41L449.5,720.75L457.58,720.97L499.99,720.91L560.57,720.41Z" fill-rule="evenodd"><title>Las Animas County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08073" d="M541.96,524.41L541.98,539.2L541.59,539.22L541.54,542.98L541.69,561.47L520.12,561.3L520.35,576.16L520.2,590.79L548.54,590.78L548.54,591.17L555.5,591.3L555.5,590.67L555.74,590.67L576.81,590.54L576.84,576.51L577.37,576.51L577.43,539.44L577.44,539.24L577.94,539.24L577.95,538.78L578.0,501.99L542.03,501.94L541.96,524.41Z" fill-rule="evenodd"><title>Lincoln County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08075" d="M573.36,427.92L609.45,427.71L609.45,405.01L610.34,405.0L610.17,379.73L551.06,379.78L551.03,405.29L550.64,405.29L550.55,420.49L557.91,420.49L558.02,427.9L573.36,427.92Z" fill-rule="evenodd"><title>Logan County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08077" d="M242.46,564.66L255.39,559.05L256.08,558.46L256.96,558.54L257.32,558.01L257.7,558.1L257.46,557.21L257.74,556.87L257.73,556.5L258.36,556.75L258.94,556.4L261.15,553.27L261.18,552.88L260.68,551.84L262.26,550.43L263.3,548.94L263.52,548.85L263.69,549.16L264.3,548.8L264.78,547.72L267.58,545.64L267.9,545.04L269.89,545.06L272.06,544.69L272.71,544.99L273.2,544.53L274.77,544.1L275.84,543.31L276.02,543.6L277.04,543.57L279.98,544.89L281.46,546.42L281.82,546.45L282.42,545.91L282.46,545.55L283.23,545.21L283.18,544.84L283.59,544.5L283.93,544.78L284.11,544.51L284.64,544.58L284.61,544.3L285.44,543.07L286.82,542.65L287.26,541.6L287.71,541.53L287.86,540.98L288.58,540.62L288.42,540.25L289.0,539.58L289.16,539.0L289.99,538.06L290.37,538.15L290.59,537.54L291.22,536.96L291.56,536.98L292.0,536.38L292.88,536.1L293.5,535.36L294.19,535.13L294.48,534.71L295.14,534.96L296.13,534.63L296.14,533.5L296.74,533.21L297.38,533.3L297.02,532.87L297.57,532.56L298.19,531.74L299.23,531.55L299.72,530.84L299.89,530.1L300.5,530.65L302.02,530.5L303.4,529.6L303.4,528.24L305.38,528.56L305.84,527.68L306.63,527.24L306.68,526.75L305.68,526.36L305.42,525.03L304.49,525.3L303.94,524.87L302.89,524.64L302.81,523.84L301.98,524.22L301.11,523.39L301.23,523.14L301.06,522.73L301.28,522.29L302.03,522.05L302.82,521.12L302.93,520.66L303.34,520.5L303.47,519.29L303.31,518.97L199.26,518.93L199.15,549.46L198.69,574.42L198.67,592.69L242.41,592.69L242.46,564.66Z" fill-rule="evenodd"><title>Mesa County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08079" d="M321.7,662.27L321.67,662.86L323.03,662.91L322.72,686.96L349.57,686.63L349.51,663.82L350.54,663.82L350.56,645.88L349.06,646.07L347.9,644.79L346.68,645.41L345.56,644.98L345.22,644.19L343.77,642.59L342.65,642.56L342.26,642.16L340.8,642.12L339.58,640.85L339.35,640.22L338.7,639.51L338.75,638.56L338.08,638.49L337.55,637.98L337.08,638.32L336.11,638.02L334.55,639.19L334.05,638.87L334.01,638.41L333.42,638.01L333.4,637.6L333.05,637.37L332.41,637.88L331.83,637.85L331.65,638.56L330.63,638.93L330.41,639.8L329.35,639.12L328.2,639.6L327.7,639.25L327.37,639.31L327.1,638.73L326.63,638.54L326.26,639.12L325.49,639.21L325.07,639.57L324.38,639.06L323.88,640.07L322.67,640.54L322.11,640.45L322.16,649.82L321.7,662.27Z" fill-rule="evenodd"><title>Mineral County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08081" d="M199.32,379.86L199.46,413.12L199.24,427.45L199.26,446.09L259.49,446.16L288.99,445.94L302.77,446.26L302.56,436.54L303.24,436.53L303.45,418.89L307.14,418.87L307.13,413.94L310.81,413.94L310.58,379.68L199.32,379.86Z" fill-rule="evenodd"><title>Moffat County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08083" d="M199.59,692.33L199.62,720.44L242.4,720.39L242.28,720.23L242.88,718.6L242.86,717.89L243.93,718.17L243.99,717.05L244.48,716.26L245.28,715.68L245.29,714.86L245.67,714.47L245.55,714.0L245.84,713.87L246.13,712.09L246.84,711.38L246.83,709.35L248.1,707.93L248.12,707.23L247.74,706.87L247.9,706.43L247.66,705.78L247.96,703.48L247.66,702.21L248.04,701.42L249.97,700.35L250.3,699.64L250.87,699.08L251.18,698.11L251.43,698.0L251.7,696.92L252.16,696.68L252.26,695.99L252.65,695.89L252.76,695.06L253.11,694.8L252.85,693.83L253.24,692.97L253.72,692.58L253.42,691.83L254.07,690.12L255.65,689.17L256.24,689.54L257.02,689.48L257.73,688.63L259.02,688.46L259.94,687.86L259.99,685.83L260.48,684.82L261.01,684.51L261.15,683.94L261.62,683.83L261.75,683.0L263.35,683.12L263.93,682.65L264.63,680.79L264.42,680.25L264.66,679.6L264.41,678.8L264.54,678.04L264.32,677.56L264.74,677.02L264.54,676.68L264.7,676.27L264.52,675.08L265.13,674.42L265.45,673.22L265.36,672.45L265.58,672.09L265.42,671.72L265.49,670.57L265.28,670.05L265.68,669.96L265.85,668.97L266.45,668.78L266.75,668.07L267.2,667.94L267.58,667.16L268.55,666.75L268.68,665.92L259.82,665.99L254.27,666.4L246.9,666.54L207.85,666.57L199.74,679.09L199.59,692.33Z" fill-rule="evenodd"><title>Montezuma County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08085" d="M261.19,611.78L261.22,611.05L260.07,611.06L260.03,608.55L258.84,608.56L258.81,607.93L258.3,607.94L258.25,607.02L290.16,606.98L290.46,607.53L290.11,608.33L290.33,608.9L290.2,609.55L298.87,609.55L298.83,578.34L242.43,578.39L242.41,592.69L198.67,592.69L198.66,611.8L199.79,622.22L270.16,622.27L270.12,620.45L270.73,620.45L270.77,616.61L270.16,616.62L270.16,615.97L268.98,615.97L268.98,615.33L267.77,615.34L267.78,614.11L266.02,614.12L266.02,613.52L261.2,613.53L261.19,611.78Z" fill-rule="evenodd"><title>Montrose County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08087" d="M532.28,464.93L557.6,464.9L557.66,435.26L558.07,435.25L557.91,420.49L514.2,420.4L514.03,464.95L532.28,464.93Z" fill-rule="evenodd"><title>Morgan County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08089" d="M544.64,625.64L536.34,625.67L535.77,625.22L535.12,625.59L534.24,625.6L533.56,624.74L532.27,624.28L531.52,624.64L530.06,624.57L530.2,624.09L529.72,623.76L529.29,623.83L529.4,624.47L529.24,624.6L528.91,624.56L528.6,624.15L527.92,624.66L526.74,624.14L525.33,624.0L525.16,623.82L525.29,623.31L524.7,623.25L524.02,622.76L523.55,623.09L523.03,622.85L521.94,623.29L520.67,623.21L520.52,622.79L519.95,622.78L519.7,652.94L519.95,665.54L561.95,665.58L561.99,650.33L562.23,650.33L562.34,638.6L562.23,612.66L555.15,612.68L555.2,620.56L548.14,620.65L548.14,625.59L544.64,625.64Z" fill-rule="evenodd"><title>Otero County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08091" d="M258.25,607.02L258.3,607.94L258.81,607.93L258.84,608.56L260.03,608.55L260.07,611.06L261.22,611.05L261.2,613.53L266.02,613.52L266.02,614.12L267.78,614.11L267.77,615.34L268.98,615.33L268.98,615.97L270.16,615.97L270.16,616.62L270.77,616.61L270.73,620.45L270.12,620.45L270.16,622.27L268.96,622.28L268.97,622.91L269.86,622.91L269.87,625.36L273.73,625.37L273.69,627.84L273.39,627.86L273.64,629.08L273.58,630.34L273.95,631.38L273.64,631.61L273.18,633.03L273.76,633.12L273.76,634.1L274.25,634.62L275.6,634.45L276.89,634.75L276.94,635.15L276.54,635.46L276.48,635.88L277.18,635.88L278.01,636.25L278.69,636.04L279.48,636.36L279.89,636.22L280.45,637.08L280.3,637.35L280.86,638.49L281.58,638.48L282.89,639.24L283.21,640.18L283.92,641.2L283.57,643.3L284.46,643.86L284.96,644.0L285.43,643.81L285.57,644.3L286.3,644.4L286.76,643.6L287.1,643.68L287.41,643.37L288.19,643.5L288.51,642.96L289.2,642.94L289.45,642.34L290.04,641.75L289.72,640.93L289.78,638.22L294.45,638.22L293.29,637.93L293.45,637.19L293.0,635.9L293.3,635.77L293.31,635.3L293.71,635.2L294.11,634.71L295.25,635.31L295.87,635.21L296.43,634.49L296.34,633.74L296.52,633.31L296.31,632.94L296.5,632.8L296.47,632.5L296.88,631.93L297.45,631.67L297.44,630.38L298.17,630.1L297.8,629.31L296.74,628.43L295.4,628.48L294.69,626.91L294.96,625.84L294.81,624.72L294.43,623.84L294.11,623.67L294.88,621.73L294.23,619.3L294.02,617.39L293.67,617.14L293.72,615.6L293.25,614.8L293.05,613.8L291.71,613.05L291.35,611.8L290.88,611.44L290.58,610.74L290.55,610.21L290.19,609.52L290.33,608.9L290.11,608.33L290.46,607.53L290.16,606.98L258.25,607.02Z" fill-rule="evenodd"><title>Ouray County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08093" d="M381.72,541.3L383.75,541.35L384.31,542.42L384.32,542.79L382.91,544.35L382.95,545.36L383.35,545.81L383.5,546.85L382.88,547.64L383.05,548.33L382.82,548.63L383.74,549.22L383.92,550.17L384.36,550.88L385.88,550.32L388.22,551.21L388.18,551.65L388.52,552.4L387.92,553.92L387.98,555.13L389.13,555.52L389.77,555.3L390.99,555.93L391.48,555.09L393.42,555.01L395.34,557.36L396.14,557.12L397.42,558.15L397.23,558.59L396.54,559.12L396.87,560.14L397.47,559.84L398.49,560.09L399.0,559.87L400.03,561.02L398.87,562.71L399.13,563.24L398.96,563.72L401.22,566.57L400.96,566.78L400.69,567.96L399.93,568.39L400.04,568.6L399.74,568.74L399.76,569.33L398.79,569.87L399.13,570.22L399.2,570.9L398.99,571.79L398.57,571.94L398.88,572.73L398.68,573.34L398.85,573.7L398.59,573.95L398.68,574.25L397.67,575.15L397.16,576.22L438.32,575.91L438.23,539.1L433.9,539.11L433.83,501.96L421.68,501.78L406.16,502.06L406.41,502.84L407.05,503.16L406.85,503.69L406.94,504.32L406.6,505.04L406.14,504.86L405.15,505.57L404.25,504.9L403.69,505.92L404.61,507.2L404.19,507.18L403.79,508.06L403.27,508.14L402.99,508.96L402.15,508.95L401.26,511.01L400.9,511.27L399.16,511.12L398.81,512.61L397.41,512.79L397.5,513.3L398.12,513.87L398.31,514.88L396.71,515.36L396.18,515.95L395.68,515.93L395.44,516.57L394.33,517.21L394.04,517.68L394.09,519.03L393.81,519.35L392.4,519.72L391.62,519.64L390.46,518.77L389.72,518.67L388.98,517.97L387.49,518.09L386.52,517.84L386.31,518.48L385.64,518.83L385.4,519.29L385.69,519.62L385.78,520.41L386.21,521.3L385.51,522.84L384.33,522.72L383.89,523.58L383.4,523.81L383.6,524.71L383.23,526.38L383.63,528.02L383.61,529.04L383.33,529.48L384.12,529.98L384.41,530.5L384.29,531.16L383.78,531.49L383.76,532.01L383.36,532.33L383.64,532.9L383.7,533.67L383.31,534.26L383.76,535.28L383.7,536.1L384.1,538.38L383.29,539.14L383.1,539.84L382.15,540.43L381.72,541.3Z" fill-rule="evenodd"><title>Park County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08095" d="M626.63,427.61L648.84,427.58L648.85,401.23L610.31,401.25L610.34,405.0L609.45,405.01L609.45,427.71L626.63,427.61Z" fill-rule="evenodd"><title>Phillips County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08097" d="M301.07,522.69L301.23,523.14L301.11,523.39L301.67,524.02L302.08,524.23L302.41,523.86L302.81,523.84L302.89,524.64L303.94,524.87L304.49,525.3L305.42,525.03L305.68,526.36L306.68,526.75L306.63,527.24L305.84,527.68L305.64,528.29L305.91,528.81L306.81,529.2L307.13,529.81L306.63,530.47L306.79,531.41L306.54,532.25L306.76,533.15L307.89,534.41L308.29,535.41L309.58,535.99L310.52,536.07L311.23,536.77L311.96,537.01L312.12,537.82L312.59,538.51L312.84,540.04L326.73,540.03L328.66,542.06L330.19,542.96L331.18,544.24L331.7,544.12L331.87,544.67L331.58,545.03L331.65,545.71L331.2,545.94L330.89,546.54L331.24,547.23L331.76,547.52L333.28,547.62L333.26,548.65L334.55,548.91L335.16,549.62L336.26,550.21L336.75,550.1L336.89,550.77L338.42,550.96L338.83,550.62L338.82,549.64L339.87,549.34L340.91,551.31L342.09,552.04L342.75,551.72L343.57,552.0L344.05,551.48L344.86,551.25L344.96,550.2L345.85,549.44L346.28,548.5L347.36,547.85L347.09,546.52L347.65,546.23L349.6,546.09L349.75,545.59L350.07,545.38L350.71,545.45L351.25,546.3L351.92,546.24L352.57,546.57L353.12,546.36L353.68,547.3L353.46,547.9L353.57,548.25L354.22,548.5L354.25,548.89L354.76,549.1L355.13,549.83L355.74,550.14L355.87,550.5L356.79,550.25L357.04,549.78L357.01,548.37L357.22,548.02L356.71,547.26L356.86,546.33L357.7,546.12L358.12,545.61L358.0,543.7L358.15,543.38L357.65,542.92L357.57,542.14L357.95,541.44L358.99,541.12L358.93,540.44L359.37,539.91L358.95,538.83L359.34,537.9L359.08,537.21L359.17,536.89L359.78,536.39L360.66,536.69L360.85,536.26L361.76,536.74L362.39,536.22L362.57,535.86L362.46,535.27L363.13,534.5L363.22,533.74L363.52,533.26L363.5,531.47L363.77,530.73L363.19,530.15L363.26,529.54L364.32,528.02L364.13,527.55L364.2,526.96L363.76,526.9L362.85,525.9L362.93,524.77L364.13,523.51L364.63,523.35L364.81,523.86L365.14,523.98L365.3,523.63L366.05,523.56L366.27,523.18L367.44,523.21L367.8,522.61L367.7,521.62L367.38,521.41L367.27,520.58L367.38,519.99L367.83,519.34L303.31,518.97L303.47,519.29L303.34,520.5L302.93,520.66L302.82,521.12L302.03,522.05L301.32,522.26L301.07,522.69Z" fill-rule="evenodd"><title>Pitkin County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08099" d="M649.28,632.68L649.29,612.38L604.47,612.52L604.58,650.22L604.1,650.29L604.13,665.58L649.47,665.52L649.28,632.68Z" fill-rule="evenodd"><title>Prowers County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08101" d="M463.21,591.02L463.28,613.26L456.29,613.29L456.25,642.44L456.97,643.38L457.42,643.41L457.22,644.22L458.44,644.99L458.57,645.35L482.16,643.71L519.76,657.82L519.93,613.32L519.95,613.0L520.17,612.96L520.07,598.16L520.22,590.79L463.21,591.02Z" fill-rule="evenodd"><title>Pueblo County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08103" d="M231.13,491.6L231.13,491.11L233.53,491.06L270.71,491.03L270.71,479.92L280.43,479.92L286.4,479.49L303.25,479.64L303.26,472.04L310.51,472.26L310.63,457.3L328.59,457.24L328.56,445.85L302.77,446.02L302.77,446.26L299.16,446.31L288.99,445.94L259.49,446.16L199.26,446.09L199.24,493.92L209.23,493.92L209.23,494.79L231.14,494.8L231.13,491.6Z" fill-rule="evenodd"><title>Rio Blanco County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08105" d="M378.72,686.23L392.7,686.23L392.75,656.66L357.56,656.71L357.51,649.34L350.66,649.27L350.54,663.82L349.51,663.82L349.57,685.95L363.19,686.16L363.88,686.17L363.88,686.37L378.72,686.23Z" fill-rule="evenodd"><title>Rio Grande County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08107" d="M353.3,431.92L353.37,426.78L353.1,426.72L352.89,425.93L352.96,424.89L352.49,424.99L352.35,424.72L353.07,423.8L352.87,423.31L353.27,422.93L353.06,422.4L353.11,421.75L352.76,421.46L352.89,421.23L351.99,420.56L352.2,419.55L351.76,419.24L351.66,418.73L351.31,418.66L350.72,417.66L350.76,417.07L350.11,415.84L350.64,414.43L349.96,413.32L349.86,412.64L350.19,411.8L350.03,411.6L350.37,411.63L350.63,411.17L351.11,411.01L350.99,410.6L351.54,409.88L351.05,409.72L350.77,409.06L351.18,408.61L351.1,407.78L351.47,407.57L351.08,406.93L352.0,406.45L352.31,405.77L352.03,404.87L352.27,404.52L352.19,403.69L351.94,403.41L352.22,403.0L351.76,402.34L352.64,401.8L352.49,401.29L352.75,400.92L352.21,400.2L352.88,399.25L353.52,399.04L353.58,398.49L354.31,397.84L354.4,395.97L353.89,395.12L352.89,394.93L352.57,394.54L352.66,393.26L353.18,393.07L353.18,392.77L352.39,391.91L352.3,391.4L351.58,391.02L351.15,390.09L351.16,389.64L350.63,389.46L349.89,390.48L348.47,390.88L347.8,390.72L347.74,390.92L347.25,389.96L347.63,389.3L345.76,388.73L345.92,388.55L345.83,388.09L345.04,387.84L344.57,388.2L344.63,388.38L344.22,388.37L343.8,388.78L343.21,388.45L343.5,388.26L343.43,387.87L343.11,387.07L342.62,386.85L342.24,385.71L341.95,386.37L340.48,386.29L340.71,386.16L340.47,385.91L340.5,385.58L339.83,384.9L339.76,383.97L339.35,383.65L339.13,382.22L339.3,381.52L339.83,381.31L340.17,381.51L340.28,381.02L340.58,380.76L339.9,380.25L340.12,379.69L310.58,379.68L310.81,413.94L307.13,413.94L307.14,418.87L303.45,418.89L303.24,436.53L302.56,436.54L302.77,446.02L328.56,445.85L328.59,464.77L328.93,464.78L328.81,471.93L354.97,471.95L355.01,465.03L354.31,464.85L354.31,449.8L354.56,449.8L354.61,435.96L353.29,435.96L353.3,431.92Z" fill-rule="evenodd"><title>Routt County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08109" d="M330.87,627.34L330.95,638.99L331.19,638.62L331.74,638.47L331.83,637.85L332.41,637.88L333.05,637.37L333.4,637.6L333.42,638.01L334.01,638.41L334.05,638.87L334.55,639.19L336.11,638.02L337.08,638.32L337.76,638.05L338.08,638.49L338.75,638.56L338.7,639.51L339.35,640.22L339.58,640.85L340.8,642.12L342.26,642.16L342.65,642.56L343.77,642.59L345.22,644.19L345.56,644.98L346.68,645.41L347.9,644.79L349.06,646.07L350.56,645.88L350.66,649.27L357.51,649.34L357.56,656.71L430.08,656.39L429.92,656.24L430.18,655.97L430.05,655.66L430.54,654.77L430.59,654.03L430.23,652.63L431.5,651.86L431.47,649.84L431.92,648.55L431.78,648.23L431.9,647.87L431.26,647.05L431.15,646.34L430.12,645.47L428.72,645.47L429.05,644.05L427.14,641.74L426.62,640.43L425.38,639.21L424.59,638.95L424.01,639.45L423.46,639.34L421.91,637.98L422.08,637.12L420.62,634.82L420.63,634.51L421.11,634.12L420.71,632.61L420.31,632.5L420.07,632.0L419.77,630.71L419.1,630.36L419.17,629.52L418.59,629.17L418.54,628.76L417.36,627.48L417.34,627.12L416.97,626.69L416.98,625.76L417.21,625.25L416.89,625.1L416.4,624.3L416.01,622.83L416.4,622.22L416.22,621.71L415.72,621.59L415.34,621.05L414.54,620.95L413.96,619.76L413.46,619.48L412.76,618.25L412.37,618.14L412.16,617.44L410.89,616.68L410.68,615.79L408.84,614.64L408.77,613.82L408.07,612.28L406.82,611.96L405.45,610.35L405.07,610.54L404.32,609.85L403.16,608.35L402.06,605.75L401.1,605.08L400.37,603.99L399.63,603.77L398.78,603.02L398.59,602.01L397.82,601.45L397.75,600.94L397.28,600.45L396.93,600.39L396.25,599.5L395.43,599.48L395.12,598.56L394.43,597.89L394.53,597.24L394.08,597.06L394.0,596.57L393.24,596.65L392.47,596.24L391.87,596.59L391.46,596.36L391.23,596.92L391.49,597.44L390.76,598.63L390.35,599.18L389.56,599.3L330.95,599.02L330.87,627.34Z" fill-rule="evenodd"><title>Saguache County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08111" d="M268.36,662.17L268.72,662.55L269.51,665.13L269.32,665.66L268.68,665.92L300.02,665.93L300.02,654.96L301.0,655.14L301.19,654.22L301.57,653.8L301.39,653.39L301.49,652.75L301.06,652.27L300.88,651.44L299.81,650.36L297.8,649.99L297.83,649.33L297.44,648.68L297.72,647.42L297.2,646.39L296.56,645.98L296.72,644.68L297.08,644.55L297.19,644.05L297.58,643.65L297.04,643.15L297.0,642.51L296.52,641.96L296.66,641.65L296.43,640.96L296.78,640.02L294.85,639.03L294.45,638.22L289.78,638.22L289.72,640.93L290.04,641.75L289.45,642.34L289.2,642.94L288.51,642.96L288.19,643.5L287.41,643.37L287.1,643.68L286.76,643.6L286.41,644.31L285.99,644.44L285.57,644.3L285.43,643.81L284.69,643.98L283.57,643.3L282.42,644.61L282.42,645.21L282.12,645.66L281.78,645.67L281.22,646.43L280.72,646.51L280.95,648.03L280.56,648.3L280.7,648.79L280.23,649.08L279.84,650.34L279.05,650.22L277.77,651.25L278.02,651.85L277.77,652.3L278.18,652.65L278.02,653.1L277.3,653.73L276.98,654.47L275.7,654.35L275.2,655.08L275.08,655.43L275.55,655.65L275.63,656.01L275.36,656.79L274.75,657.47L274.75,658.58L274.92,658.87L274.65,659.39L272.99,659.18L272.52,659.38L272.48,659.71L271.26,659.99L270.79,660.56L269.69,660.22L268.76,661.08L268.67,661.82L268.36,662.17Z" fill-rule="evenodd"><title>San Juan County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08113" d="M199.77,636.81L199.83,645.37L214.06,645.38L214.3,644.14L250.28,644.22L250.23,644.63L250.84,645.51L251.48,645.77L252.01,647.08L252.18,648.59L253.12,649.54L253.28,650.48L254.99,650.01L255.51,649.49L257.12,649.35L257.3,648.96L257.75,649.51L257.93,649.04L258.63,648.41L258.72,647.83L259.53,647.57L260.44,648.15L260.57,648.84L260.92,648.87L262.37,647.88L263.0,648.78L263.69,647.95L264.77,647.54L267.43,647.43L267.77,648.44L268.56,649.49L269.92,649.22L270.16,649.84L270.73,650.34L271.81,650.25L272.91,651.68L273.68,652.06L273.91,652.6L273.77,653.04L274.06,653.5L274.86,653.42L275.7,654.35L276.8,654.51L278.18,652.65L277.77,652.3L278.02,651.85L277.77,651.25L279.05,650.22L279.84,650.34L280.23,649.08L280.7,648.79L280.56,648.3L280.95,648.03L280.72,646.51L281.22,646.43L281.78,645.67L282.12,645.66L282.42,645.21L282.42,644.61L283.67,643.1L283.62,642.25L283.9,642.03L283.74,641.64L283.92,641.2L283.21,640.18L282.89,639.24L281.58,638.48L280.86,638.49L280.3,637.35L280.45,637.08L279.89,636.22L279.48,636.36L278.69,636.04L278.01,636.25L277.18,635.88L276.48,635.88L276.54,635.46L276.94,635.15L276.89,634.75L275.6,634.45L274.25,634.62L273.84,634.26L273.76,633.12L273.17,633.02L273.64,631.61L273.95,631.38L273.58,630.34L273.64,629.08L273.39,627.86L273.69,627.84L273.73,625.37L269.87,625.36L269.86,622.91L268.97,622.91L268.96,622.28L208.52,622.05L199.79,622.22L199.77,636.81Z" fill-rule="evenodd"><title>San Miguel County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08115" d="M610.17,379.92L610.31,401.25L648.85,401.23L648.83,379.72L612.26,379.7L610.17,379.73L610.17,379.92Z" fill-rule="evenodd"><title>Sedgwick County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08117" d="M366.94,471.98L367.6,472.93L367.72,475.06L367.34,475.47L367.43,476.55L368.01,477.79L368.01,478.53L368.76,479.61L369.07,480.96L369.46,481.58L369.45,482.06L369.76,482.41L369.73,482.89L370.24,483.1L370.11,484.02L370.46,484.84L371.19,485.27L371.86,486.13L372.46,486.1L373.16,485.54L373.25,486.05L373.68,486.36L374.32,487.74L376.06,488.81L376.54,490.21L377.4,490.61L377.74,490.2L378.26,490.45L378.34,490.84L378.14,491.46L378.54,492.2L379.89,492.24L379.78,493.28L380.14,493.8L381.09,493.75L381.27,494.43L383.42,494.63L383.7,495.46L383.91,496.18L383.81,498.3L383.34,498.88L382.24,498.58L381.66,499.65L381.42,501.22L381.71,501.48L382.01,502.63L382.61,502.74L382.5,503.3L381.74,503.59L381.65,505.02L380.78,504.91L380.02,503.45L379.27,503.81L378.78,504.88L378.79,505.89L379.39,506.5L379.2,507.24L378.55,508.01L379.45,508.49L379.07,509.57L379.06,510.56L379.9,511.4L380.06,512.18L380.88,513.22L380.27,513.87L380.46,514.73L381.15,515.05L381.23,515.39L382.3,516.44L382.18,516.98L381.71,517.45L381.94,517.83L388.98,517.97L389.72,518.67L390.46,518.77L391.62,519.64L392.4,519.72L393.81,519.35L394.09,519.03L394.04,517.68L394.33,517.21L395.44,516.57L395.68,515.93L396.18,515.95L396.71,515.36L398.31,514.88L398.12,513.87L397.5,513.3L397.41,512.79L398.81,512.61L399.16,511.12L400.9,511.27L401.26,511.01L402.15,508.95L402.99,508.96L403.27,508.14L403.79,508.06L404.19,507.18L404.61,507.2L403.69,505.92L404.25,504.9L405.15,505.57L406.14,504.86L406.6,505.04L406.94,504.32L406.85,503.69L407.05,503.16L406.41,502.84L406.14,501.98L405.72,501.73L405.6,501.37L406.37,500.76L407.55,500.49L408.05,499.64L409.63,498.6L409.6,498.13L409.18,497.54L409.06,496.43L408.49,495.98L406.96,496.21L406.71,495.44L405.83,495.5L405.4,495.14L404.94,495.31L403.91,493.35L402.95,493.66L402.61,494.21L402.04,494.02L401.85,493.57L400.95,493.77L399.93,492.81L400.39,491.39L400.06,490.65L398.72,491.51L398.37,490.98L397.67,491.35L396.99,491.27L395.8,491.63L395.46,491.92L393.51,491.46L393.06,490.84L392.55,489.2L391.46,488.46L391.39,487.11L391.05,486.47L391.25,486.19L390.99,485.98L391.01,485.24L390.01,483.12L390.21,482.61L389.94,482.37L389.82,481.48L387.71,479.33L387.19,478.47L386.36,478.35L386.01,478.71L385.62,478.68L384.23,478.2L382.82,477.05L382.34,476.61L381.96,475.44L381.29,475.19L380.34,473.47L379.36,472.46L376.29,471.93L376.3,472.35L369.82,472.35L369.83,471.45L367.31,471.42L366.94,471.98Z" fill-rule="evenodd"><title>Summit County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08119" d="M438.23,539.12L438.32,575.87L444.23,575.9L444.04,580.14L453.58,580.11L456.25,579.72L463.17,579.92L463.17,575.99L463.33,575.99L463.37,574.78L463.31,567.46L454.82,567.21L455.19,561.27L457.62,561.31L457.7,551.38L457.53,550.17L457.71,547.67L457.3,539.09L438.23,539.12Z" fill-rule="evenodd"><title>Teller County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08121" d="M557.5,450.77L557.6,464.9L542.59,464.91L542.5,501.94L600.58,501.81L600.74,479.51L600.52,464.81L601.19,464.82L601.17,435.13L602.03,435.15L602.05,427.72L558.02,427.9L558.07,435.25L557.66,435.26L557.5,450.77Z" fill-rule="evenodd"><title>Washington County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08123" d="M475.27,464.99L514.03,464.95L514.2,420.4L550.55,420.5L550.64,405.29L551.03,405.29L551.06,379.78L486.58,379.79L463.09,380.08L462.95,435.32L455.81,435.3L455.89,465.01L458.95,464.99L458.94,464.38L460.12,464.38L460.12,463.76L459.51,463.76L459.72,463.29L459.52,463.28L459.66,463.03L459.52,462.84L460.32,462.84L460.32,462.54L460.73,462.54L460.79,461.3L461.94,461.28L461.93,465.01L475.27,464.99ZM460.74,462.24L460.74,462.52L461.18,462.52L461.19,462.22L460.74,462.24Z" fill-rule="evenodd"><title>Weld County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="08125" d="M648.83,466.88L648.84,427.58L602.05,427.72L602.03,435.15L601.17,435.13L601.19,464.82L600.52,464.81L600.74,479.51L600.58,501.81L648.95,501.28L648.83,466.88Z" fill-rule="evenodd"><title>Yuma County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="56001" d="M441.54,370.02L441.53,316.77L441.99,316.77L442.0,296.0L441.87,287.26L441.4,287.25L441.22,258.1L438.09,258.13L438.1,259.15L437.48,259.15L437.48,260.36L436.84,260.36L436.83,262.78L436.22,262.79L436.42,267.64L435.13,267.67L435.33,270.13L425.64,270.23L425.62,269.62L420.95,269.5L420.95,268.88L420.02,268.9L419.97,262.7L422.48,262.7L422.49,260.25L423.73,260.24L423.74,258.17L390.51,257.95L390.41,287.45L390.83,346.31L374.48,346.3L374.59,380.0L441.67,380.08L441.54,370.02Z" fill-rule="evenodd"><title>Albany County — Within Local 58 jurisdiction</title></path>
-<path class="county outside" data-id="56003" d="M226.8,40.93L226.9,50.43L228.71,50.44L228.7,80.27L229.93,80.28L229.9,110.26L321.56,110.5L321.68,97.03L321.0,97.17L320.73,96.87L320.93,96.34L319.9,96.07L319.5,95.18L318.84,95.03L319.11,94.06L319.87,93.92L320.62,93.23L320.36,92.78L319.65,92.55L319.81,91.57L320.12,91.11L319.57,90.35L319.25,90.27L318.88,90.67L318.16,90.59L318.14,88.75L317.86,88.34L318.12,87.74L317.89,87.52L318.14,87.01L318.02,86.62L317.44,86.73L316.95,86.34L316.76,86.85L315.41,87.29L314.64,87.04L314.23,86.5L313.09,86.23L313.35,85.82L313.1,85.52L311.69,85.55L311.44,85.11L311.74,84.06L311.39,83.47L311.82,83.36L311.82,82.37L312.09,81.99L311.02,81.3L310.78,80.7L309.98,80.17L310.25,79.45L309.79,78.97L309.77,78.32L309.3,78.68L308.26,78.46L307.52,77.37L307.13,77.2L307.27,77.02L306.8,75.24L306.92,75.1L306.27,74.46L306.36,73.93L304.09,73.47L303.84,73.26L303.74,72.57L303.04,72.52L303.19,72.88L302.53,73.06L300.83,72.49L299.67,71.23L299.2,69.96L298.86,69.95L298.08,70.69L297.13,70.62L296.97,69.8L296.62,69.41L297.63,68.37L296.96,67.9L295.73,67.83L295.71,66.83L294.14,66.47L293.74,65.92L293.11,66.01L292.73,65.45L292.15,65.45L291.43,64.92L291.0,65.62L289.19,65.68L288.81,66.4L287.97,66.76L287.04,65.65L287.22,65.32L287.13,64.51L286.36,64.32L286.14,64.6L284.22,63.62L283.64,63.9L283.23,63.72L282.73,63.03L283.17,62.56L283.23,61.49L282.89,61.11L283.1,60.4L282.55,60.09L282.68,59.44L282.53,59.02L281.87,58.77L280.86,58.84L278.78,57.43L277.53,57.35L277.58,56.53L278.44,55.73L278.54,54.94L277.72,54.68L278.04,54.53L277.96,54.36L277.5,54.38L277.83,53.83L277.51,53.26L277.56,52.69L277.0,52.28L276.75,51.36L275.64,50.69L275.43,50.25L275.69,49.63L275.69,48.49L276.49,48.13L276.43,47.52L276.19,47.25L276.23,46.68L274.34,45.16L274.31,44.4L274.69,42.62L274.24,41.12L274.36,40.73L273.82,40.2L273.14,39.79L272.67,39.84L272.44,39.43L226.85,39.46L226.8,40.93Z" fill-rule="evenodd"><title>Big Horn County — Outside Local 58 jurisdiction</title></path>
-<path class="county outside" data-id="56005" d="M393.6,41.23L393.74,50.66L394.09,50.66L394.3,51.6L394.26,64.42L394.53,65.6L394.68,80.25L394.29,80.26L394.16,92.69L394.16,110.16L394.49,110.16L394.6,117.49L394.63,139.78L394.09,139.79L394.1,167.58L454.33,167.29L454.2,159.32L454.36,109.61L454.17,109.61L454.03,106.17L454.14,79.7L453.92,79.69L453.96,57.64L454.51,57.69L454.53,39.5L400.8,39.48L399.83,40.05L393.63,40.05L393.6,41.23Z" fill-rule="evenodd"><title>Campbell County — Outside Local 58 jurisdiction</title></path>
-<path class="county outside" data-id="56007" d="M374.49,347.36L374.48,346.3L390.83,346.31L390.41,287.45L390.51,257.95L355.08,258.18L297.4,257.85L297.44,287.33L298.63,287.33L298.52,316.9L298.23,316.9L298.25,323.97L271.27,323.79L271.26,346.01L272.08,346.01L272.0,379.75L330.95,379.63L365.95,379.74L374.59,380.0L374.49,347.36Z" fill-rule="evenodd"><title>Carbon County — Outside Local 58 jurisdiction</title></path>
-<path class="county" data-id="56009" d="M390.2,168.88L390.2,169.5L390.47,169.49L390.52,188.43L390.36,198.91L390.55,228.59L390.27,228.6L390.33,232.03L390.44,233.37L390.68,233.36L390.69,233.66L390.36,233.67L390.49,235.63L390.35,235.64L390.35,257.95L423.74,258.17L423.73,260.24L422.49,260.25L422.48,262.7L419.97,262.7L420.02,268.9L420.95,268.88L420.95,269.5L425.62,269.62L425.64,270.23L435.33,270.13L435.13,267.67L436.42,267.64L436.22,262.79L436.83,262.78L436.84,260.36L437.48,260.36L437.48,259.15L438.1,259.15L438.09,258.13L441.32,258.11L441.05,243.26L466.36,242.99L466.29,228.19L465.97,228.18L465.91,226.35L466.07,197.32L465.88,167.19L390.2,167.62L390.2,168.88Z" fill-rule="evenodd"><title>Converse County — Within Local 58 jurisdiction</title></path>
-<path class="county outside" data-id="56011" d="M494.07,109.22L520.18,109.25L519.98,39.71L454.53,39.5L454.51,57.69L453.96,57.64L453.95,59.14L453.92,79.69L454.14,79.7L454.03,105.83L454.17,109.61L494.07,109.22Z" fill-rule="evenodd"><title>Crook County — Outside Local 58 jurisdiction</title></path>
-<path class="county outside" data-id="56013" d="M181.6,220.87L182.27,221.96L183.79,222.83L184.35,222.6L184.61,222.82L184.47,223.07L185.11,224.01L185.22,224.59L185.57,224.67L185.8,225.38L186.6,226.2L186.87,226.28L187.31,225.92L187.65,226.4L188.78,226.75L189.02,227.32L188.02,227.5L187.28,228.71L187.36,229.41L188.56,230.13L189.05,229.25L189.98,229.41L191.05,230.59L191.0,230.9L192.21,231.15L192.35,231.58L193.12,231.59L193.44,231.94L194.03,232.05L193.97,232.42L193.32,232.42L193.03,232.89L193.71,233.43L194.03,234.37L194.28,234.53L193.68,234.81L193.89,235.73L197.84,235.79L198.06,257.92L199.71,257.91L199.71,272.37L297.42,272.53L297.4,257.85L296.18,257.85L296.08,228.3L298.78,228.3L298.73,198.81L297.8,198.81L297.78,169.48L296.63,169.47L296.63,167.04L292.77,167.04L292.77,169.51L256.72,169.66L256.72,170.59L245.05,170.58L245.06,169.36L237.4,169.34L237.4,166.88L229.75,166.87L229.75,164.38L222.11,164.41L222.14,160.7L214.45,160.72L214.45,158.19L206.78,158.24L206.76,157.01L191.5,156.96L191.52,150.2L189.91,149.14L187.76,145.15L186.6,144.12L185.69,143.83L185.28,143.23L184.89,141.89L184.23,141.37L183.51,141.5L182.65,141.15L182.19,140.05L182.22,139.56L181.83,139.12L181.82,138.61L180.95,138.04L180.09,138.23L178.97,137.96L178.36,135.59L178.5,135.04L178.11,134.58L176.93,134.45L176.67,134.1L176.51,132.94L176.13,132.77L175.97,132.32L175.11,132.26L174.66,131.92L174.11,130.52L173.32,130.75L172.18,130.37L172.31,129.81L171.95,128.96L171.07,129.0L170.26,129.78L169.73,129.83L168.36,128.9L167.69,127.89L166.11,128.45L165.52,129.49L165.0,129.89L163.94,128.95L163.63,129.03L163.64,129.81L163.11,130.77L162.14,130.81L161.3,131.17L160.49,132.51L160.38,133.45L160.58,134.24L160.17,134.87L159.7,134.76L159.33,135.83L159.76,136.76L159.78,137.72L159.07,137.99L158.48,137.86L158.23,138.26L157.4,138.13L156.98,138.58L156.29,138.42L156.12,138.81L155.52,138.8L155.27,139.31L154.83,139.28L154.18,140.14L153.46,139.87L153.15,140.39L152.43,140.63L152.39,141.02L152.02,141.21L151.95,141.52L151.07,140.89L150.55,140.81L150.03,140.28L149.48,140.24L149.38,139.55L148.46,139.98L147.51,139.21L147.6,138.64L147.94,138.47L147.51,138.07L147.6,137.51L148.08,137.09L149.49,136.92L150.26,136.36L149.77,135.89L149.3,135.95L149.09,135.51L150.08,134.77L150.01,134.53L149.16,133.98L149.05,133.53L147.33,133.04L148.07,132.42L148.0,131.43L147.66,131.06L147.81,130.85L146.91,130.87L146.41,130.54L146.39,130.25L147.39,129.54L147.42,128.94L147.62,128.83L147.37,128.18L145.72,128.98L143.3,129.19L142.64,128.8L142.19,128.16L140.94,127.61L140.09,128.38L138.69,128.89L138.17,128.4L138.19,127.43L137.1,127.31L137.08,126.31L136.2,124.91L136.27,124.52L135.15,123.85L134.88,123.92L134.98,170.15L154.05,170.29L154.06,178.57L155.38,178.59L156.87,177.84L157.26,178.33L157.94,178.61L157.92,179.86L157.53,180.53L157.54,181.2L157.94,182.07L158.44,182.58L158.87,182.63L159.36,183.44L159.26,184.46L158.75,184.76L158.8,185.27L158.48,185.39L158.93,186.46L158.03,187.16L158.68,187.67L158.93,188.38L159.25,188.6L159.0,189.63L159.49,190.24L159.12,190.64L159.1,191.38L159.45,191.61L159.78,192.31L160.22,192.56L160.08,192.76L160.47,193.82L160.41,194.72L160.68,195.5L161.18,195.91L161.75,195.59L162.05,195.81L162.0,197.05L162.6,198.94L164.26,199.64L164.96,200.44L165.2,201.07L165.89,201.22L165.9,201.91L166.55,202.66L166.45,203.09L167.01,203.56L166.99,204.72L165.86,205.51L166.57,205.64L166.52,206.34L167.06,206.3L167.28,206.59L166.83,207.36L167.03,208.64L167.64,208.82L168.55,208.53L168.93,208.91L169.27,208.77L169.47,209.1L170.26,208.81L170.9,210.08L171.98,210.21L172.17,210.52L172.55,210.39L173.02,210.81L172.78,211.3L173.26,211.83L173.36,212.26L174.75,212.41L174.98,213.05L176.53,213.91L176.98,214.88L177.86,214.87L178.74,214.34L179.43,215.37L179.64,216.12L180.34,216.61L180.72,218.32L181.21,218.61L181.3,220.35L181.6,220.87Z" fill-rule="evenodd"><title>Fremont County — Outside Local 58 jurisdiction</title></path>
-<path class="county" data-id="56015" d="M481.57,242.94L481.74,331.84L520.31,331.9L520.29,242.75L481.57,242.94Z" fill-rule="evenodd"><title>Goshen County — Within Local 58 jurisdiction</title></path>
-<path class="county outside" data-id="56017" d="M182.42,140.55L182.65,141.15L183.51,141.5L184.23,141.37L184.89,141.89L185.28,143.23L185.69,143.83L186.6,144.12L187.76,145.15L189.91,149.14L191.52,150.2L191.5,156.96L206.76,157.01L206.78,158.24L214.45,158.19L214.45,160.72L222.14,160.7L222.11,164.41L229.75,164.38L229.75,166.87L237.4,166.88L237.4,169.34L245.06,169.36L245.05,170.58L250.66,170.6L256.72,170.59L256.72,169.66L292.77,169.51L292.76,154.7L284.99,154.75L285.01,147.3L269.55,147.29L269.56,140.03L255.52,140.01L255.67,139.9L255.49,139.7L254.28,139.21L253.8,139.43L254.86,137.51L246.87,137.66L246.87,136.69L246.68,136.56L246.87,136.43L246.89,132.83L239.16,132.82L239.33,125.27L235.32,125.29L235.27,117.81L215.87,117.83L215.9,125.36L207.92,125.38L208.13,132.7L196.56,132.73L196.52,140.12L185.02,140.25L185.02,140.47L182.42,140.55Z" fill-rule="evenodd"><title>Hot Springs County — Outside Local 58 jurisdiction</title></path>
-<path class="county outside" data-id="56019" d="M307.14,77.18L307.52,77.37L308.26,78.46L309.3,78.68L309.77,78.32L309.79,78.97L310.25,79.45L309.98,80.17L310.78,80.7L311.02,81.3L312.09,81.99L311.82,82.37L311.82,83.36L311.39,83.47L311.74,84.06L311.44,85.11L311.69,85.55L313.1,85.52L313.35,85.82L313.09,86.23L314.23,86.5L314.64,87.04L315.41,87.29L316.76,86.85L316.95,86.34L317.44,86.73L318.02,86.62L318.14,87.01L317.89,87.52L318.12,87.74L317.86,88.34L318.14,88.75L318.16,90.59L318.88,90.67L319.25,90.27L319.57,90.35L320.12,91.11L319.81,91.57L319.65,92.55L320.36,92.78L320.62,93.23L319.87,93.92L319.11,94.06L318.84,95.03L319.5,95.18L319.9,96.07L320.93,96.34L320.73,96.87L321.0,97.17L321.68,97.03L321.56,110.5L322.73,110.5L322.79,140.26L323.69,140.25L323.69,162.41L323.87,162.42L323.87,167.8L357.01,167.88L394.1,167.58L394.09,139.79L394.63,139.78L394.6,117.49L394.49,110.16L394.16,110.16L394.15,98.69L394.29,80.26L394.68,80.25L394.6,76.6L367.67,76.79L367.67,77.21L307.25,76.96L307.14,77.18Z" fill-rule="evenodd"><title>Johnson County — Outside Local 58 jurisdiction</title></path>
-<path class="county" data-id="56021" d="M499.83,379.8L520.27,379.8L520.31,331.9L481.74,331.84L481.72,324.35L441.58,324.03L441.63,345.92L441.62,346.26L441.46,346.27L441.42,352.57L441.67,380.08L499.83,379.8Z" fill-rule="evenodd"><title>Laramie County — Within Local 58 jurisdiction</title></path>
-<path class="county outside" data-id="56023" d="M71.03,254.89L71.12,330.58L135.21,330.73L135.32,294.23L134.8,294.22L134.85,271.78L125.01,271.79L125.03,271.28L111.0,271.32L111.01,270.99L103.51,271.2L103.4,256.65L100.39,256.65L100.39,234.38L98.25,234.37L98.25,228.5L100.55,228.5L100.53,198.98L101.13,198.96L101.12,189.69L86.01,189.69L86.01,182.99L71.18,182.84L71.27,233.58L71.03,254.89Z" fill-rule="evenodd"><title>Lincoln County — Outside Local 58 jurisdiction</title></path>
-<path class="county" data-id="56025" d="M390.54,220.8L390.36,198.91L390.47,169.49L390.2,169.5L390.2,167.62L323.87,167.8L323.88,167.13L296.63,167.04L296.63,169.47L297.78,169.48L297.8,198.81L298.73,198.81L298.78,228.3L296.08,228.3L296.18,257.85L355.08,258.18L390.35,257.95L390.35,235.64L390.49,235.63L390.36,233.67L390.69,233.66L390.68,233.36L390.44,233.37L390.33,232.03L390.27,228.6L390.55,228.59L390.54,220.8Z" fill-rule="evenodd"><title>Natrona County — Within Local 58 jurisdiction</title></path>
-<path class="county" data-id="56027" d="M496.02,242.9L520.29,242.75L520.16,166.87L465.88,167.19L466.07,197.32L465.91,226.35L465.97,228.18L466.29,228.19L466.36,242.99L496.02,242.9Z" fill-rule="evenodd"><title>Niobrara County — Within Local 58 jurisdiction</title></path>
-<path class="county outside" data-id="56029" d="M70.56,39.52L70.63,67.89L95.4,67.89L95.4,75.0L114.19,74.98L114.09,75.22L114.36,76.01L113.6,76.62L116.5,77.93L117.0,77.89L117.04,77.48L118.04,77.27L119.36,78.06L119.72,78.67L119.33,78.86L119.12,79.49L119.94,79.81L120.54,80.7L120.32,81.57L120.44,82.18L120.03,82.92L120.17,84.04L119.6,84.58L119.75,86.18L119.26,87.97L120.44,89.38L121.6,89.76L121.92,90.15L121.99,91.43L122.71,91.65L123.6,92.71L123.64,94.1L123.91,94.99L123.82,95.77L124.15,96.28L125.29,96.7L125.44,97.35L125.33,97.14L125.32,97.43L125.04,97.5L125.24,97.94L124.82,97.84L125.21,98.59L125.56,98.52L126.14,99.03L126.35,98.83L126.31,98.36L126.6,98.27L126.52,98.91L127.09,98.69L127.22,98.94L127.0,99.2L127.29,99.39L127.62,99.06L127.88,99.15L128.59,99.71L128.99,100.5L128.96,100.92L129.23,101.28L128.63,101.58L128.87,102.01L129.31,102.2L129.0,102.64L129.08,102.98L129.49,103.41L129.84,103.32L129.73,104.15L129.43,104.45L129.87,105.04L129.75,105.4L130.07,105.68L130.35,106.6L130.92,106.18L131.25,106.72L130.82,106.72L130.36,107.26L130.65,107.69L131.1,107.59L131.3,108.15L131.05,108.29L130.52,108.01L130.34,108.22L130.94,108.47L130.59,108.74L130.74,109.18L130.92,108.88L131.53,108.89L131.28,109.42L130.92,109.32L130.41,109.71L130.84,110.29L130.47,110.52L130.53,110.84L130.09,111.05L130.35,111.58L130.06,111.73L130.29,111.88L130.14,112.45L130.34,112.35L130.51,112.97L130.85,113.05L130.61,113.32L134.87,113.32L134.88,123.92L135.15,123.85L136.27,124.52L136.2,124.91L137.08,126.31L137.1,127.31L138.19,127.43L138.17,128.4L138.69,128.89L140.09,128.38L140.94,127.61L142.19,128.16L142.64,128.8L143.3,129.19L145.72,128.98L147.37,128.18L147.62,128.83L147.42,128.94L147.39,129.54L146.39,130.25L146.41,130.54L146.91,130.87L147.81,130.85L147.66,131.06L148.0,131.43L148.07,132.42L147.33,133.04L149.05,133.53L149.16,133.98L150.01,134.53L150.08,134.77L149.09,135.51L149.3,135.95L149.77,135.89L150.26,136.36L149.49,136.92L148.08,137.09L147.6,137.51L147.51,138.07L147.94,138.47L147.6,138.64L147.51,139.21L148.41,139.96L149.38,139.55L149.48,140.24L150.03,140.28L150.55,140.81L151.07,140.89L151.95,141.52L152.02,141.21L152.39,141.02L152.43,140.63L153.15,140.39L153.46,139.87L154.18,140.14L154.83,139.28L155.27,139.31L155.52,138.8L156.12,138.81L156.29,138.42L156.98,138.58L157.4,138.13L158.23,138.26L158.48,137.86L159.07,137.99L159.76,137.73L159.76,136.76L159.33,135.83L159.7,134.76L160.04,134.93L160.53,134.38L160.49,132.51L161.13,131.34L162.14,130.81L163.11,130.77L163.64,129.81L163.63,129.03L163.94,128.95L165.0,129.89L165.52,129.49L166.11,128.45L167.69,127.89L168.36,128.9L169.63,129.79L170.21,129.81L171.07,129.0L171.95,128.96L172.31,129.81L172.18,130.37L173.32,130.75L174.11,130.52L174.66,131.92L175.11,132.26L175.97,132.32L176.13,132.77L176.51,132.94L176.67,134.1L176.93,134.45L178.11,134.58L178.5,135.04L178.36,135.59L178.93,137.92L180.09,138.23L180.95,138.04L181.6,138.41L182.22,139.56L182.17,139.99L182.43,140.49L185.02,140.47L185.02,140.25L196.52,140.12L196.56,132.73L208.13,132.7L207.92,125.38L215.9,125.36L215.87,117.83L231.38,117.84L231.39,110.26L229.9,110.26L229.93,80.28L228.7,80.27L228.71,50.44L226.9,50.43L226.85,39.46L197.34,39.54L195.9,39.0L153.64,39.34L131.5,39.2L126.53,39.75L112.15,39.54L109.67,40.03L93.04,40.16L87.55,39.42L70.56,39.52Z" fill-rule="evenodd"><title>Park County — Outside Local 58 jurisdiction</title></path>
-<path class="county" data-id="56031" d="M454.38,243.05L441.05,243.26L441.32,258.11L441.4,287.25L441.87,287.26L442.0,296.0L441.99,316.77L441.53,316.77L441.58,324.03L481.72,324.35L481.57,242.94L454.38,243.05Z" fill-rule="evenodd"><title>Platte County — Within Local 58 jurisdiction</title></path>
-<path class="county outside" data-id="56033" d="M311.95,77.02L367.67,77.21L367.67,76.79L394.6,76.6L394.53,65.6L394.26,64.42L394.3,51.6L394.09,50.66L393.74,50.66L393.63,40.05L325.54,39.78L322.12,39.49L310.76,39.41L272.44,39.43L272.67,39.84L273.19,39.81L274.34,40.69L274.24,41.12L274.69,42.62L274.31,44.4L274.34,45.16L276.23,46.68L276.19,47.25L276.43,47.52L276.49,48.13L275.69,48.49L275.69,49.63L275.43,50.25L275.64,50.69L276.75,51.36L277.0,52.28L277.56,52.69L277.51,53.26L277.83,53.83L277.5,54.38L277.96,54.36L278.04,54.53L277.72,54.68L278.38,54.76L278.56,55.03L278.44,55.73L277.58,56.53L277.53,57.35L278.78,57.43L280.86,58.84L281.87,58.77L282.53,59.02L282.68,59.44L282.55,60.09L283.1,60.4L282.89,61.11L283.23,61.49L283.17,62.56L282.73,63.03L283.23,63.72L283.64,63.9L284.22,63.62L286.14,64.6L286.36,64.32L287.13,64.51L287.22,65.32L287.04,65.65L287.97,66.76L288.81,66.4L289.19,65.68L291.0,65.62L291.43,64.92L292.15,65.45L292.73,65.45L293.11,66.01L293.74,65.92L294.14,66.47L295.71,66.83L295.73,67.83L296.96,67.9L297.63,68.37L296.62,69.41L296.97,69.8L297.13,70.62L298.08,70.69L298.86,69.95L299.2,69.96L299.67,71.23L300.83,72.49L302.53,73.06L303.19,72.88L303.04,72.52L303.74,72.57L303.84,73.26L304.09,73.47L306.36,73.93L306.25,74.4L306.91,75.07L306.8,75.24L307.25,76.96L311.95,77.02Z" fill-rule="evenodd"><title>Sheridan County — Outside Local 58 jurisdiction</title></path>
-<path class="county outside" data-id="56035" d="M100.46,206.29L100.55,228.5L98.25,228.5L98.25,234.37L100.39,234.38L100.39,256.65L103.4,256.65L103.51,271.2L111.01,270.99L111.0,271.32L125.03,271.28L125.01,271.79L170.62,272.41L199.71,272.37L199.71,257.91L198.06,257.92L197.84,235.79L193.89,235.73L193.68,234.81L194.28,234.53L194.03,234.37L193.71,233.43L193.03,232.89L193.32,232.42L193.97,232.42L194.03,232.05L193.44,231.94L193.12,231.59L192.35,231.58L192.21,231.15L191.0,230.9L191.05,230.59L189.98,229.41L189.05,229.25L188.56,230.13L187.33,229.39L187.28,228.71L188.02,227.5L189.02,227.32L188.81,226.8L187.65,226.4L187.31,225.92L186.87,226.28L186.6,226.2L185.8,225.38L185.57,224.67L185.22,224.59L185.11,224.01L184.47,223.07L184.61,222.82L184.35,222.6L183.79,222.83L182.01,221.69L181.3,220.35L181.21,218.61L180.72,218.32L180.34,216.61L179.64,216.12L179.43,215.37L178.74,214.34L177.86,214.87L176.98,214.88L176.53,213.91L174.98,213.05L174.75,212.41L173.36,212.26L173.26,211.83L172.78,211.3L173.02,210.81L172.55,210.39L172.17,210.52L171.98,210.21L170.9,210.08L170.26,208.81L169.47,209.1L169.27,208.77L168.93,208.91L168.55,208.53L167.64,208.82L167.03,208.64L166.83,207.36L167.28,206.59L167.06,206.3L166.52,206.34L166.57,205.64L165.86,205.51L166.99,204.72L167.01,203.56L166.45,203.09L166.55,202.66L165.9,201.91L165.89,201.22L165.2,201.07L164.96,200.44L164.26,199.64L162.6,198.94L162.0,197.05L162.05,195.81L161.75,195.59L161.18,195.91L160.68,195.5L160.41,194.72L160.47,193.82L160.08,192.76L160.22,192.56L159.78,192.31L159.45,191.61L159.1,191.38L159.12,190.64L159.49,190.24L159.0,189.63L159.25,188.6L158.93,188.38L158.68,187.67L158.03,187.16L158.93,186.46L158.48,185.39L158.8,185.27L158.75,184.76L159.26,184.46L159.36,183.44L158.87,182.63L158.44,182.58L157.94,182.07L157.54,181.2L157.53,180.53L157.92,179.86L157.94,178.61L157.26,178.33L156.87,177.84L155.38,178.59L154.06,178.57L154.05,170.29L134.6,170.15L134.62,177.55L116.19,177.55L116.2,184.93L101.14,184.89L101.13,198.96L100.53,198.98L100.46,206.29Z" fill-rule="evenodd"><title>Sublette County — Outside Local 58 jurisdiction</title></path>
-<path class="county outside" data-id="56037" d="M166.23,380.06L187.59,379.74L232.97,379.96L272.0,379.75L272.08,346.01L271.26,346.01L271.27,323.79L298.25,323.97L298.23,316.9L298.52,316.9L298.63,287.33L297.44,287.33L297.42,272.53L170.62,272.41L134.85,271.78L134.8,294.22L135.32,294.25L135.18,380.15L166.23,380.06Z" fill-rule="evenodd"><title>Sweetwater County — Outside Local 58 jurisdiction</title></path>
-<path class="county outside" data-id="56039" d="M70.63,67.89L70.7,83.89L70.92,84.25L71.18,182.84L86.01,182.99L86.01,189.69L101.12,189.69L101.14,184.89L116.2,184.93L116.19,177.55L134.62,177.55L134.6,170.15L134.98,170.15L135.01,166.41L134.87,113.32L130.61,113.32L130.85,113.05L130.51,112.97L130.34,112.35L130.14,112.45L130.29,111.88L130.06,111.73L130.35,111.58L130.09,111.05L130.53,110.84L130.47,110.52L130.84,110.29L130.41,109.71L130.92,109.32L131.28,109.42L131.53,108.89L130.92,108.88L130.74,109.18L130.59,108.74L130.94,108.47L130.34,108.22L130.52,108.01L131.05,108.29L131.3,108.15L131.1,107.59L130.65,107.69L130.36,107.26L130.82,106.72L131.25,106.72L130.92,106.18L130.35,106.6L130.07,105.68L129.75,105.4L129.87,105.04L129.43,104.45L129.73,104.15L129.84,103.32L129.49,103.41L129.08,102.98L129.0,102.64L129.31,102.2L128.87,102.01L128.63,101.58L129.23,101.28L128.96,100.92L128.99,100.5L128.59,99.71L127.88,99.15L127.62,99.06L127.29,99.39L127.0,99.2L127.22,98.94L127.09,98.69L126.52,98.91L126.6,98.27L126.31,98.36L126.35,98.83L126.14,99.03L125.56,98.52L125.21,98.59L124.82,97.84L125.24,97.94L125.04,97.5L125.32,97.43L125.33,97.14L125.44,97.35L125.29,96.7L124.15,96.28L123.82,95.77L123.91,94.99L123.64,94.1L123.6,92.71L122.71,91.65L121.99,91.43L121.92,90.15L121.6,89.76L120.44,89.38L119.26,87.97L119.75,86.18L119.6,84.58L120.17,84.04L120.03,82.92L120.44,82.18L120.32,81.57L120.54,80.7L119.94,79.81L119.12,79.49L119.33,78.86L119.69,78.75L119.66,78.41L118.18,77.3L117.04,77.48L116.87,77.99L115.17,77.49L113.6,76.62L114.36,76.01L114.09,75.22L114.19,74.98L95.4,75.0L95.4,67.89L70.63,67.89Z" fill-rule="evenodd"><title>Teton County — Outside Local 58 jurisdiction</title></path>
-<path class="county outside" data-id="56041" d="M71.06,366.65L71.06,380.1L105.85,380.37L135.18,380.15L135.21,330.73L71.12,330.58L71.06,366.65Z" fill-rule="evenodd"><title>Uinta County — Outside Local 58 jurisdiction</title></path>
-<path class="county outside" data-id="56043" d="M231.38,113.73L231.38,117.84L235.27,117.81L235.32,125.29L239.33,125.27L239.16,132.82L246.89,132.83L246.87,136.43L246.68,136.56L246.87,136.69L246.87,137.66L254.86,137.51L253.8,139.43L254.28,139.21L255.49,139.7L255.67,139.9L255.52,140.01L269.56,140.03L269.55,147.29L285.01,147.3L284.99,154.75L292.76,154.7L292.77,167.04L323.88,167.13L323.87,162.42L323.69,162.41L323.69,140.25L322.79,140.26L322.73,110.5L231.39,110.26L231.38,113.73Z" fill-rule="evenodd"><title>Washakie County — Outside Local 58 jurisdiction</title></path>
-<path class="county outside" data-id="56045" d="M454.22,139.32L454.39,139.32L454.2,159.32L454.33,167.29L520.16,166.87L520.18,109.25L499.57,109.15L454.36,109.61L454.22,139.32Z" fill-rule="evenodd"><title>Weston County — Outside Local 58 jurisdiction</title></path>
-<path class="state-outline" d="M449.5,720.75L457.58,720.97L499.99,720.91L587.77,720.34L599.79,720.37L607.31,720.77L649.44,720.95L649.23,562.32L648.83,477.99L648.83,379.72L491.2,379.78L468.75,380.09L412.6,380.2L330.95,379.63L199.32,379.86L199.46,413.12L199.24,427.45L199.24,538.0L199.06,560.59L198.69,574.42L198.66,611.57L199.79,621.88L199.86,672.51L199.6,689.74L199.62,720.44L338.88,720.34L339.35,720.99L341.78,721.0L449.5,720.75Z"/>
-<path class="state-outline" d="M374.59,380.0L412.6,380.2L520.27,379.8L520.31,239.48L519.97,39.7L404.41,39.46L400.8,39.48L399.83,40.05L387.12,40.06L325.54,39.78L322.12,39.49L300.42,39.37L197.34,39.54L195.9,39.0L153.64,39.34L131.5,39.2L126.53,39.75L112.15,39.54L109.67,40.03L93.04,40.16L87.55,39.42L70.56,39.41L70.7,83.89L70.92,84.25L71.24,191.59L71.27,233.58L71.03,254.89L71.06,380.1L120.69,380.37L187.59,379.74L232.97,379.96L330.95,379.63L365.95,379.74L374.59,380.0Z"/>
-<text class="state-label" x="241.07" y="103.32" text-anchor="middle">WYOMING</text>
-<text class="state-label co" x="350.26" y="690.57" text-anchor="middle">COLORADO</text>
-<g class="city"><circle class="city-dot" cx="454.03" cy="415.22" r="4.5"/><text class="city-label" x="464.03" y="421.22" text-anchor="start">Fort Collins</text></g>
-<g class="city"><circle class="city-dot" cx="442.08" cy="463.75" r="4.5"/><text class="city-label" x="432.08" y="466.75" text-anchor="end">Boulder</text></g>
-<g class="city"><circle class="city-dot" cx="460.08" cy="487.23" r="4.5"/><text class="city-label" x="470.08" y="494.23" text-anchor="start">Denver</text></g>
-<g class="city"><circle class="city-dot" cx="470.92" cy="564.27" r="4.5"/><text class="city-label" x="480.92" y="571.27" text-anchor="start">Colorado Springs</text></g>
-<g class="city"><circle class="city-dot" cx="484.56" cy="613.59" r="4.5"/><text class="city-label" x="494.56" y="620.59" text-anchor="start">Pueblo</text></g>
-<g class="city"><circle class="city-dot" cx="231.39" cy="544.7" r="4.5"/><text class="city-label" x="241.39" y="534.7" text-anchor="start">Grand Junction</text></g>
-<g class="city"><circle class="city-dot" cx="374.33" cy="222.47" r="4.5"/><text class="city-label" x="384.33" y="239.47" text-anchor="start">Casper</text></g>
-<g class="city"><circle class="city-dot" cx="421.49" cy="353.42" r="4.5"/><text class="city-label" x="411.49" y="366.42" text-anchor="end">Laramie</text></g>
-<g class="city"><circle class="city-dot" cx="471.0" cy="368.01" r="4.5"/><text class="city-label" x="481.0" y="381.01" text-anchor="start">Cheyenne</text></g>
-      </svg>
-      <figcaption><span><i class="key" aria-hidden="true"></i>Local 58 jurisdiction</span><span><i class="key outside" aria-hidden="true"></i>Outside our jurisdiction</span></figcaption>
-    </figure>
-    <div class="coverage">
-      <h2>Colorado</h2>
-      <p>We serve the entire state of Colorado.</p>
-      <h2>Wyoming</h2>
-      <p>We serve the following Wyoming counties:</p>
-      <ul><li>Albany</li><li>Converse</li><li>Goshen</li><li>Laramie</li><li>Natrona</li><li>Niobrara</li><li>Platte</li></ul>
+  <!-- JURISDICTION: MAP IS BUILT INTO THIS PAGE -->
+  <section id="jurisdiction" class="py-8 px-3 md:px-20 bg-gray-100">
+
+    <div id="local58-map">
+      <div class="section">
+
+        <h2 class="map-heading">Our Jurisdiction</h2>
+
+        <div class="content">
+
+          <figure>
+
+            <svg
+              viewBox="0 0 720 760"
+              role="img"
+              aria-labelledby="map-title map-description">
+
+              <title id="map-title">Roofers Local 58 jurisdiction</title>
+
+              <desc id="map-description">
+                All of Colorado is shaded navy. In Wyoming, Albany, Converse,
+                Goshen, Laramie, Natrona, Niobrara, and Platte counties are shaded
+                navy. Other Wyoming counties are gray. Major cities are marked
+                with red dots.
+              </desc>
+
+              <!-- COLORADO COUNTIES -->
+              <path class="county" data-id="08001" d="M466.9,486.5L542.5,487.2L542.6,464.9L460.7,465.0L460.2,467.7L458.4,466.6L459.6,469.9L456.1,472.3L456.0,482.8L472.9,482.2L472.9,478.5L476.7,478.2L476.8,473.9L485.2,473.6L483.9,480.1L474.7,480.1L476.5,484.7Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08003" d="M392.7,671.2L392.7,690.0L411.7,690.0L428.3,671.2L430.1,656.4L392.8,656.7Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08005" d="M456.0,501.8L542.5,501.9L542.5,487.2L466.9,487.1L468.1,490.9L465.6,490.7L465.6,493.3L469.3,494.2L465.0,497.0L458.4,492.4ZM465.6,496.9L465.7,497.0L465.6,496.8ZM465.7,491.8L465.9,492.0L465.9,491.8ZM465.2,492.1L465.2,492.3L465.4,492.3ZM464.0,490.4L464.0,490.4L464.1,490.4ZM463.9,492.7L464.2,493.2L464.6,493.3L464.5,493.9L465.0,494.3L464.8,492.9L464.4,492.6ZM463.7,492.8L463.9,493.3L464.1,493.2ZM463.3,490.0L463.3,490.8L463.4,490.7L463.3,490.9L463.6,491.0L463.5,490.7L464.1,490.9L464.0,490.6L463.7,490.4L463.7,490.2L464.1,490.2L463.9,489.6L463.3,489.6ZM463.7,490.6L463.8,490.6L463.8,490.7Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08007" d="M300.0,692.7L300.1,720.3L364.6,720.9L356.9,703.8L351.6,700.9L351.6,686.0L322.7,687.0L322.7,684.4L300.0,684.4Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08009" d="M617.5,665.6L583.0,665.6L582.4,720.3L649.4,721.0L649.5,665.5Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08011" d="M604.5,627.0L604.5,612.5L562.2,612.7L562.0,665.6L604.1,665.6Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08013" d="M448.8,472.4L456.1,466.9L455.9,442.8L417.5,442.9L415.9,449.0L419.2,454.9L418.3,462.1L415.1,463.8L415.6,470.6ZM452.4,468.8L452.9,468.5L453.6,468.6ZM454.2,468.5L456.1,468.6L456.1,467.9L455.8,467.7L455.8,467.2Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08014" d="M448.8,473.4L458.5,471.7L458.4,466.6L460.2,467.7L461.9,461.3L460.1,464.4L456.1,465.0L452.4,471.4L451.2,468.9ZM454.1,468.5L455.8,467.2L455.8,467.7L456.1,467.9L456.1,468.6ZM460.7,462.5L460.7,462.2L461.2,462.2L461.2,462.5ZM452.4,468.7L453.6,468.6L453.0,468.5Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08015" d="M356.8,547.0L357.0,550.9L359.6,550.2L365.4,557.8L374.3,557.7L372.8,562.5L368.5,565.1L368.5,573.3L366.2,575.8L371.8,583.0L373.1,592.3L379.4,599.3L390.4,599.2L391.5,596.4L394.5,597.2L401.2,592.1L403.0,583.6L397.1,576.1L401.2,566.6L396.7,557.4L393.4,555.0L388.1,555.2L388.2,551.2L384.4,550.9L382.9,545.4L358.1,545.2Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08017" d="M617.0,583.0L649.3,582.9L649.1,546.1L577.5,546.9L576.8,583.1Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08019" d="M412.9,480.2L406.6,483.3L402.4,482.3L399.9,492.8L409.6,498.2L405.7,501.7L433.8,502.0L433.8,486.5L425.0,484.5L422.3,480.1L417.4,477.9Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08021" d="M388.8,720.8L413.3,720.7L409.9,716.5L412.5,707.1L411.7,690.0L392.7,690.0L392.7,686.2L351.6,686.0L351.6,700.9L356.9,703.8L364.6,720.9Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08023" d="M411.1,691.1L413.2,696.0L409.9,716.5L413.2,720.7L449.5,720.8L448.6,688.4L451.1,685.5L445.4,670.8L447.4,667.6L440.4,664.3L431.0,668.3Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08025" d="M539.9,625.6L548.1,625.6L548.1,620.6L555.2,620.6L555.5,591.3L520.2,590.8L520.0,622.8Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08027" d="M408.3,612.7L416.2,621.7L421.9,638.0L429.1,644.1L432.9,644.6L439.1,640.5L441.3,643.8L448.6,633.6L451.4,639.4L454.5,639.2L456.2,642.4L456.3,613.3Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08029" d="M281.1,546.1L275.8,543.3L267.9,545.0L260.7,551.8L257.7,558.1L242.4,564.7L242.4,578.4L298.8,578.3L298.8,531.6Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08031" d="M452.4,496.8L457.8,496.6L458.9,492.4L466.8,497.0L469.3,494.2L465.4,492.3L468.1,490.9L467.2,485.9L476.5,484.7L474.7,480.1L483.9,480.1L485.2,473.6L476.8,473.9L476.7,478.2L472.9,478.5L472.9,482.2L455.3,482.8L456.0,493.3L454.2,493.8L456.0,494.7ZM465.6,497.0L465.6,496.8L465.7,497.0ZM454.2,496.1L454.3,496.0L454.3,496.1ZM455.4,494.7L455.4,494.6L455.4,494.7ZM455.3,494.5L455.4,494.5L455.4,494.5ZM464.0,492.8L464.4,492.6L464.8,492.9L465.0,494.3L464.5,493.9L464.6,493.3ZM463.7,492.9L463.9,492.8L464.1,493.2L463.9,493.3ZM465.2,492.3L465.4,492.1L465.4,492.3ZM465.8,491.9L465.9,491.8L465.9,492.0ZM464.0,490.4L464.0,490.4L464.1,490.4ZM463.3,490.0L463.3,489.6L463.9,489.6L464.1,490.2L463.7,490.2L463.7,490.4L464.0,490.6L464.1,490.9L463.5,490.7L463.6,491.0L463.3,490.9L463.4,490.7L463.3,490.8ZM463.7,490.6L463.8,490.7L463.8,490.6Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08033" d="M221.8,666.6L268.7,665.9L268.8,661.1L274.6,659.4L275.7,654.4L267.4,647.4L259.5,647.6L253.3,650.5L250.3,644.2L199.8,645.4L199.7,679.1L207.8,666.6Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08035" d="M457.7,539.1L481.1,539.1L481.2,502.0L456.3,502.0L454.7,503.8L453.9,508.1L450.8,510.1L451.5,513.2L448.5,515.4L445.5,527.9L438.3,539.1Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08037" d="M323.7,505.5L323.7,519.0L367.8,519.3L369.5,517.7L377.0,520.4L381.9,517.8L378.8,504.9L381.6,505.0L383.9,496.2L370.5,484.8L367.3,471.4L323.7,471.9Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08041" d="M457.3,539.1L457.6,561.3L455.2,561.3L454.8,567.2L463.3,567.5L463.2,591.0L520.2,590.8L520.4,539.2Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08039" d="M542.0,527.7L542.0,501.9L481.2,502.0L481.1,539.1L520.4,539.2L520.1,561.3L541.7,561.5Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08043" d="M394.4,597.7L408.3,612.7L463.3,613.3L463.2,579.9L444.0,580.1L444.2,575.9L397.2,576.2L400.2,577.6L403.1,584.1L401.2,592.2Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08045" d="M274.2,519.0L323.7,519.0L323.7,471.9L328.8,471.9L328.6,457.2L310.6,457.3L310.5,472.3L303.3,472.0L303.2,479.6L270.7,479.9L270.7,491.0L231.1,491.1L231.1,494.8L199.2,493.9L199.3,518.9Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08047" d="M414.4,475.3L415.3,477.8L422.3,480.1L424.8,484.4L433.9,486.6L433.9,470.6L416.1,470.8Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08049" d="M402.4,482.3L410.4,482.5L414.8,478.7L415.1,463.8L418.3,462.1L419.2,454.9L415.9,448.9L418.1,443.8L408.9,432.6L407.6,424.6L402.2,424.5L401.4,430.9L397.8,435.4L394.0,433.3L380.4,437.5L378.2,434.3L375.6,437.1L372.3,434.6L366.8,435.5L363.8,430.0L360.9,434.0L356.5,433.0L353.3,427.1L355.0,471.4L379.0,472.3L389.8,481.5L394.4,491.7L400.0,490.7L402.8,487.1Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08051" d="M330.9,602.6L330.9,599.0L379.4,599.3L373.1,592.3L371.8,583.0L366.2,575.8L368.5,573.3L368.5,565.1L372.8,562.5L374.3,557.7L365.4,557.8L359.6,550.2L355.9,550.5L350.6,545.4L347.1,546.5L343.7,552.0L339.9,549.3L336.9,550.8L331.2,547.2L331.7,544.1L326.7,540.0L312.8,540.0L306.8,533.2L306.8,529.2L303.3,528.3L298.8,531.6L298.9,609.5L290.2,609.5L294.5,622.7L330.9,622.7Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08053" d="M293.0,635.9L296.8,640.0L297.8,650.0L301.5,652.8L300.0,684.4L322.7,684.4L322.1,640.5L330.9,639.0L330.9,622.7L294.5,622.7L295.0,627.8L298.2,630.1L295.9,635.2Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08055" d="M427.2,669.5L429.2,670.9L440.4,664.3L447.4,667.6L445.4,670.8L451.1,685.5L448.7,687.4L448.8,695.6L452.0,695.1L459.8,688.4L475.6,685.7L479.0,682.9L479.3,678.3L488.4,671.4L494.4,656.7L501.1,650.8L482.2,643.7L458.6,645.4L454.5,639.2L451.4,639.4L448.6,633.6L441.3,643.8L439.1,640.5L432.9,644.6L429.1,644.1L431.9,648.5Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08057" d="M339.1,382.2L343.5,388.7L345.8,388.1L347.7,390.9L351.2,389.6L354.4,395.9L349.9,412.6L355.9,432.7L360.9,434.0L363.8,430.0L366.7,435.5L372.3,434.6L375.6,437.1L378.2,434.3L380.4,437.5L394.0,433.3L397.7,435.4L399.2,433.9L404.7,421.9L401.0,420.9L395.7,403.0L383.3,385.5L383.0,380.1L340.1,379.7Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08059" d="M433.9,489.1L433.9,539.1L438.3,539.1L445.5,527.9L448.5,515.4L456.3,502.0L456.0,497.3L452.4,496.8L456.0,494.7L454.2,493.2L456.0,493.3L456.1,472.3L450.0,472.4L450.6,474.5L448.8,474.3L449.9,472.4L433.9,472.4ZM455.9,497.0L456.0,497.0L456.0,496.7ZM455.6,496.1L456.0,496.6L456.0,495.8L455.7,495.8ZM455.4,494.6L455.4,494.7L455.4,494.6ZM455.3,494.5L455.4,494.5L455.4,494.5ZM454.2,496.1L454.3,496.1L454.3,496.0Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08061" d="M612.4,612.5L649.3,612.4L649.2,582.9L576.8,583.1L576.8,590.5L555.5,590.7L555.7,612.7Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08063" d="M625.8,546.4L649.1,546.1L649.0,501.3L578.0,502.0L577.5,546.9Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08067" d="M285.2,720.4L300.1,720.3L300.0,665.9L268.7,665.9L265.3,670.0L263.9,682.6L261.8,683.0L259.9,687.9L254.1,690.1L248.0,701.4L248.1,707.9L242.3,720.2Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08065" d="M362.8,525.7L363.5,533.3L362.4,536.2L359.2,536.9L358.1,545.2L382.9,545.4L383.4,523.8L386.5,517.8L380.7,517.8L377.0,520.4L369.5,517.7L367.4,523.2Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08069" d="M444.2,442.7L455.9,442.8L455.8,435.3L462.9,435.3L463.1,380.1L382.9,380.2L383.3,385.5L395.8,403.1L401.1,421.1L403.6,420.7L407.6,424.6L407.0,428.9L415.9,442.2Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08071" d="M560.6,720.4L582.4,720.3L583.0,665.6L520.0,665.5L519.9,657.9L501.1,650.8L494.4,656.7L488.4,671.4L479.3,678.3L479.0,682.9L475.6,685.7L462.8,687.0L449.6,695.4L449.5,720.8Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08073" d="M542.0,524.4L541.7,561.5L520.1,561.3L520.2,590.8L576.8,590.5L578.0,502.0L542.0,501.9Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08075" d="M573.4,427.9L609.5,427.7L610.2,379.7L551.1,379.8L550.5,420.5L557.9,420.5L558.0,427.9Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08077" d="M242.5,564.7L257.7,558.1L260.7,551.8L267.9,545.0L275.8,543.3L281.8,546.5L284.6,544.6L299.9,530.1L306.6,527.2L301.1,523.4L303.3,519.0L199.3,518.9L198.7,592.7L242.4,592.7Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08079" d="M321.7,662.3L322.7,687.0L349.6,686.6L350.6,645.9L340.8,642.1L337.6,638.0L324.4,639.1L322.1,640.5Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08081" d="M199.3,379.9L199.3,446.1L302.8,446.3L303.4,418.9L307.1,418.9L307.1,413.9L310.8,413.9L310.6,379.7Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08083" d="M199.6,692.3L199.6,720.4L242.4,720.4L248.1,707.9L248.0,701.4L254.1,690.1L259.9,687.9L261.8,683.0L263.9,682.6L265.3,670.0L268.7,665.9L207.8,666.6L199.7,679.1Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08085" d="M261.2,611.8L258.2,607.0L290.2,607.0L290.2,609.5L298.9,609.5L298.8,578.3L242.4,578.4L242.4,592.7L198.7,592.7L199.8,622.2L270.2,622.3L270.8,616.6L261.2,613.5Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08087" d="M532.3,464.9L557.6,464.9L557.9,420.5L514.2,420.4L514.0,464.9Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08089" d="M544.6,625.6L520.0,622.8L520.0,665.5L562.0,665.6L562.2,612.7L555.1,612.7L555.2,620.6L548.1,620.6L548.1,625.6Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08091" d="M258.2,607.0L261.2,613.5L270.8,616.6L269.0,622.9L269.9,625.4L273.7,625.4L273.2,633.0L279.9,636.2L283.6,643.3L286.3,644.4L290.0,641.8L289.8,638.2L294.4,638.2L293.0,635.9L295.9,635.2L298.2,630.1L294.7,626.9L293.7,615.6L290.2,607.0Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08093" d="M381.7,541.3L384.3,542.4L382.8,548.6L388.2,551.2L388.0,555.1L393.4,555.0L400.0,561.0L399.0,563.7L401.2,566.6L397.2,576.2L438.3,575.9L438.2,539.1L433.9,539.1L433.8,502.0L406.2,502.1L406.6,505.0L404.2,504.9L404.6,507.2L397.4,512.8L398.3,514.9L393.8,519.4L385.6,518.8L386.2,521.3L383.4,523.8L384.1,538.4Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08095" d="M626.6,427.6L648.8,427.6L648.9,401.2L610.3,401.2L609.5,427.7Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08097" d="M301.1,522.7L306.7,526.8L306.8,533.1L312.8,540.0L326.7,540.0L331.7,544.1L331.2,547.2L343.6,552.0L350.1,545.4L356.8,550.2L359.2,536.9L362.4,536.2L363.5,533.3L362.9,524.8L367.4,523.2L367.8,519.3L303.3,519.0Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08099" d="M649.3,632.7L649.3,612.4L604.5,612.5L604.1,665.6L649.5,665.5Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08101" d="M463.2,591.0L463.3,613.3L456.3,613.3L457.2,644.2L482.2,643.7L519.8,657.8L520.2,590.8Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08103" d="M231.1,491.6L270.7,491.0L270.7,479.9L303.2,479.6L303.3,472.0L310.5,472.3L310.6,457.3L328.6,457.2L328.6,445.9L199.3,446.1L199.2,493.9L231.1,494.8Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08105" d="M378.7,686.2L392.7,686.2L392.8,656.7L357.6,656.7L357.5,649.3L350.7,649.3L349.6,686.0Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08107" d="M353.3,431.9L353.1,421.8L349.9,412.6L354.4,396.0L351.2,389.6L347.7,390.9L340.5,386.3L340.1,379.7L310.6,379.7L310.8,413.9L307.1,413.9L307.1,418.9L303.4,418.9L302.8,446.0L328.6,445.9L328.8,471.9L355.0,471.9Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08109" d="M330.9,627.3L330.9,639.0L337.8,638.0L340.8,642.1L350.6,645.9L350.7,649.3L357.5,649.3L357.6,656.7L430.1,656.4L431.5,651.9L431.1,646.3L421.9,638.0L416.2,621.7L394.0,596.6L391.5,596.4L389.6,599.3L330.9,599.0Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08111" d="M268.4,662.2L268.7,665.9L300.0,665.9L301.5,652.8L297.8,650.0L296.8,640.0L289.8,638.2L289.2,642.9L283.6,643.3L280.7,646.5L274.6,659.4Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08113" d="M199.8,636.8L199.8,645.4L250.3,644.2L253.3,650.5L259.5,647.6L267.4,647.4L276.8,654.5L283.9,642.0L279.9,636.2L273.8,634.3L273.7,625.4L269.9,625.4L269.0,622.3L199.8,622.2Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08115" d="M610.2,379.9L610.3,401.2L648.9,401.2L648.8,379.7Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08117" d="M366.9,472.0L370.5,484.8L383.7,495.5L381.6,505.0L378.8,504.9L381.7,517.5L393.8,519.4L398.3,514.9L397.4,512.8L404.6,507.2L404.2,504.9L406.6,505.0L405.6,501.4L409.6,498.6L409.1,496.4L400.9,493.8L400.1,490.6L393.5,491.5L389.8,481.5L379.4,472.5Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08119" d="M438.2,539.1L438.3,575.9L444.2,575.9L444.0,580.1L463.2,579.9L463.3,567.5L454.8,567.2L455.2,561.3L457.6,561.3L457.3,539.1Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08121" d="M557.5,450.8L557.6,464.9L542.6,464.9L542.5,501.9L600.6,501.8L602.0,427.7L558.0,427.9Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08123" d="M475.3,465.0L514.0,464.9L514.2,420.4L550.5,420.5L551.1,379.8L463.1,380.1L462.9,435.3L455.8,435.3L455.9,465.0L460.1,464.4L461.9,461.3L461.9,465.0ZM460.7,462.2L460.7,462.5L461.2,462.5L461.2,462.2Z" fill-rule="evenodd"/>
+              <path class="county" data-id="08125" d="M648.8,466.9L648.8,427.6L602.0,427.7L600.6,501.8L649.0,501.3Z" fill-rule="evenodd"/>
+
+              <!-- WYOMING COUNTIES -->
+              <path class="county" data-id="56001" d="M441.5,370.0L441.2,258.1L436.8,260.4L435.3,270.1L425.6,270.2L420.0,268.9L420.0,262.7L422.5,262.7L423.7,258.2L390.5,257.9L390.8,346.3L374.5,346.3L374.6,380.0L441.7,380.1Z" fill-rule="evenodd"/>
+              <path class="county outside" data-id="56003" d="M226.8,40.9L229.9,110.3L321.6,110.5L321.7,97.0L318.8,95.0L320.6,93.2L318.0,86.6L311.7,85.5L312.1,82.0L306.4,73.9L297.1,70.6L295.7,66.8L291.4,64.9L288.0,66.8L283.2,63.7L282.5,59.0L277.5,57.4L273.8,40.2Z" fill-rule="evenodd"/>
+              <path class="county outside" data-id="56005" d="M393.6,41.2L394.1,167.6L454.3,167.3L454.5,39.5L400.8,39.5Z" fill-rule="evenodd"/>
+              <path class="county outside" data-id="56007" d="M374.5,347.4L390.8,346.3L390.5,257.9L297.4,257.9L298.2,324.0L271.3,323.8L272.0,379.8L374.6,380.0Z" fill-rule="evenodd"/>
+              <path class="county" data-id="56009" d="M390.2,168.9L390.4,257.9L423.7,258.2L422.5,262.7L420.0,262.7L420.0,268.9L435.3,270.1L436.8,260.4L441.3,258.1L441.1,243.3L466.4,243.0L465.9,167.2Z" fill-rule="evenodd"/>
+              <path class="county outside" data-id="56011" d="M494.1,109.2L520.2,109.2L520.0,39.7L454.5,39.5L454.2,109.6Z" fill-rule="evenodd"/>
+              <path class="county outside" data-id="56013" d="M181.6,220.9L188.8,226.8L187.4,229.4L194.0,232.1L193.9,235.7L197.8,235.8L199.7,272.4L297.4,272.5L297.8,169.5L296.6,167.0L292.8,167.0L292.8,169.5L245.1,170.6L237.4,169.3L237.4,166.9L229.8,166.9L229.8,164.4L222.1,164.4L222.1,160.7L214.4,160.7L214.4,158.2L191.5,157.0L191.5,150.2L171.9,129.0L163.6,129.0L159.8,137.7L151.9,141.5L147.5,139.2L150.3,136.4L146.4,130.5L147.4,128.2L138.7,128.9L134.9,123.9L135.0,170.2L154.1,170.3L154.1,178.6L157.9,178.6L159.1,191.4L167.0,203.6L167.0,208.6L178.7,214.3Z" fill-rule="evenodd"/>
+              <path class="county" data-id="56015" d="M481.6,242.9L481.7,331.8L520.3,331.9L520.3,242.8Z" fill-rule="evenodd"/>
+              <path class="county outside" data-id="56017" d="M182.4,140.6L191.5,150.2L191.5,157.0L214.4,158.2L214.4,160.7L222.1,160.7L222.1,164.4L229.8,164.4L229.8,166.9L237.4,166.9L237.4,169.3L292.8,169.5L292.8,154.7L285.0,154.8L285.0,147.3L269.6,147.3L269.6,140.0L246.9,137.7L246.9,132.8L239.2,132.8L239.3,125.3L235.3,125.3L235.3,117.8L215.9,117.8L215.9,125.4L207.9,125.4L208.1,132.7L196.6,132.7L196.5,140.1Z" fill-rule="evenodd"/>
+              <path class="county outside" data-id="56019" d="M307.1,77.2L312.1,82.0L311.7,85.5L318.0,86.6L320.6,93.2L318.8,95.0L321.7,97.0L323.9,167.8L394.1,167.6L394.6,76.6Z" fill-rule="evenodd"/>
+              <path class="county" data-id="56021" d="M499.8,379.8L520.3,379.8L520.3,331.9L481.7,331.8L481.7,324.4L441.6,324.0L441.7,380.1Z" fill-rule="evenodd"/>
+              <path class="county outside" data-id="56023" d="M71.0,254.9L71.1,330.6L135.2,330.7L134.8,271.8L103.5,271.2L103.4,256.6L100.4,256.6L100.4,234.4L98.2,234.4L98.2,228.5L100.5,228.5L101.1,189.7L86.0,189.7L86.0,183.0L71.2,182.8Z" fill-rule="evenodd"/>
+              <path class="county" data-id="56025" d="M390.5,220.8L390.2,167.6L296.6,167.0L298.8,228.3L296.1,228.3L296.2,257.9L390.4,257.9Z" fill-rule="evenodd"/>
+              <path class="county" data-id="56027" d="M496.0,242.9L520.3,242.8L520.2,166.9L465.9,167.2L466.4,243.0Z" fill-rule="evenodd"/>
+              <path class="county outside" data-id="56029" d="M70.6,39.5L70.6,67.9L95.4,67.9L95.4,75.0L114.2,75.0L113.6,76.6L119.4,78.1L119.3,88.0L125.2,98.6L129.0,100.5L130.6,113.3L134.9,113.3L134.9,123.9L138.7,128.9L147.4,128.2L146.4,130.5L150.3,136.4L147.6,137.5L148.4,140.0L151.9,141.5L159.8,137.7L161.1,131.3L167.7,127.9L174.1,130.5L182.4,140.5L196.5,140.1L196.6,132.7L208.1,132.7L207.9,125.4L215.9,125.4L215.9,117.8L231.4,117.8L226.8,39.5Z" fill-rule="evenodd"/>
+              <path class="county" data-id="56031" d="M454.4,243.1L441.1,243.3L441.6,324.0L481.7,324.4L481.6,242.9Z" fill-rule="evenodd"/>
+              <path class="county outside" data-id="56033" d="M311.9,77.0L394.6,76.6L393.6,40.0L272.4,39.4L276.2,46.7L277.5,57.4L282.5,59.0L283.2,63.7L288.0,66.8L291.4,64.9L295.7,66.8L297.1,70.6L306.4,73.9L307.2,77.0Z" fill-rule="evenodd"/>
+              <path class="county outside" data-id="56035" d="M100.5,206.3L100.5,228.5L98.2,228.5L98.2,234.4L100.4,234.4L100.4,256.6L103.4,256.6L103.5,271.2L199.7,272.4L197.8,235.8L193.9,235.7L194.0,232.1L187.3,229.4L188.8,226.8L182.0,221.7L178.7,214.3L167.0,208.6L167.0,203.6L159.1,191.4L157.9,178.6L154.1,178.6L154.1,170.3L134.6,170.2L134.6,177.6L116.2,177.6L116.2,184.9L101.1,184.9Z" fill-rule="evenodd"/>
+              <path class="county outside" data-id="56037" d="M166.2,380.1L272.0,379.8L271.3,323.8L298.2,324.0L297.4,272.5L134.8,271.8L135.2,380.1Z" fill-rule="evenodd"/>
+              <path class="county outside" data-id="56039" d="M70.6,67.9L71.2,182.8L86.0,183.0L86.0,189.7L101.1,189.7L101.1,184.9L116.2,184.9L116.2,177.6L134.6,177.6L134.9,113.3L130.6,113.3L129.0,100.5L125.2,98.6L119.3,88.0L119.7,78.4L113.6,76.6L114.2,75.0L95.4,75.0L95.4,67.9Z" fill-rule="evenodd"/>
+              <path class="county outside" data-id="56041" d="M71.1,366.6L71.1,380.1L135.2,380.1L135.2,330.7L71.1,330.6Z" fill-rule="evenodd"/>
+              <path class="county outside" data-id="56043" d="M231.4,113.7L231.4,117.8L235.3,117.8L235.3,125.3L239.3,125.3L239.2,132.8L246.9,132.8L246.9,137.7L269.6,140.0L269.6,147.3L285.0,147.3L285.0,154.8L292.8,154.7L292.8,167.0L323.9,167.1L322.7,110.5L231.4,110.3Z" fill-rule="evenodd"/>
+              <path class="county outside" data-id="56045" d="M454.2,139.3L454.3,167.3L520.2,166.9L520.2,109.2L454.4,109.6Z" fill-rule="evenodd"/>
+
+              <!-- STATE OUTLINES -->
+              <path class="state-outline" d="M449.5,720.8L649.4,721.0L648.8,379.7L199.3,379.9L199.6,720.4Z"/>
+              <path class="state-outline" d="M374.6,380.0L520.3,379.8L520.0,39.7L70.6,39.4L71.1,380.1Z"/>
+
+              <!-- STATE LABELS -->
+              <text class="state-label" x="241.07" y="103.32" text-anchor="middle">
+                WYOMING
+              </text>
+
+              <text class="state-label co" x="350.26" y="690.57" text-anchor="middle">
+                COLORADO
+              </text>
+
+              <!-- MAJOR CITIES -->
+              <g class="city">
+                <circle class="city-dot" cx="454.03" cy="415.22" r="4.5"/>
+                <text class="city-label" x="464.03" y="421.22">Fort Collins</text>
+              </g>
+
+              <g class="city">
+                <circle class="city-dot" cx="442.08" cy="463.75" r="4.5"/>
+                <text class="city-label" x="432.08" y="466.75" text-anchor="end">
+                  Boulder
+                </text>
+              </g>
+
+              <g class="city">
+                <circle class="city-dot" cx="460.08" cy="487.23" r="4.5"/>
+                <text class="city-label" x="470.08" y="494.23">Denver</text>
+              </g>
+
+              <g class="city">
+                <circle class="city-dot" cx="470.92" cy="564.27" r="4.5"/>
+                <text class="city-label" x="480.92" y="571.27">Colorado Springs</text>
+              </g>
+
+              <g class="city">
+                <circle class="city-dot" cx="484.56" cy="613.59" r="4.5"/>
+                <text class="city-label" x="494.56" y="620.59">Pueblo</text>
+              </g>
+
+              <g class="city">
+                <circle class="city-dot" cx="231.39" cy="544.70" r="4.5"/>
+                <text class="city-label" x="241.39" y="534.70">Grand Junction</text>
+              </g>
+
+              <g class="city">
+                <circle class="city-dot" cx="374.33" cy="222.47" r="4.5"/>
+                <text class="city-label" x="384.33" y="239.47">Casper</text>
+              </g>
+
+              <g class="city">
+                <circle class="city-dot" cx="421.49" cy="353.42" r="4.5"/>
+                <text class="city-label" x="411.49" y="366.42" text-anchor="end">
+                  Laramie
+                </text>
+              </g>
+
+              <g class="city">
+                <circle class="city-dot" cx="471.00" cy="368.01" r="4.5"/>
+                <text class="city-label" x="481.00" y="381.01">Cheyenne</text>
+              </g>
+
+            </svg>
+
+            <figcaption>
+
+              <span>
+                <i class="key" aria-hidden="true"></i>
+                Local 58 jurisdiction
+              </span>
+
+              <span>
+                <i class="key outside" aria-hidden="true"></i>
+                Outside our jurisdiction
+              </span>
+
+            </figcaption>
+
+          </figure>
+
+          <div class="coverage">
+
+            <h2>Colorado</h2>
+            <p>We serve the entire state of Colorado.</p>
+
+            <h2>Wyoming</h2>
+            <p>We serve the following Wyoming counties:</p>
+
+            <ul>
+              <li>Albany</li>
+              <li>Converse</li>
+              <li>Goshen</li>
+              <li>Laramie</li>
+              <li>Natrona</li>
+              <li>Niobrara</li>
+              <li>Platte</li>
+            </ul>
+
+          </div>
+
+        </div>
+
+        <p class="source">
+          Map boundaries:
+          <a
+            href="https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer"
+            target="_blank"
+            rel="noopener noreferrer">
+            U.S. Census Bureau
+          </a>
+        </p>
+
+      </div>
     </div>
-  </div>
-  <p class="source">Map boundaries: <a href="https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer" target="_blank" rel="noopener noreferrer">U.S. Census Bureau</a></p>
-</div></div>
-</section>
+
+  </section>
 
   <!-- CONTACT -->
   <section id="contact" class="py-16 px-6 md:px-20 bg-white">
@@ -997,9 +1427,7 @@
 
     <p>
       ✉️
-      <a
-        href="mailto:ray@rooferslocal58.com"
-        class="text-blue-600 hover:underline">
+      <a href="mailto:ray@rooferslocal58.com" class="text-blue-600 hover:underline">
         ray@rooferslocal58.com
       </a>
     </p>
@@ -1027,7 +1455,7 @@
     <div class="mt-6">
 
       <iframe
-        src="https://maps.google.com/maps?q=404%20N.%20Spruce%20St.%20Colorado%20Springs%20CO%2080905&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        src="https://maps.google.com/maps?q=404%20N.%20Spruce%20St.%20Colorado%20Springs%20CO%2080905&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
         width="100%"
         height="300"
         class="rounded border border-gray-300"
