@@ -6,26 +6,41 @@
 
   <title>Roofers Local 58 - Colorado Springs</title>
 
-  <meta
-    name="description"
-    content="Roofers Local 58 represents commercial roofers throughout Colorado and portions of Wyoming. Apprenticeship opportunities, contractor partnerships, training, and union careers.">
+  <meta name="description" content="Roofers Local 58 represents commercial roofers throughout Colorado and portions of Wyoming. Apprenticeship opportunities, contractor partnerships, training, and union careers.">
 
-  <link
-    rel="icon"
-    href="https://upload.wikimedia.org/wikipedia/commons/4/46/Flag_of_Colorado.svg">
-
-  <link
-    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-    rel="stylesheet">
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/4/46/Flag_of_Colorado.svg">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
   <style>
-    .local58-video {
-      height: 500px;
-      border: 0;
+    html {
+      scroll-behavior: smooth;
+    }
+
+    section[id] {
+      scroll-margin-top: 100px;
     }
 
     .sponsor-card {
       min-height: 180px;
+      background: white;
+      padding: 24px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .12);
+    }
+
+    .sponsor-card img {
+      max-width: 100%;
+      max-height: 144px;
+      object-fit: contain;
+    }
+
+    .local58-video {
+      width: 100%;
+      height: 500px;
+      border: 0;
     }
 
     #local58-map {
@@ -34,30 +49,12 @@
       --red: #b91c1c;
       --gray: #f3f4f6;
       --text: #374151;
-      margin: 0;
-      background: var(--gray);
       color: var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system,
-        BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
     }
 
     #local58-map * {
       box-sizing: border-box;
-    }
-
-    #local58-map .section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 40px 24px;
-    }
-
-    #local58-map .map-heading {
-      margin: 0 0 24px;
-      color: var(--navy);
-      font-size: 1.875rem;
-      line-height: 1.2;
-      font-weight: 700;
     }
 
     #local58-map .content {
@@ -69,7 +66,7 @@
       border-left: 4px solid var(--red);
       border-radius: 4px;
       padding: 24px;
-      box-shadow: 0 1px 3px #0000001a, 0 1px 2px #0000000f;
+      box-shadow: 0 1px 3px #0000001a;
     }
 
     #local58-map figure {
@@ -88,7 +85,7 @@
     #local58-map .county {
       fill: var(--navy);
       stroke: #ffffff75;
-      stroke-width: 0.65;
+      stroke-width: .65;
       vector-effect: non-scaling-stroke;
     }
 
@@ -109,26 +106,21 @@
       font-size: 24px;
       font-weight: 700;
       letter-spacing: 2px;
-      pointer-events: none;
     }
 
     #local58-map .state-label.co {
-      fill: #fff;
+      fill: white;
       font-size: 29px;
-    }
-
-    #local58-map .city {
-      pointer-events: none;
     }
 
     #local58-map .city-dot {
       fill: var(--red);
-      stroke: #fff;
+      stroke: white;
       stroke-width: 1.5;
     }
 
     #local58-map .city-label {
-      fill: #fff;
+      fill: white;
       font-size: 20px;
       font-weight: 500;
       paint-order: stroke;
@@ -137,17 +129,16 @@
       stroke-linejoin: round;
     }
 
-    #local58-map .coverage p {
-      font-size: 1.125rem;
-      margin: 0 0 24px;
-    }
-
-    #local58-map .coverage h2 {
+    #local58-map .coverage h3 {
       font-size: 1.5rem;
-      line-height: 1.3;
       color: var(--navy);
       margin: 0 0 8px;
       font-weight: 700;
+    }
+
+    #local58-map .coverage p {
+      font-size: 1.125rem;
+      margin: 0 0 24px;
     }
 
     #local58-map .coverage ul {
@@ -157,6 +148,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 10px 20px;
       font-size: 1.125rem;
+      list-style: disc;
     }
 
     #local58-map .coverage li::marker {
@@ -168,7 +160,7 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 10px 24px;
-      font-size: 0.875rem;
+      font-size: .875rem;
       margin-top: 8px;
     }
 
@@ -192,29 +184,9 @@
       border-color: #9ca3af;
     }
 
-    #local58-map .source {
-      font-size: 0.8125rem;
-      margin: 16px 0 0;
-      color: #6b7280;
-    }
-
-    #local58-map .source a {
-      color: inherit;
-      text-underline-offset: 2px;
-    }
-
-    #local58-map a:focus-visible {
-      outline: 3px solid var(--red);
-      outline-offset: 3px;
-    }
-
     @media (max-width: 700px) {
       .local58-video {
         height: 260px;
-      }
-
-      #local58-map .section {
-        padding: 28px 16px;
       }
 
       #local58-map .content {
@@ -227,35 +199,8 @@
         grid-row: 1;
       }
 
-      #local58-map .coverage p {
-        margin-bottom: 20px;
-      }
-
-      #local58-map .coverage ul {
-        gap: 8px 16px;
-      }
-
       #local58-map svg {
         max-height: 500px;
-      }
-
-      #local58-map figcaption {
-        gap: 8px 16px;
-      }
-    }
-
-    @media print {
-      #local58-map .section {
-        padding: 0;
-      }
-
-      #local58-map .content {
-        box-shadow: none;
-      }
-
-      #local58-map .county {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
       }
     }
   </style>
@@ -264,7 +209,7 @@
 <body class="bg-white font-sans">
 
   <!-- HEADER -->
-  <header class="bg-blue-900 text-white p-4 flex items-center justify-between sticky top-0 z-50 shadow-md">
+  <header class="bg-blue-900 text-white p-4 flex flex-wrap gap-4 items-center justify-between sticky top-0 z-50 shadow-md">
 
     <div class="flex items-center space-x-4">
       <img
@@ -278,11 +223,9 @@
         class="h-8">
     </div>
 
-    <div class="flex items-center">
-      <h1 class="text-xl font-bold">Roofers Local 58</h1>
-    </div>
+    <h1 class="text-xl font-bold">Roofers Local 58</h1>
 
-    <nav class="space-x-4 hidden md:block">
+    <nav aria-label="Main navigation" class="space-x-4 hidden md:block">
       <a href="#" class="hover:underline">Home</a>
       <a href="#video" class="hover:underline">Video</a>
       <a href="#news" class="hover:underline">News &amp; Announcements</a>
@@ -300,18 +243,18 @@
   <section class="bg-white text-center py-8">
     <img
       src="roofers-logo-2x.png"
-      alt="United Union of Roofers Logo"
+      alt="United Union of Roofers, Waterproofers and Allied Workers"
       class="mx-auto h-24">
   </section>
 
   <!-- HERO -->
-  <section class="bg-gradient-to-r from-red-700 to-blue-900 text-white py-20 text-center">
+  <section class="bg-gradient-to-r from-red-700 to-blue-900 text-white py-20 px-6 text-center">
 
-    <h2 class="text-5xl font-bold mb-2">
+    <h2 class="text-4xl md:text-5xl font-bold mb-2">
       Proud. Professional.
     </h2>
 
-    <h2 class="text-5xl font-bold mb-4">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">
       Committed to Excellence.
     </h2>
 
@@ -319,17 +262,19 @@
       Serving Colorado’s Commercial Roofers with Union Pride
     </p>
 
-    <a
-      href="https://apply.appion.network/Start/roofers58"
-      class="bg-white text-red-700 font-semibold px-6 py-3 rounded mr-4">
-      Join the Roofers
-    </a>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a
+        href="https://apply.appion.network/Start/roofers58"
+        class="inline-block bg-white text-red-700 font-semibold px-6 py-3 rounded">
+        Join the Roofers
+      </a>
 
-    <a
-      href="#apprenticeship"
-      class="bg-white text-blue-900 font-semibold px-6 py-3 rounded">
-      Apprenticeship Info
-    </a>
+      <a
+        href="#apprenticeship"
+        class="inline-block bg-white text-blue-900 font-semibold px-6 py-3 rounded">
+        Apprenticeship Info
+      </a>
+    </div>
 
   </section>
 
@@ -342,7 +287,7 @@
 
     <div class="max-w-5xl mx-auto">
       <iframe
-        class="local58-video w-full rounded shadow"
+        class="local58-video rounded shadow"
         src="https://www.youtube.com/embed/N-p1VSD03UA"
         title="Roofers Local 58 Video"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -359,7 +304,70 @@
       News &amp; Announcements
     </h2>
 
-    <!-- CSALC BLUE COLLAR BREAKFAST -->
+    <!-- FIRST EVENT: CSALC TRUNK OR TREAT -->
+    <div class="bg-gray-100 border-l-4 border-red-700 p-6 rounded shadow mb-6">
+
+      <h3 class="text-2xl font-bold text-blue-900 mb-3">
+        🎃 CSALC Trunk or Treat
+      </h3>
+
+      <p class="text-gray-700 text-lg mb-4">
+        Join the Colorado Springs Area Labor Council for Trunk or Treat!
+        Members and their families are invited to enjoy this free community event.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 text-lg text-gray-700 mb-6">
+        <div>
+          <strong>📅 Date</strong><br>
+          Saturday, October 24, 2026
+        </div>
+
+        <div>
+          <strong>🕑 Time</strong><br>
+          2:00 PM – 5:00 PM
+        </div>
+
+        <div>
+          <strong>🎟️ Admission</strong><br>
+          Free and open to the public
+        </div>
+
+        <div>
+          <strong>Presented By</strong><br>
+          Colorado Springs Area Labor Council
+        </div>
+      </div>
+
+      <a
+        href="https://www.csalc.net/TrunkorTreat"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block bg-red-700 text-white px-6 py-3 rounded font-semibold hover:bg-red-800">
+        View CSALC Event Details
+      </a>
+
+      <figure class="mt-8 max-w-4xl mx-auto">
+        <a
+          href="https://www.csalc.net/TrunkorTreat"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit the CSALC Trunk or Treat event page">
+
+          <img
+            src="csalc-trunk-or-treat-2026.png"
+            alt="CSALC Trunk or Treat, Saturday October 24, 2026, 2 PM to 5 PM. Free and open to the public."
+            loading="lazy"
+            class="w-full h-auto rounded-lg shadow-lg border border-gray-300">
+        </a>
+
+        <figcaption class="text-sm text-gray-600 text-center mt-3">
+          Click the flyer for event details from the Colorado Springs Area Labor Council.
+        </figcaption>
+      </figure>
+
+    </div>
+
+    <!-- SECOND EVENT: CSALC BLUE COLLAR BREAKFAST -->
     <div class="bg-gray-100 border-l-4 border-red-700 p-6 rounded shadow mb-6">
 
       <h3 class="text-2xl font-bold text-blue-900 mb-3">
@@ -367,13 +375,12 @@
       </h3>
 
       <p class="text-gray-700 text-lg mb-4">
-        Join the Colorado Springs Area Labor Council and affiliated Local
-        Unions for a free breakfast. Connect with fellow Union Members and
-        community allies for a morning of food and solidarity.
+        Join the Colorado Springs Area Labor Council and affiliated Local Unions
+        for a free breakfast. Connect with fellow Union Members and community
+        allies for a morning of food and solidarity.
       </p>
 
       <div class="grid md:grid-cols-2 gap-6 text-lg text-gray-700 mb-6">
-
         <div>
           <strong>📅 Date</strong><br>
           Saturday, October 31, 2026
@@ -396,7 +403,6 @@
           Colorado Springs Area Labor Council<br>
           <strong>Breakfast is free!</strong>
         </div>
-
       </div>
 
       <a
@@ -408,7 +414,6 @@
       </a>
 
       <figure class="mt-8 max-w-4xl mx-auto">
-
         <a
           href="https://www.mobilize.us/csalc/event/1061864/"
           target="_blank"
@@ -417,87 +422,16 @@
 
           <img
             src="csalc-blue-collar-breakfast-2026.jpg"
-            alt="Blue Collar Breakfast, Saturday October 31, 9:30 AM to 11 AM, 2150 Naegele Road, Colorado Springs, CO 80904."
+            alt="Blue Collar Breakfast, Saturday October 31, 2026, 9:30 AM to 11 AM, IBEW Local 113, 2150 Naegele Road, Colorado Springs."
             loading="lazy"
             width="944"
             height="494"
             class="w-full h-auto rounded-lg shadow-lg border border-gray-300">
-
         </a>
 
         <figcaption class="text-sm text-gray-600 text-center mt-3">
-          Click the banner for event details and to RSVP with the
-          Colorado Springs Area Labor Council.
+          Click the banner for event details and to RSVP with the Colorado Springs Area Labor Council.
         </figcaption>
-
-      </figure>
-
-    </div>
-
-    <!-- CSALC TRUNK OR TREAT -->
-    <div class="bg-gray-100 border-l-4 border-red-700 p-6 rounded shadow mb-6">
-
-      <h3 class="text-2xl font-bold text-blue-900 mb-3">
-        🎃 CSALC Trunk or Treat
-      </h3>
-
-      <p class="text-gray-700 text-lg mb-4">
-        Join the Colorado Springs Area Labor Council for Trunk or Treat!
-        Members and their families are invited to enjoy this free community event.
-      </p>
-
-      <div class="grid md:grid-cols-2 gap-6 text-lg text-gray-700 mb-6">
-
-        <div>
-          <strong>📅 Date</strong><br>
-          Saturday, October 24, 2026
-        </div>
-
-        <div>
-          <strong>🕑 Time</strong><br>
-          2:00 PM – 5:00 PM
-        </div>
-
-        <div>
-          <strong>🎟️ Admission</strong><br>
-          Free and open to the public
-        </div>
-
-        <div>
-          <strong>Presented By</strong><br>
-          Colorado Springs Area Labor Council
-        </div>
-
-      </div>
-
-      <a
-        href="https://www.csalc.net/TrunkorTreat"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-block bg-red-700 text-white px-6 py-3 rounded font-semibold hover:bg-red-800">
-        View CSALC Event Details
-      </a>
-
-      <figure class="mt-8 max-w-4xl mx-auto">
-
-        <a
-          href="https://www.csalc.net/TrunkorTreat"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Visit the CSALC Trunk or Treat event page">
-
-          <img
-            src="csalc-trunk-or-treat-2026.png"
-            alt="Trunk or Treat, Saturday October 24, 2026, 2 PM to 5 PM. Free and open to the public. Sponsored by the Colorado Springs Area Labor Council."
-            loading="lazy"
-            class="w-full h-auto rounded-lg shadow-lg border border-gray-300">
-
-        </a>
-
-        <figcaption class="text-sm text-gray-600 text-center mt-3">
-          Click the flyer for event details from the Colorado Springs Area Labor Council.
-        </figcaption>
-
       </figure>
 
     </div>
@@ -506,7 +440,6 @@
     <div class="bg-blue-900 text-white p-6 rounded shadow mb-6">
 
       <div class="text-center max-w-4xl mx-auto mb-8">
-
         <h3 class="text-3xl font-bold mb-3">
           Thank You to Our BBQ Sponsors
         </h3>
@@ -517,185 +450,150 @@
           Family Appreciation BBQ. Their generosity helped make the event a
           success for our Members and their families.
         </p>
-
       </div>
 
       <!-- PLATINUM SPONSORS -->
       <div class="mb-8">
-
         <h4 class="text-xl font-bold text-yellow-300 text-center uppercase tracking-wide mb-4">
           Platinum Sponsors
         </h4>
 
         <div class="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-
-          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
+          <div class="sponsor-card">
             <img
               src="Local 11.png"
               alt="Roofers Local 11 - Platinum Sponsor"
-              loading="lazy"
-              class="max-h-36 max-w-full object-contain">
+              loading="lazy">
           </div>
 
-          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
+          <div class="sponsor-card">
             <img
               src="jamar.svg"
               alt="The Jamar Company - Platinum Sponsor"
-              loading="lazy"
-              class="max-h-28 max-w-full object-contain">
+              loading="lazy">
           </div>
-
         </div>
-
       </div>
 
       <!-- GOLD SPONSORS -->
       <div class="mb-8">
-
         <h4 class="text-xl font-bold text-yellow-300 text-center uppercase tracking-wide mb-4">
           Gold Sponsors
         </h4>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-
-          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
+          <div class="sponsor-card">
             <img
               src="colorado_afl-cio_logo_1.jpg.webp"
               alt="Colorado AFL-CIO - Gold Sponsor"
-              loading="lazy"
-              class="max-h-32 max-w-full object-contain">
+              loading="lazy">
           </div>
 
-          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
+          <div class="sponsor-card">
             <img
               src="roofers-logo-2x.png"
               alt="United Union of Roofers, Waterproofers and Allied Workers - Gold Sponsor"
-              loading="lazy"
-              class="max-h-32 max-w-full object-contain">
+              loading="lazy">
           </div>
 
-          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
+          <div class="sponsor-card">
             <img
               src="roofer_local30_bulldog_logo.png"
               alt="Roofers Local 30 - Gold Sponsor"
-              loading="lazy"
-              class="max-h-32 max-w-full object-contain">
+              loading="lazy">
           </div>
 
-          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
+          <div class="sponsor-card">
             <img
               src="CBCTC.webp"
               alt="Colorado Building and Construction Trades Council - Gold Sponsor"
-              loading="lazy"
-              class="max-h-32 max-w-full object-contain">
+              loading="lazy">
           </div>
-
         </div>
-
       </div>
 
       <!-- SILVER SPONSORS -->
       <div class="mb-8">
-
         <h4 class="text-xl font-bold text-gray-200 text-center uppercase tracking-wide mb-4">
           Silver Sponsors
         </h4>
 
         <div class="grid sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
-
-          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
+          <div class="sponsor-card">
             <img
               src="American income life insurance.png"
               alt="American Income Life - Silver Sponsor"
-              loading="lazy"
-              class="max-h-28 max-w-full object-contain">
+              loading="lazy">
           </div>
 
-          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
+          <div class="sponsor-card">
             <img
               src="ChatGPT Image Aug 21, 2026, 07_46_14 AM.png"
               alt="Roofers Local 123 - Silver Sponsor"
-              loading="lazy"
-              class="max-h-40 max-w-full object-contain">
+              loading="lazy">
           </div>
 
-          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
+          <div class="sponsor-card">
             <img
               src="fdffa13f-38fb-4809-9c17-ba9be258bfa8.png"
               alt="Roofers and Waterproofers Local 27 - Silver Sponsor"
-              loading="lazy"
-              class="max-h-40 max-w-full object-contain">
+              loading="lazy">
           </div>
-
         </div>
-
       </div>
 
       <!-- FOOD SPONSOR -->
       <div class="mb-8">
-
         <h4 class="text-xl font-bold text-green-300 text-center uppercase tracking-wide mb-4">
           Food Sponsor
         </h4>
 
-        <div class="sponsor-card max-w-xl mx-auto bg-white p-6 rounded-lg shadow flex items-center justify-center">
-
+        <div class="sponsor-card max-w-xl mx-auto">
           <img
             src="Final-Wingstop-Logo-Green-Web_(2).png"
             alt="Wingstop - Food Sponsor"
-            loading="lazy"
-            class="max-h-28 max-w-full object-contain">
-
+            loading="lazy">
         </div>
-
       </div>
 
       <!-- RAFFLE PRIZE SPONSORS -->
       <div class="mb-8">
-
         <h4 class="text-xl font-bold text-red-300 text-center uppercase tracking-wide mb-4">
           Raffle Prize Sponsors
         </h4>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-
-          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
+          <div class="sponsor-card">
             <img
               src="boss hammer logo.jpg"
               alt="Boss Hammer Co. - Raffle Prize Sponsor"
-              loading="lazy"
-              class="max-h-28 max-w-full object-contain">
+              loading="lazy">
           </div>
 
-          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
+          <div class="sponsor-card">
             <img
               src="scheels-logo-png_seeklogo-123417.png"
               alt="Scheels - Raffle Prize Sponsor"
-              loading="lazy"
-              class="max-h-24 max-w-full object-contain">
+              loading="lazy">
           </div>
 
-          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
+          <div class="sponsor-card">
             <img
               src="785-7856241_gaf-logo-gaf-materials-corporation.png"
               alt="GAF - Raffle Prize Sponsor"
-              loading="lazy"
-              class="max-h-24 max-w-full object-contain">
+              loading="lazy">
           </div>
 
-          <div class="sponsor-card bg-white p-6 rounded-lg shadow flex items-center justify-center">
+          <div class="sponsor-card">
             <img
               src="de3797dd81-dewalt-logo-dewalt-logo-download.png"
               alt="DeWalt - Raffle Prize Sponsor"
-              loading="lazy"
-              class="max-h-24 max-w-full object-contain">
+              loading="lazy">
           </div>
-
         </div>
-
       </div>
 
-      <!-- SPONSOR CONTACT AND BBQ PHOTOS -->
+      <!-- SPONSOR THANK YOU AND BBQ PHOTOS -->
       <div class="mt-8 bg-white p-5 rounded-lg border border-gray-300 text-gray-700">
 
         <h4 class="text-xl font-bold text-blue-900 mb-3">
@@ -741,7 +639,6 @@
         </p>
 
       </div>
-
     </div>
 
     <!-- MEMBER MEETING -->
@@ -753,8 +650,8 @@
 
       <p class="text-gray-700 text-lg">
         Membership Meetings are held on the
-        <strong>2nd Monday of every month</strong> at the Union Hall beginning
-        at <strong>7:30 PM</strong>.
+        <strong>2nd Monday of every month</strong> at the Union Hall
+        beginning at <strong>7:30 PM</strong>.
       </p>
 
     </div>
@@ -768,26 +665,22 @@
 
       <p class="text-gray-700 text-lg mb-6">
         Roofers Local 58 signatory contractors offer competitive hourly wages,
-        with employer-paid benefits provided in addition to the wage rates
-        shown below.
+        with employer-paid benefits provided in addition to the wage rates shown below.
       </p>
 
       <div class="overflow-x-auto mb-6">
-
         <table class="min-w-full bg-white border border-gray-300 text-left">
-
           <thead class="bg-blue-900 text-white">
             <tr>
-              <th class="py-3 px-4 border">Contractor</th>
-              <th class="py-3 px-4 border">Journeyman</th>
-              <th class="py-3 px-4 border">Foreman B</th>
-              <th class="py-3 px-4 border">Foreman A</th>
-              <th class="py-3 px-4 border">Benefits</th>
+              <th scope="col" class="py-3 px-4 border">Contractor</th>
+              <th scope="col" class="py-3 px-4 border">Journeyman</th>
+              <th scope="col" class="py-3 px-4 border">Foreman B</th>
+              <th scope="col" class="py-3 px-4 border">Foreman A</th>
+              <th scope="col" class="py-3 px-4 border">Benefits</th>
             </tr>
           </thead>
 
           <tbody class="text-gray-700">
-
             <tr>
               <td class="py-3 px-4 border font-semibold">Central States Roofing</td>
               <td class="py-3 px-4 border">$33.92/hr</td>
@@ -806,9 +699,7 @@
               <td class="py-3 px-4 border">$40.00/hr</td>
               <td class="py-3 px-4 border">
                 $6.43/hr<br>
-                <span class="text-sm text-gray-600">
-                  Includes NRIPP pension contribution
-                </span>
+                <span class="text-sm text-gray-600">Includes NRIPP pension contribution</span>
               </td>
             </tr>
 
@@ -819,23 +710,18 @@
               <td class="py-3 px-4 border">$40.00/hr</td>
               <td class="py-3 px-4 border">
                 $6.43/hr<br>
-                <span class="text-sm text-gray-600">
-                  Includes NRIPP pension contribution
-                </span>
+                <span class="text-sm text-gray-600">Includes NRIPP pension contribution</span>
               </td>
             </tr>
-
           </tbody>
-
         </table>
-
       </div>
 
       <p class="text-gray-700 text-lg mb-5">
-        Central States Roofing provides $5.88/hr in employer-paid benefits
-        for Journeymen and Foremen but does not participate in the NRIPP pension.
-        Monument Roofing of Colorado and The Jamar Company provide $6.43/hr
-        in employer-paid benefits, including an NRIPP pension contribution.
+        Central States Roofing provides $5.88/hr in employer-paid benefits for
+        Journeymen and Foremen but does not participate in the NRIPP pension.
+        Monument Roofing of Colorado and The Jamar Company provide $6.43/hr in
+        employer-paid benefits, including an NRIPP pension contribution.
         Rates are subject to the applicable collective bargaining agreement.
       </p>
 
@@ -846,15 +732,12 @@
       </a>
 
     </div>
-
   </section>
 
   <!-- ABOUT -->
   <section id="about" class="py-16 px-6 md:px-20 bg-gray-100">
 
-    <h2 class="text-3xl font-bold text-blue-900 mb-4">
-      About Us
-    </h2>
+    <h2 class="text-3xl font-bold text-blue-900 mb-4">About Us</h2>
 
     <p class="text-gray-700 text-lg mb-4">
       Roofers Local 58 is a proud affiliate of the United Union of Roofers,
@@ -926,19 +809,16 @@
       </h3>
 
       <div class="overflow-x-auto">
-
         <table class="min-w-full bg-white border border-gray-300 text-left">
-
           <thead class="bg-blue-900 text-white">
             <tr>
-              <th class="py-3 px-4 border">Contractor</th>
-              <th class="py-3 px-4 border">Starting Wage</th>
-              <th class="py-3 px-4 border">Benefits</th>
+              <th scope="col" class="py-3 px-4 border">Contractor</th>
+              <th scope="col" class="py-3 px-4 border">Starting Wage</th>
+              <th scope="col" class="py-3 px-4 border">Benefits</th>
             </tr>
           </thead>
 
           <tbody class="text-gray-700">
-
             <tr>
               <td class="py-3 px-4 border font-semibold">
                 Monument Roofing of Colorado/Jamar
@@ -954,13 +834,9 @@
               <td class="py-3 px-4 border">$22.05/hr</td>
               <td class="py-3 px-4 border">$5.79/hr</td>
             </tr>
-
           </tbody>
-
         </table>
-
       </div>
-
     </div>
 
     <p class="text-gray-700 text-lg mb-4">
@@ -993,13 +869,11 @@
     </a>
 
     <div class="mt-6">
-
       <p class="text-lg text-gray-700 mb-2">
         Follow Roofers Local 58 for training videos and program updates:
       </p>
 
       <div class="space-x-4">
-
         <a
           href="https://www.facebook.com/proudroofer"
           target="_blank"
@@ -1015,9 +889,7 @@
           class="text-blue-700 underline hover:text-blue-500">
           Instagram
         </a>
-
       </div>
-
     </div>
 
   </section>
@@ -1073,9 +945,10 @@
 
     <p class="text-gray-700 text-lg mb-4">
       Local 58 contractors maintain full control of their businesses.
-      Our role is to help provide manpower, training resources, labor stability,
-      and support when needed. Existing employees can remain with your company
-      and become members of the union with waived initiation fees for current workers.
+      Our role is to help provide manpower, training resources, labor
+      stability, and support when needed. Existing employees can remain
+      with your company and become members of the union with waived
+      initiation fees for current workers.
     </p>
 
     <p class="text-gray-700 text-lg mb-6">
@@ -1084,13 +957,11 @@
       standards, Roofers Local 58 is ready to help your business succeed.
     </p>
 
-    <div class="flex flex-wrap gap-4">
-      <a
-        href="#contact"
-        class="inline-block bg-red-700 text-white px-6 py-3 rounded font-semibold">
-        Contact Us About Signatory Opportunities
-      </a>
-    </div>
+    <a
+      href="#contact"
+      class="inline-block bg-red-700 text-white px-6 py-3 rounded font-semibold">
+      Contact Us About Signatory Opportunities
+    </a>
 
   </section>
 
@@ -1110,13 +981,10 @@
           src="https://images.squarespace-cdn.com/content/v1/5c2ce095365f023fda9598d9/1556654927356-BN9CKPNLWL2R2I0ME42X/27.png"
           alt="Central States Roofing Logo"
           loading="lazy"
-          class="h-44 w-auto md:mr-6 mb-4 md:mb-0">
+          class="h-44 w-auto max-w-full object-contain md:mr-6 mb-4 md:mb-0">
 
         <div class="text-center md:text-left">
-
-          <h3 class="text-xl font-semibold mb-2">
-            Central States Roofing
-          </h3>
+          <h3 class="text-xl font-semibold mb-2">Central States Roofing</h3>
 
           <p>📍 4218 N. Nevada Ave., Colorado Springs, CO 80907</p>
 
@@ -1143,9 +1011,7 @@
             class="text-blue-700 hover:underline mt-2 ml-4 inline-block">
             Facebook
           </a>
-
         </div>
-
       </div>
 
       <!-- MONUMENT ROOFING -->
@@ -1155,10 +1021,9 @@
           src="Monument-Roofing-Full-Color-Logo-1-1920x1080.png"
           alt="Monument Roofing of Colorado Logo"
           loading="lazy"
-          class="h-28 w-auto md:mr-6 mb-4 md:mb-0">
+          class="h-28 w-auto max-w-full object-contain md:mr-6 mb-4 md:mb-0">
 
         <div class="text-center md:text-left">
-
           <h3 class="text-xl font-semibold mb-2">
             Monument Roofing of Colorado, A Tecta America Company LLC
           </h3>
@@ -1188,25 +1053,20 @@
             class="text-blue-700 hover:underline mt-2 ml-4 inline-block">
             Facebook
           </a>
-
         </div>
-
       </div>
 
-      <!-- THE JAMAR COMPANY -->
+      <!-- JAMAR -->
       <div class="bg-gray-100 p-4 flex flex-col md:flex-row items-center rounded shadow">
 
         <img
           src="jamar.svg"
           alt="The Jamar Company Logo"
           loading="lazy"
-          class="h-12 w-auto md:mr-6 mb-4 md:mb-0">
+          class="h-12 w-auto max-w-full object-contain md:mr-6 mb-4 md:mb-0">
 
         <div class="text-center md:text-left">
-
-          <h3 class="text-xl font-semibold mb-2">
-            The Jamar Company
-          </h3>
+          <h3 class="text-xl font-semibold mb-2">The Jamar Company</h3>
 
           <p>📍 661 Innovation Circle, Unit A, Windsor, CO 80550</p>
 
@@ -1233,246 +1093,217 @@
             class="text-blue-700 hover:underline mt-2 ml-4 inline-block">
             Facebook
           </a>
-
         </div>
-
       </div>
 
     </div>
-
   </section>
 
-  <!-- JURISDICTION: MAP IS BUILT INTO THIS PAGE -->
-  <section id="jurisdiction" class="py-8 px-3 md:px-20 bg-gray-100">
+  <!-- JURISDICTION -->
+  <section id="jurisdiction" class="py-16 px-6 md:px-20 bg-gray-100">
+
+    <h2 class="text-3xl font-bold text-blue-900 mb-6">
+      Our Jurisdiction
+    </h2>
 
     <div id="local58-map">
-      <div class="section">
+      <div class="content">
 
-        <h2 class="map-heading">Our Jurisdiction</h2>
+        <figure>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 720 760"
+            role="img"
+            aria-labelledby="map-title map-description">
 
-        <div class="content">
+            <title id="map-title">Roofers Local 58 jurisdiction</title>
+            <desc id="map-description">
+              All of Colorado is shaded navy. In Wyoming, Albany, Converse,
+              Goshen, Laramie, Natrona, Niobrara, and Platte counties are
+              shaded navy. Other Wyoming counties are gray. Red dots mark
+              major cities.
+            </desc>
 
-          <figure>
+            <!-- COLORADO COUNTIES -->
+            <g class="county" fill-rule="evenodd">
+              <path d="M466.9,486.5L542.5,487.2L542.6,464.9L460.7,465.0L460.2,467.7L458.4,466.6L459.6,469.9L456.1,472.3L456.0,482.8L472.9,482.2L472.9,478.5L476.7,478.2L476.8,473.9L485.2,473.6L483.9,480.1L474.7,480.1L476.5,484.7L466.9,486.5Z"><title>Adams County</title></path>
+              <path d="M392.7,671.2L392.7,690.0L411.7,690.0L428.3,671.2L430.1,656.4L392.8,656.7L392.7,671.2Z"><title>Alamosa County</title></path>
+              <path d="M456.0,501.8L542.5,501.9L542.5,487.2L466.9,487.1L468.1,490.9L465.6,490.7L465.6,493.3L469.3,494.2L465.0,497.0L458.4,492.4L456.0,501.8Z"><title>Arapahoe County</title></path>
+              <path d="M300.0,692.7L300.1,720.3L364.6,720.9L356.9,703.8L351.6,700.9L351.6,686.0L322.7,687.0L322.7,684.4L300.0,684.4L300.0,692.7Z"><title>Archuleta County</title></path>
+              <path d="M617.5,665.6L583.0,665.6L582.4,720.3L649.4,721.0L649.5,665.5L617.5,665.6Z"><title>Baca County</title></path>
+              <path d="M604.5,627.0L604.5,612.5L562.2,612.7L562.0,665.6L604.1,665.6L604.5,627.0Z"><title>Bent County</title></path>
+              <path d="M448.8,472.4L456.1,466.9L455.9,442.8L417.5,442.9L415.9,449.0L419.2,454.9L418.3,462.1L415.1,463.8L415.6,470.6L448.8,472.4Z"><title>Boulder County</title></path>
+              <path d="M448.8,473.4L458.5,471.7L458.4,466.6L460.2,467.7L461.9,461.3L460.1,464.4L456.1,465.0L452.4,471.4L451.2,468.9L448.8,473.4Z"><title>Broomfield County</title></path>
+              <path d="M356.8,547.0L357.0,550.9L359.6,550.2L365.4,557.8L374.3,557.7L372.8,562.5L368.5,565.1L368.5,573.3L366.2,575.8L371.8,583.0L373.1,592.3L379.4,599.3L390.4,599.2L391.5,596.4L394.5,597.2L401.2,592.1L403.0,583.6L397.1,576.1L401.2,566.6L396.7,557.4L393.4,555.0L388.1,555.2L388.2,551.2L384.4,550.9L382.9,545.4L358.1,545.2L356.8,547.0Z"><title>Chaffee County</title></path>
+              <path d="M617.0,583.0L649.3,582.9L649.1,546.1L577.5,546.9L576.8,583.1L617.0,583.0Z"><title>Cheyenne County</title></path>
+              <path d="M412.9,480.2L406.6,483.3L402.4,482.3L399.9,492.8L409.6,498.2L405.7,501.7L433.8,502.0L433.8,486.5L425.0,484.5L422.3,480.1L417.4,477.9L412.9,480.2Z"><title>Clear Creek County</title></path>
+              <path d="M388.8,720.8L413.3,720.7L409.9,716.5L412.5,707.1L411.7,690.0L392.7,690.0L392.7,686.2L351.6,686.0L351.6,700.9L356.9,703.8L364.6,720.9L388.8,720.8Z"><title>Conejos County</title></path>
+              <path d="M411.1,691.1L413.2,696.0L409.9,716.5L413.2,720.7L449.5,720.8L448.6,688.4L451.1,685.5L445.4,670.8L447.4,667.6L440.4,664.3L431.0,668.3L411.1,691.1Z"><title>Costilla County</title></path>
+              <path d="M539.9,625.6L548.1,625.6L548.1,620.6L555.2,620.6L555.5,591.3L520.2,590.8L520.0,622.8L539.9,625.6Z"><title>Crowley County</title></path>
+              <path d="M408.3,612.7L416.2,621.7L421.9,638.0L429.1,644.1L432.9,644.6L439.1,640.5L441.3,643.8L448.6,633.6L451.4,639.4L454.5,639.2L456.2,642.4L456.3,613.3L408.3,612.7Z"><title>Custer County</title></path>
+              <path d="M281.1,546.1L275.8,543.3L267.9,545.0L260.7,551.8L257.7,558.1L242.4,564.7L242.4,578.4L298.8,578.3L298.8,531.6L281.1,546.1Z"><title>Delta County</title></path>
+              <path d="M452.4,496.8L457.8,496.6L458.9,492.4L466.8,497.0L469.3,494.2L465.4,492.3L468.1,490.9L467.2,485.9L476.5,484.7L474.7,480.1L483.9,480.1L485.2,473.6L476.8,473.9L476.7,478.2L472.9,478.5L472.9,482.2L455.3,482.8L456.0,493.3L454.2,493.8L456.0,494.7L452.4,496.8Z"><title>Denver County</title></path>
+              <path d="M221.8,666.6L268.7,665.9L268.8,661.1L274.6,659.4L275.7,654.4L267.4,647.4L259.5,647.6L253.3,650.5L250.3,644.2L199.8,645.4L199.7,679.1L207.8,666.6L221.8,666.6Z"><title>Dolores County</title></path>
+              <path d="M457.7,539.1L481.1,539.1L481.2,502.0L456.3,502.0L454.7,503.8L453.9,508.1L450.8,510.1L451.5,513.2L448.5,515.4L445.5,527.9L438.3,539.1L457.7,539.1Z"><title>Douglas County</title></path>
+              <path d="M323.7,505.5L323.7,519.0L367.8,519.3L369.5,517.7L377.0,520.4L381.9,517.8L378.8,504.9L381.6,505.0L383.9,496.2L370.5,484.8L367.3,471.4L323.7,471.9L323.7,505.5Z"><title>Eagle County</title></path>
+              <path d="M457.3,539.1L457.6,561.3L455.2,561.3L454.8,567.2L463.3,567.5L463.2,591.0L520.2,590.8L520.4,539.2L457.3,539.1Z"><title>El Paso County</title></path>
+              <path d="M542.0,527.7L542.0,501.9L481.2,502.0L481.1,539.1L520.4,539.2L520.1,561.3L541.7,561.5L542.0,527.7Z"><title>Elbert County</title></path>
+              <path d="M394.4,597.7L408.3,612.7L463.3,613.3L463.2,579.9L444.0,580.1L444.2,575.9L397.2,576.2L400.2,577.6L403.1,584.1L401.2,592.2L394.4,597.7Z"><title>Fremont County</title></path>
+              <path d="M274.2,519.0L323.7,519.0L323.7,471.9L328.8,471.9L328.6,457.2L310.6,457.3L310.5,472.3L303.3,472.0L303.2,479.6L270.7,479.9L270.7,491.0L231.1,491.1L231.1,494.8L199.2,493.9L199.3,518.9L274.2,519.0Z"><title>Garfield County</title></path>
+              <path d="M414.4,475.3L415.3,477.8L422.3,480.1L424.8,484.4L433.9,486.6L433.9,470.6L416.1,470.8L414.4,475.3Z"><title>Gilpin County</title></path>
+              <path d="M402.4,482.3L410.4,482.5L414.8,478.7L415.1,463.8L418.3,462.1L419.2,454.9L415.9,448.9L418.1,443.8L408.9,432.6L407.6,424.6L402.2,424.5L401.4,430.9L397.8,435.4L394.0,433.3L380.4,437.5L378.2,434.3L375.6,437.1L372.3,434.6L366.8,435.5L363.8,430.0L360.9,434.0L356.5,433.0L353.3,427.1L355.0,471.4L379.0,472.3L389.8,481.5L394.4,491.7L400.0,490.7L402.8,487.1L402.4,482.3Z"><title>Grand County</title></path>
+              <path d="M330.9,602.6L330.9,599.0L379.4,599.3L373.1,592.3L371.8,583.0L366.2,575.8L368.5,573.3L368.5,565.1L372.8,562.5L374.3,557.7L365.4,557.8L359.6,550.2L355.9,550.5L350.6,545.4L347.1,546.5L343.7,552.0L339.9,549.3L336.9,550.8L331.2,547.2L331.7,544.1L326.7,540.0L312.8,540.0L306.8,533.2L306.8,529.2L303.3,528.3L298.8,531.6L298.9,609.5L290.2,609.5L294.5,622.7L330.9,622.7L330.9,602.6Z"><title>Gunnison County</title></path>
+              <path d="M293.0,635.9L296.8,640.0L297.8,650.0L301.5,652.8L300.0,684.4L322.7,684.4L322.1,640.5L330.9,639.0L330.9,622.7L294.5,622.7L295.0,627.8L298.2,630.1L295.9,635.2L293.0,635.9Z"><title>Hinsdale County</title></path>
+              <path d="M427.2,669.5L429.2,670.9L440.4,664.3L447.4,667.6L445.4,670.8L451.1,685.5L448.7,687.4L448.8,695.6L452.0,695.1L459.8,688.4L475.6,685.7L479.0,682.9L479.3,678.3L488.4,671.4L494.4,656.7L501.1,650.8L482.2,643.7L458.6,645.4L454.5,639.2L451.4,639.4L448.6,633.6L441.3,643.8L439.1,640.5L432.9,644.6L429.1,644.1L431.9,648.5L427.2,669.5Z"><title>Huerfano County</title></path>
+              <path d="M339.1,382.2L343.5,388.7L345.8,388.1L347.7,390.9L351.2,389.6L354.4,395.9L349.9,412.6L355.9,432.7L360.9,434.0L363.8,430.0L366.7,435.5L372.3,434.6L375.6,437.1L378.2,434.3L380.4,437.5L394.0,433.3L397.7,435.4L399.2,433.9L404.7,421.9L401.0,420.9L395.7,403.0L383.3,385.5L383.0,380.1L340.1,379.7L339.1,382.2Z"><title>Jackson County</title></path>
+              <path d="M433.9,489.1L433.9,539.1L438.3,539.1L445.5,527.9L448.5,515.4L456.3,502.0L456.0,497.3L452.4,496.8L456.0,494.7L454.2,493.2L456.0,493.3L456.1,472.3L450.0,472.4L450.6,474.5L448.8,474.3L449.9,472.4L433.9,472.4L433.9,489.1Z"><title>Jefferson County</title></path>
+              <path d="M612.4,612.5L649.3,612.4L649.2,582.9L576.8,583.1L576.8,590.5L555.5,590.7L555.7,612.7L612.4,612.5Z"><title>Kiowa County</title></path>
+              <path d="M625.8,546.4L649.1,546.1L649.0,501.3L578.0,502.0L577.5,546.9L625.8,546.4Z"><title>Kit Carson County</title></path>
+              <path d="M285.2,720.4L300.1,720.3L300.0,665.9L268.7,665.9L265.3,670.0L263.9,682.6L261.8,683.0L259.9,687.9L254.1,690.1L248.0,701.4L248.1,707.9L242.3,720.2L285.2,720.4Z"><title>La Plata County</title></path>
+              <path d="M362.8,525.7L363.5,533.3L362.4,536.2L359.2,536.9L358.1,545.2L382.9,545.4L383.4,523.8L386.5,517.8L380.7,517.8L377.0,520.4L369.5,517.7L367.4,523.2L362.8,525.7Z"><title>Lake County</title></path>
+              <path d="M444.2,442.7L455.9,442.8L455.8,435.3L462.9,435.3L463.1,380.1L382.9,380.2L383.3,385.5L395.8,403.1L401.1,421.1L403.6,420.7L407.6,424.6L407.0,428.9L415.9,442.2L444.2,442.7Z"><title>Larimer County</title></path>
+              <path d="M560.6,720.4L582.4,720.3L583.0,665.6L520.0,665.5L519.9,657.9L501.1,650.8L494.4,656.7L488.4,671.4L479.3,678.3L479.0,682.9L475.6,685.7L462.8,687.0L449.6,695.4L449.5,720.8L560.6,720.4Z"><title>Las Animas County</title></path>
+              <path d="M542.0,524.4L541.7,561.5L520.1,561.3L520.2,590.8L576.8,590.5L578.0,502.0L542.0,501.9L542.0,524.4Z"><title>Lincoln County</title></path>
+              <path d="M573.4,427.9L609.5,427.7L610.2,379.7L551.1,379.8L550.5,420.5L557.9,420.5L558.0,427.9L573.4,427.9Z"><title>Logan County</title></path>
+              <path d="M242.5,564.7L257.7,558.1L260.7,551.8L267.9,545.0L275.8,543.3L281.8,546.5L284.6,544.6L299.9,530.1L306.6,527.2L301.1,523.4L303.3,519.0L199.3,518.9L198.7,592.7L242.4,592.7L242.5,564.7Z"><title>Mesa County</title></path>
+              <path d="M321.7,662.3L322.7,687.0L349.6,686.6L350.6,645.9L340.8,642.1L337.6,638.0L324.4,639.1L322.1,640.5L321.7,662.3Z"><title>Mineral County</title></path>
+              <path d="M199.3,379.9L199.3,446.1L302.8,446.3L303.4,418.9L307.1,418.9L307.1,413.9L310.8,413.9L310.6,379.7L199.3,379.9Z"><title>Moffat County</title></path>
+              <path d="M199.6,692.3L199.6,720.4L242.4,720.4L248.1,707.9L248.0,701.4L254.1,690.1L259.9,687.9L261.8,683.0L263.9,682.6L265.3,670.0L268.7,665.9L207.8,666.6L199.7,679.1L199.6,692.3Z"><title>Montezuma County</title></path>
+              <path d="M261.2,611.8L258.2,607.0L290.2,607.0L290.2,609.5L298.9,609.5L298.8,578.3L242.4,578.4L242.4,592.7L198.7,592.7L199.8,622.2L270.2,622.3L270.8,616.6L261.2,613.5L261.2,611.8Z"><title>Montrose County</title></path>
+              <path d="M532.3,464.9L557.6,464.9L557.9,420.5L514.2,420.4L514.0,464.9L532.3,464.9Z"><title>Morgan County</title></path>
+              <path d="M544.6,625.6L520.0,622.8L520.0,665.5L562.0,665.6L562.2,612.7L555.1,612.7L555.2,620.6L548.1,620.6L548.1,625.6L544.6,625.6Z"><title>Otero County</title></path>
+              <path d="M258.2,607.0L261.2,613.5L270.8,616.6L269.0,622.9L269.9,625.4L273.7,625.4L273.2,633.0L279.9,636.2L283.6,643.3L286.3,644.4L290.0,641.8L289.8,638.2L294.4,638.2L293.0,635.9L295.9,635.2L298.2,630.1L294.7,626.9L293.7,615.6L290.2,607.0L258.2,607.0Z"><title>Ouray County</title></path>
+              <path d="M381.7,541.3L384.3,542.4L382.8,548.6L388.2,551.2L388.0,555.1L393.4,555.0L400.0,561.0L399.0,563.7L401.2,566.6L397.2,576.2L438.3,575.9L438.2,539.1L433.9,539.1L433.8,502.0L406.2,502.1L406.6,505.0L404.2,504.9L404.6,507.2L397.4,512.8L398.3,514.9L393.8,519.4L385.6,518.8L386.2,521.3L383.4,523.8L384.1,538.4L381.7,541.3Z"><title>Park County</title></path>
+              <path d="M626.6,427.6L648.8,427.6L648.9,401.2L610.3,401.2L609.5,427.7L626.6,427.6Z"><title>Phillips County</title></path>
+              <path d="M301.1,522.7L306.7,526.8L306.8,533.1L312.8,540.0L326.7,540.0L331.7,544.1L331.2,547.2L343.6,552.0L350.1,545.4L356.8,550.2L359.2,536.9L362.4,536.2L363.5,533.3L362.9,524.8L367.4,523.2L367.8,519.3L303.3,519.0L301.1,522.7Z"><title>Pitkin County</title></path>
+              <path d="M649.3,632.7L649.3,612.4L604.5,612.5L604.1,665.6L649.5,665.5L649.3,632.7Z"><title>Prowers County</title></path>
+              <path d="M463.2,591.0L463.3,613.3L456.3,613.3L457.2,644.2L482.2,643.7L519.8,657.8L520.2,590.8L463.2,591.0Z"><title>Pueblo County</title></path>
+              <path d="M231.1,491.6L270.7,491.0L270.7,479.9L303.2,479.6L303.3,472.0L310.5,472.3L310.6,457.3L328.6,457.2L328.6,445.9L199.3,446.1L199.2,493.9L231.1,494.8L231.1,491.6Z"><title>Rio Blanco County</title></path>
+              <path d="M378.7,686.2L392.7,686.2L392.8,656.7L357.6,656.7L357.5,649.3L350.7,649.3L349.6,686.0L378.7,686.2Z"><title>Rio Grande County</title></path>
+              <path d="M353.3,431.9L353.1,421.8L349.9,412.6L354.4,396.0L351.2,389.6L347.7,390.9L340.5,386.3L340.1,379.7L310.6,379.7L310.8,413.9L307.1,413.9L307.1,418.9L303.4,418.9L302.8,446.0L328.6,445.9L328.8,471.9L355.0,471.9L353.3,431.9Z"><title>Routt County</title></path>
+              <path d="M330.9,627.3L330.9,639.0L337.8,638.0L340.8,642.1L350.6,645.9L350.7,649.3L357.5,649.3L357.6,656.7L430.1,656.4L431.5,651.9L431.1,646.3L421.9,638.0L416.2,621.7L394.0,596.6L391.5,596.4L389.6,599.3L330.9,599.0L330.9,627.3Z"><title>Saguache County</title></path>
+              <path d="M268.4,662.2L268.7,665.9L300.0,665.9L301.5,652.8L297.8,650.0L296.8,640.0L289.8,638.2L289.2,642.9L283.6,643.3L280.7,646.5L274.6,659.4L268.4,662.2Z"><title>San Juan County</title></path>
+              <path d="M199.8,636.8L199.8,645.4L250.3,644.2L253.3,650.5L259.5,647.6L267.4,647.4L276.8,654.5L283.9,642.0L279.9,636.2L273.8,634.3L273.7,625.4L269.9,625.4L269.0,622.3L199.8,622.2L199.8,636.8Z"><title>San Miguel County</title></path>
+              <path d="M610.2,379.9L610.3,401.2L648.9,401.2L648.8,379.7L610.2,379.9Z"><title>Sedgwick County</title></path>
+              <path d="M366.9,472.0L370.5,484.8L383.7,495.5L381.6,505.0L378.8,504.9L381.7,517.5L393.8,519.4L398.3,514.9L397.4,512.8L404.6,507.2L404.2,504.9L406.6,505.0L405.6,501.4L409.6,498.6L409.1,496.4L400.9,493.8L400.1,490.6L393.5,491.5L389.8,481.5L379.4,472.5L366.9,472.0Z"><title>Summit County</title></path>
+              <path d="M438.2,539.1L438.3,575.9L444.2,575.9L444.0,580.1L463.2,579.9L463.3,567.5L454.8,567.2L455.2,561.3L457.6,561.3L457.3,539.1L438.2,539.1Z"><title>Teller County</title></path>
+              <path d="M557.5,450.8L557.6,464.9L542.6,464.9L542.5,501.9L600.6,501.8L602.0,427.7L558.0,427.9L557.5,450.8Z"><title>Washington County</title></path>
+              <path d="M475.3,465.0L514.0,464.9L514.2,420.4L550.5,420.5L551.1,379.8L463.1,380.1L462.9,435.3L455.8,435.3L455.9,465.0L460.1,464.4L461.9,461.3L461.9,465.0L475.3,465.0Z"><title>Weld County</title></path>
+              <path d="M648.8,466.9L648.8,427.6L602.0,427.7L600.6,501.8L649.0,501.3L648.8,466.9Z"><title>Yuma County</title></path>
+            </g>
 
-            <svg
-              viewBox="0 0 720 760"
-              role="img"
-              aria-labelledby="map-title map-description">
+            <!-- WYOMING: COUNTIES OUTSIDE LOCAL 58 -->
+            <g class="county outside">
+              <path d="M226.8,40.9L229.9,110.3L321.6,110.5L321.7,97.0L318.8,95.0L320.6,93.2L318.0,86.6L311.7,85.5L312.1,82.0L306.4,73.9L297.1,70.6L295.7,66.8L291.4,64.9L288.0,66.8L283.2,63.7L282.5,59.0L277.5,57.4L273.8,40.2L226.8,40.9Z"><title>Big Horn County</title></path>
+              <path d="M393.6,41.2L394.1,167.6L454.3,167.3L454.5,39.5L400.8,39.5L393.6,41.2Z"><title>Campbell County</title></path>
+              <path d="M374.5,347.4L390.8,346.3L390.5,257.9L297.4,257.9L298.2,324.0L271.3,323.8L272.0,379.8L374.6,380.0L374.5,347.4Z"><title>Carbon County</title></path>
+              <path d="M494.1,109.2L520.2,109.2L520.0,39.7L454.5,39.5L454.2,109.6L494.1,109.2Z"><title>Crook County</title></path>
+              <path d="M181.6,220.9L188.8,226.8L187.4,229.4L194.0,232.1L193.9,235.7L197.8,235.8L199.7,272.4L297.4,272.5L297.8,169.5L296.6,167.0L292.8,167.0L292.8,169.5L245.1,170.6L237.4,169.3L237.4,166.9L229.8,166.9L229.8,164.4L222.1,164.4L222.1,160.7L214.4,160.7L214.4,158.2L191.5,157.0L191.5,150.2L171.9,129.0L163.6,129.0L159.8,137.7L151.9,141.5L147.5,139.2L150.3,136.4L146.4,130.5L147.4,128.2L138.7,128.9L134.9,123.9L135.0,170.2L154.1,170.3L154.1,178.6L157.9,178.6L159.1,191.4L167.0,203.6L167.0,208.6L178.7,214.3L181.6,220.9Z"><title>Fremont County</title></path>
+              <path d="M182.4,140.6L191.5,150.2L191.5,157.0L214.4,158.2L214.4,160.7L222.1,160.7L222.1,164.4L229.8,164.4L229.8,166.9L237.4,166.9L237.4,169.3L292.8,169.5L292.8,154.7L285.0,154.8L285.0,147.3L269.6,147.3L269.6,140.0L246.9,137.7L246.9,132.8L239.2,132.8L239.3,125.3L235.3,125.3L235.3,117.8L215.9,117.8L215.9,125.4L207.9,125.4L208.1,132.7L196.6,132.7L196.5,140.1L182.4,140.6Z"><title>Hot Springs County</title></path>
+              <path d="M307.1,77.2L312.1,82.0L311.7,85.5L318.0,86.6L320.6,93.2L318.8,95.0L321.7,97.0L323.9,167.8L394.1,167.6L394.6,76.6L307.1,77.2Z"><title>Johnson County</title></path>
+              <path d="M71.0,254.9L71.1,330.6L135.2,330.7L134.8,271.8L103.5,271.2L103.4,256.6L100.4,256.6L100.4,234.4L98.2,234.4L98.2,228.5L100.5,228.5L101.1,189.7L86.0,189.7L86.0,183.0L71.2,182.8L71.0,254.9Z"><title>Lincoln County</title></path>
+              <path d="M70.6,39.5L70.6,67.9L95.4,67.9L95.4,75.0L114.2,75.0L113.6,76.6L119.4,78.1L119.3,88.0L125.2,98.6L129.0,100.5L130.6,113.3L134.9,113.3L134.9,123.9L138.7,128.9L147.4,128.2L146.4,130.5L150.3,136.4L147.6,137.5L148.4,140.0L151.9,141.5L159.8,137.7L161.1,131.3L167.7,127.9L174.1,130.5L182.4,140.5L196.5,140.1L196.6,132.7L208.1,132.7L207.9,125.4L215.9,125.4L215.9,117.8L231.4,117.8L226.8,39.5L70.6,39.5Z"><title>Park County</title></path>
+              <path d="M311.9,77.0L394.6,76.6L393.6,40.0L272.4,39.4L276.2,46.7L277.5,57.4L282.5,59.0L283.2,63.7L288.0,66.8L291.4,64.9L295.7,66.8L297.1,70.6L306.4,73.9L307.2,77.0L311.9,77.0Z"><title>Sheridan County</title></path>
+              <path d="M100.5,206.3L100.5,228.5L98.2,228.5L98.2,234.4L100.4,234.4L100.4,256.6L103.4,256.6L103.5,271.2L199.7,272.4L197.8,235.8L193.9,235.7L194.0,232.1L187.3,229.4L188.8,226.8L182.0,221.7L178.7,214.3L167.0,208.6L167.0,203.6L159.1,191.4L157.9,178.6L154.1,178.6L154.1,170.3L134.6,170.2L134.6,177.6L116.2,177.6L116.2,184.9L101.1,184.9L100.5,206.3Z"><title>Sublette County</title></path>
+              <path d="M166.2,380.1L272.0,379.8L271.3,323.8L298.2,324.0L297.4,272.5L134.8,271.8L135.2,380.1L166.2,380.1Z"><title>Sweetwater County</title></path>
+              <path d="M70.6,67.9L71.2,182.8L86.0,183.0L86.0,189.7L101.1,189.7L101.1,184.9L116.2,184.9L116.2,177.6L134.6,177.6L134.9,113.3L130.6,113.3L129.0,100.5L125.2,98.6L119.3,88.0L119.7,78.4L113.6,76.6L114.2,75.0L95.4,75.0L95.4,67.9L70.6,67.9Z"><title>Teton County</title></path>
+              <path d="M71.1,366.6L71.1,380.1L135.2,380.1L135.2,330.7L71.1,330.6L71.1,366.6Z"><title>Uinta County</title></path>
+              <path d="M231.4,113.7L231.4,117.8L235.3,117.8L235.3,125.3L239.3,125.3L239.2,132.8L246.9,132.8L246.9,137.7L269.6,140.0L269.6,147.3L285.0,147.3L285.0,154.8L292.8,154.7L292.8,167.0L323.9,167.1L322.7,110.5L231.4,110.3L231.4,113.7Z"><title>Washakie County</title></path>
+              <path d="M454.2,139.3L454.3,167.3L520.2,166.9L520.2,109.2L454.4,109.6L454.2,139.3Z"><title>Weston County</title></path>
+            </g>
 
-              <title id="map-title">Roofers Local 58 jurisdiction</title>
+            <!-- WYOMING: SEVEN COUNTIES SERVED BY LOCAL 58 -->
+            <g class="county">
+              <path d="M441.5,370.0L441.2,258.1L436.8,260.4L435.3,270.1L425.6,270.2L420.0,268.9L420.0,262.7L422.5,262.7L423.7,258.2L390.5,257.9L390.8,346.3L374.5,346.3L374.6,380.0L441.7,380.1L441.5,370.0Z"><title>Albany County — Local 58</title></path>
+              <path d="M390.2,168.9L390.4,257.9L423.7,258.2L422.5,262.7L420.0,262.7L420.0,268.9L435.3,270.1L436.8,260.4L441.3,258.1L441.1,243.3L466.4,243.0L465.9,167.2L390.2,168.9Z"><title>Converse County — Local 58</title></path>
+              <path d="M481.6,242.9L481.7,331.8L520.3,331.9L520.3,242.8L481.6,242.9Z"><title>Goshen County — Local 58</title></path>
+              <path d="M499.8,379.8L520.3,379.8L520.3,331.9L481.7,331.8L481.7,324.4L441.6,324.0L441.7,380.1L499.8,379.8Z"><title>Laramie County — Local 58</title></path>
+              <path d="M390.5,220.8L390.2,167.6L296.6,167.0L298.8,228.3L296.1,228.3L296.2,257.9L390.4,257.9L390.5,220.8Z"><title>Natrona County — Local 58</title></path>
+              <path d="M496.0,242.9L520.3,242.8L520.2,166.9L465.9,167.2L466.4,243.0L496.0,242.9Z"><title>Niobrara County — Local 58</title></path>
+              <path d="M454.4,243.1L441.1,243.3L441.6,324.0L481.7,324.4L481.6,242.9L454.4,243.1Z"><title>Platte County — Local 58</title></path>
+            </g>
 
-              <desc id="map-description">
-                All of Colorado is shaded navy. In Wyoming, Albany, Converse,
-                Goshen, Laramie, Natrona, Niobrara, and Platte counties are shaded
-                navy. Other Wyoming counties are gray. Major cities are marked
-                with red dots.
-              </desc>
+            <!-- STATE OUTLINES -->
+            <path class="state-outline" d="M449.5,720.8L649.4,721.0L648.8,379.7L199.3,379.9L199.6,720.4L449.5,720.8Z"/>
+            <path class="state-outline" d="M374.6,380.0L520.3,379.8L520.0,39.7L70.6,39.4L71.1,380.1L374.6,380.0Z"/>
 
-              <!-- COLORADO COUNTIES -->
-              <path class="county" data-id="08001" d="M466.9,486.5L542.5,487.2L542.6,464.9L460.7,465.0L460.2,467.7L458.4,466.6L459.6,469.9L456.1,472.3L456.0,482.8L472.9,482.2L472.9,478.5L476.7,478.2L476.8,473.9L485.2,473.6L483.9,480.1L474.7,480.1L476.5,484.7Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08003" d="M392.7,671.2L392.7,690.0L411.7,690.0L428.3,671.2L430.1,656.4L392.8,656.7Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08005" d="M456.0,501.8L542.5,501.9L542.5,487.2L466.9,487.1L468.1,490.9L465.6,490.7L465.6,493.3L469.3,494.2L465.0,497.0L458.4,492.4ZM465.6,496.9L465.7,497.0L465.6,496.8ZM465.7,491.8L465.9,492.0L465.9,491.8ZM465.2,492.1L465.2,492.3L465.4,492.3ZM464.0,490.4L464.0,490.4L464.1,490.4ZM463.9,492.7L464.2,493.2L464.6,493.3L464.5,493.9L465.0,494.3L464.8,492.9L464.4,492.6ZM463.7,492.8L463.9,493.3L464.1,493.2ZM463.3,490.0L463.3,490.8L463.4,490.7L463.3,490.9L463.6,491.0L463.5,490.7L464.1,490.9L464.0,490.6L463.7,490.4L463.7,490.2L464.1,490.2L463.9,489.6L463.3,489.6ZM463.7,490.6L463.8,490.6L463.8,490.7Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08007" d="M300.0,692.7L300.1,720.3L364.6,720.9L356.9,703.8L351.6,700.9L351.6,686.0L322.7,687.0L322.7,684.4L300.0,684.4Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08009" d="M617.5,665.6L583.0,665.6L582.4,720.3L649.4,721.0L649.5,665.5Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08011" d="M604.5,627.0L604.5,612.5L562.2,612.7L562.0,665.6L604.1,665.6Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08013" d="M448.8,472.4L456.1,466.9L455.9,442.8L417.5,442.9L415.9,449.0L419.2,454.9L418.3,462.1L415.1,463.8L415.6,470.6ZM452.4,468.8L452.9,468.5L453.6,468.6ZM454.2,468.5L456.1,468.6L456.1,467.9L455.8,467.7L455.8,467.2Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08014" d="M448.8,473.4L458.5,471.7L458.4,466.6L460.2,467.7L461.9,461.3L460.1,464.4L456.1,465.0L452.4,471.4L451.2,468.9ZM454.1,468.5L455.8,467.2L455.8,467.7L456.1,467.9L456.1,468.6ZM460.7,462.5L460.7,462.2L461.2,462.2L461.2,462.5ZM452.4,468.7L453.6,468.6L453.0,468.5Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08015" d="M356.8,547.0L357.0,550.9L359.6,550.2L365.4,557.8L374.3,557.7L372.8,562.5L368.5,565.1L368.5,573.3L366.2,575.8L371.8,583.0L373.1,592.3L379.4,599.3L390.4,599.2L391.5,596.4L394.5,597.2L401.2,592.1L403.0,583.6L397.1,576.1L401.2,566.6L396.7,557.4L393.4,555.0L388.1,555.2L388.2,551.2L384.4,550.9L382.9,545.4L358.1,545.2Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08017" d="M617.0,583.0L649.3,582.9L649.1,546.1L577.5,546.9L576.8,583.1Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08019" d="M412.9,480.2L406.6,483.3L402.4,482.3L399.9,492.8L409.6,498.2L405.7,501.7L433.8,502.0L433.8,486.5L425.0,484.5L422.3,480.1L417.4,477.9Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08021" d="M388.8,720.8L413.3,720.7L409.9,716.5L412.5,707.1L411.7,690.0L392.7,690.0L392.7,686.2L351.6,686.0L351.6,700.9L356.9,703.8L364.6,720.9Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08023" d="M411.1,691.1L413.2,696.0L409.9,716.5L413.2,720.7L449.5,720.8L448.6,688.4L451.1,685.5L445.4,670.8L447.4,667.6L440.4,664.3L431.0,668.3Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08025" d="M539.9,625.6L548.1,625.6L548.1,620.6L555.2,620.6L555.5,591.3L520.2,590.8L520.0,622.8Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08027" d="M408.3,612.7L416.2,621.7L421.9,638.0L429.1,644.1L432.9,644.6L439.1,640.5L441.3,643.8L448.6,633.6L451.4,639.4L454.5,639.2L456.2,642.4L456.3,613.3Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08029" d="M281.1,546.1L275.8,543.3L267.9,545.0L260.7,551.8L257.7,558.1L242.4,564.7L242.4,578.4L298.8,578.3L298.8,531.6Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08031" d="M452.4,496.8L457.8,496.6L458.9,492.4L466.8,497.0L469.3,494.2L465.4,492.3L468.1,490.9L467.2,485.9L476.5,484.7L474.7,480.1L483.9,480.1L485.2,473.6L476.8,473.9L476.7,478.2L472.9,478.5L472.9,482.2L455.3,482.8L456.0,493.3L454.2,493.8L456.0,494.7ZM465.6,497.0L465.6,496.8L465.7,497.0ZM454.2,496.1L454.3,496.0L454.3,496.1ZM455.4,494.7L455.4,494.6L455.4,494.7ZM455.3,494.5L455.4,494.5L455.4,494.5ZM464.0,492.8L464.4,492.6L464.8,492.9L465.0,494.3L464.5,493.9L464.6,493.3ZM463.7,492.9L463.9,492.8L464.1,493.2L463.9,493.3ZM465.2,492.3L465.4,492.1L465.4,492.3ZM465.8,491.9L465.9,491.8L465.9,492.0ZM464.0,490.4L464.0,490.4L464.1,490.4ZM463.3,490.0L463.3,489.6L463.9,489.6L464.1,490.2L463.7,490.2L463.7,490.4L464.0,490.6L464.1,490.9L463.5,490.7L463.6,491.0L463.3,490.9L463.4,490.7L463.3,490.8ZM463.7,490.6L463.8,490.7L463.8,490.6Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08033" d="M221.8,666.6L268.7,665.9L268.8,661.1L274.6,659.4L275.7,654.4L267.4,647.4L259.5,647.6L253.3,650.5L250.3,644.2L199.8,645.4L199.7,679.1L207.8,666.6Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08035" d="M457.7,539.1L481.1,539.1L481.2,502.0L456.3,502.0L454.7,503.8L453.9,508.1L450.8,510.1L451.5,513.2L448.5,515.4L445.5,527.9L438.3,539.1Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08037" d="M323.7,505.5L323.7,519.0L367.8,519.3L369.5,517.7L377.0,520.4L381.9,517.8L378.8,504.9L381.6,505.0L383.9,496.2L370.5,484.8L367.3,471.4L323.7,471.9Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08041" d="M457.3,539.1L457.6,561.3L455.2,561.3L454.8,567.2L463.3,567.5L463.2,591.0L520.2,590.8L520.4,539.2Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08039" d="M542.0,527.7L542.0,501.9L481.2,502.0L481.1,539.1L520.4,539.2L520.1,561.3L541.7,561.5Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08043" d="M394.4,597.7L408.3,612.7L463.3,613.3L463.2,579.9L444.0,580.1L444.2,575.9L397.2,576.2L400.2,577.6L403.1,584.1L401.2,592.2Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08045" d="M274.2,519.0L323.7,519.0L323.7,471.9L328.8,471.9L328.6,457.2L310.6,457.3L310.5,472.3L303.3,472.0L303.2,479.6L270.7,479.9L270.7,491.0L231.1,491.1L231.1,494.8L199.2,493.9L199.3,518.9Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08047" d="M414.4,475.3L415.3,477.8L422.3,480.1L424.8,484.4L433.9,486.6L433.9,470.6L416.1,470.8Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08049" d="M402.4,482.3L410.4,482.5L414.8,478.7L415.1,463.8L418.3,462.1L419.2,454.9L415.9,448.9L418.1,443.8L408.9,432.6L407.6,424.6L402.2,424.5L401.4,430.9L397.8,435.4L394.0,433.3L380.4,437.5L378.2,434.3L375.6,437.1L372.3,434.6L366.8,435.5L363.8,430.0L360.9,434.0L356.5,433.0L353.3,427.1L355.0,471.4L379.0,472.3L389.8,481.5L394.4,491.7L400.0,490.7L402.8,487.1Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08051" d="M330.9,602.6L330.9,599.0L379.4,599.3L373.1,592.3L371.8,583.0L366.2,575.8L368.5,573.3L368.5,565.1L372.8,562.5L374.3,557.7L365.4,557.8L359.6,550.2L355.9,550.5L350.6,545.4L347.1,546.5L343.7,552.0L339.9,549.3L336.9,550.8L331.2,547.2L331.7,544.1L326.7,540.0L312.8,540.0L306.8,533.2L306.8,529.2L303.3,528.3L298.8,531.6L298.9,609.5L290.2,609.5L294.5,622.7L330.9,622.7Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08053" d="M293.0,635.9L296.8,640.0L297.8,650.0L301.5,652.8L300.0,684.4L322.7,684.4L322.1,640.5L330.9,639.0L330.9,622.7L294.5,622.7L295.0,627.8L298.2,630.1L295.9,635.2Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08055" d="M427.2,669.5L429.2,670.9L440.4,664.3L447.4,667.6L445.4,670.8L451.1,685.5L448.7,687.4L448.8,695.6L452.0,695.1L459.8,688.4L475.6,685.7L479.0,682.9L479.3,678.3L488.4,671.4L494.4,656.7L501.1,650.8L482.2,643.7L458.6,645.4L454.5,639.2L451.4,639.4L448.6,633.6L441.3,643.8L439.1,640.5L432.9,644.6L429.1,644.1L431.9,648.5Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08057" d="M339.1,382.2L343.5,388.7L345.8,388.1L347.7,390.9L351.2,389.6L354.4,395.9L349.9,412.6L355.9,432.7L360.9,434.0L363.8,430.0L366.7,435.5L372.3,434.6L375.6,437.1L378.2,434.3L380.4,437.5L394.0,433.3L397.7,435.4L399.2,433.9L404.7,421.9L401.0,420.9L395.7,403.0L383.3,385.5L383.0,380.1L340.1,379.7Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08059" d="M433.9,489.1L433.9,539.1L438.3,539.1L445.5,527.9L448.5,515.4L456.3,502.0L456.0,497.3L452.4,496.8L456.0,494.7L454.2,493.2L456.0,493.3L456.1,472.3L450.0,472.4L450.6,474.5L448.8,474.3L449.9,472.4L433.9,472.4ZM455.9,497.0L456.0,497.0L456.0,496.7ZM455.6,496.1L456.0,496.6L456.0,495.8L455.7,495.8ZM455.4,494.6L455.4,494.7L455.4,494.6ZM455.3,494.5L455.4,494.5L455.4,494.5ZM454.2,496.1L454.3,496.1L454.3,496.0Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08061" d="M612.4,612.5L649.3,612.4L649.2,582.9L576.8,583.1L576.8,590.5L555.5,590.7L555.7,612.7Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08063" d="M625.8,546.4L649.1,546.1L649.0,501.3L578.0,502.0L577.5,546.9Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08067" d="M285.2,720.4L300.1,720.3L300.0,665.9L268.7,665.9L265.3,670.0L263.9,682.6L261.8,683.0L259.9,687.9L254.1,690.1L248.0,701.4L248.1,707.9L242.3,720.2Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08065" d="M362.8,525.7L363.5,533.3L362.4,536.2L359.2,536.9L358.1,545.2L382.9,545.4L383.4,523.8L386.5,517.8L380.7,517.8L377.0,520.4L369.5,517.7L367.4,523.2Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08069" d="M444.2,442.7L455.9,442.8L455.8,435.3L462.9,435.3L463.1,380.1L382.9,380.2L383.3,385.5L395.8,403.1L401.1,421.1L403.6,420.7L407.6,424.6L407.0,428.9L415.9,442.2Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08071" d="M560.6,720.4L582.4,720.3L583.0,665.6L520.0,665.5L519.9,657.9L501.1,650.8L494.4,656.7L488.4,671.4L479.3,678.3L479.0,682.9L475.6,685.7L462.8,687.0L449.6,695.4L449.5,720.8Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08073" d="M542.0,524.4L541.7,561.5L520.1,561.3L520.2,590.8L576.8,590.5L578.0,502.0L542.0,501.9Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08075" d="M573.4,427.9L609.5,427.7L610.2,379.7L551.1,379.8L550.5,420.5L557.9,420.5L558.0,427.9Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08077" d="M242.5,564.7L257.7,558.1L260.7,551.8L267.9,545.0L275.8,543.3L281.8,546.5L284.6,544.6L299.9,530.1L306.6,527.2L301.1,523.4L303.3,519.0L199.3,518.9L198.7,592.7L242.4,592.7Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08079" d="M321.7,662.3L322.7,687.0L349.6,686.6L350.6,645.9L340.8,642.1L337.6,638.0L324.4,639.1L322.1,640.5Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08081" d="M199.3,379.9L199.3,446.1L302.8,446.3L303.4,418.9L307.1,418.9L307.1,413.9L310.8,413.9L310.6,379.7Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08083" d="M199.6,692.3L199.6,720.4L242.4,720.4L248.1,707.9L248.0,701.4L254.1,690.1L259.9,687.9L261.8,683.0L263.9,682.6L265.3,670.0L268.7,665.9L207.8,666.6L199.7,679.1Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08085" d="M261.2,611.8L258.2,607.0L290.2,607.0L290.2,609.5L298.9,609.5L298.8,578.3L242.4,578.4L242.4,592.7L198.7,592.7L199.8,622.2L270.2,622.3L270.8,616.6L261.2,613.5Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08087" d="M532.3,464.9L557.6,464.9L557.9,420.5L514.2,420.4L514.0,464.9Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08089" d="M544.6,625.6L520.0,622.8L520.0,665.5L562.0,665.6L562.2,612.7L555.1,612.7L555.2,620.6L548.1,620.6L548.1,625.6Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08091" d="M258.2,607.0L261.2,613.5L270.8,616.6L269.0,622.9L269.9,625.4L273.7,625.4L273.2,633.0L279.9,636.2L283.6,643.3L286.3,644.4L290.0,641.8L289.8,638.2L294.4,638.2L293.0,635.9L295.9,635.2L298.2,630.1L294.7,626.9L293.7,615.6L290.2,607.0Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08093" d="M381.7,541.3L384.3,542.4L382.8,548.6L388.2,551.2L388.0,555.1L393.4,555.0L400.0,561.0L399.0,563.7L401.2,566.6L397.2,576.2L438.3,575.9L438.2,539.1L433.9,539.1L433.8,502.0L406.2,502.1L406.6,505.0L404.2,504.9L404.6,507.2L397.4,512.8L398.3,514.9L393.8,519.4L385.6,518.8L386.2,521.3L383.4,523.8L384.1,538.4Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08095" d="M626.6,427.6L648.8,427.6L648.9,401.2L610.3,401.2L609.5,427.7Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08097" d="M301.1,522.7L306.7,526.8L306.8,533.1L312.8,540.0L326.7,540.0L331.7,544.1L331.2,547.2L343.6,552.0L350.1,545.4L356.8,550.2L359.2,536.9L362.4,536.2L363.5,533.3L362.9,524.8L367.4,523.2L367.8,519.3L303.3,519.0Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08099" d="M649.3,632.7L649.3,612.4L604.5,612.5L604.1,665.6L649.5,665.5Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08101" d="M463.2,591.0L463.3,613.3L456.3,613.3L457.2,644.2L482.2,643.7L519.8,657.8L520.2,590.8Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08103" d="M231.1,491.6L270.7,491.0L270.7,479.9L303.2,479.6L303.3,472.0L310.5,472.3L310.6,457.3L328.6,457.2L328.6,445.9L199.3,446.1L199.2,493.9L231.1,494.8Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08105" d="M378.7,686.2L392.7,686.2L392.8,656.7L357.6,656.7L357.5,649.3L350.7,649.3L349.6,686.0Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08107" d="M353.3,431.9L353.1,421.8L349.9,412.6L354.4,396.0L351.2,389.6L347.7,390.9L340.5,386.3L340.1,379.7L310.6,379.7L310.8,413.9L307.1,413.9L307.1,418.9L303.4,418.9L302.8,446.0L328.6,445.9L328.8,471.9L355.0,471.9Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08109" d="M330.9,627.3L330.9,639.0L337.8,638.0L340.8,642.1L350.6,645.9L350.7,649.3L357.5,649.3L357.6,656.7L430.1,656.4L431.5,651.9L431.1,646.3L421.9,638.0L416.2,621.7L394.0,596.6L391.5,596.4L389.6,599.3L330.9,599.0Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08111" d="M268.4,662.2L268.7,665.9L300.0,665.9L301.5,652.8L297.8,650.0L296.8,640.0L289.8,638.2L289.2,642.9L283.6,643.3L280.7,646.5L274.6,659.4Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08113" d="M199.8,636.8L199.8,645.4L250.3,644.2L253.3,650.5L259.5,647.6L267.4,647.4L276.8,654.5L283.9,642.0L279.9,636.2L273.8,634.3L273.7,625.4L269.9,625.4L269.0,622.3L199.8,622.2Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08115" d="M610.2,379.9L610.3,401.2L648.9,401.2L648.8,379.7Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08117" d="M366.9,472.0L370.5,484.8L383.7,495.5L381.6,505.0L378.8,504.9L381.7,517.5L393.8,519.4L398.3,514.9L397.4,512.8L404.6,507.2L404.2,504.9L406.6,505.0L405.6,501.4L409.6,498.6L409.1,496.4L400.9,493.8L400.1,490.6L393.5,491.5L389.8,481.5L379.4,472.5Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08119" d="M438.2,539.1L438.3,575.9L444.2,575.9L444.0,580.1L463.2,579.9L463.3,567.5L454.8,567.2L455.2,561.3L457.6,561.3L457.3,539.1Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08121" d="M557.5,450.8L557.6,464.9L542.6,464.9L542.5,501.9L600.6,501.8L602.0,427.7L558.0,427.9Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08123" d="M475.3,465.0L514.0,464.9L514.2,420.4L550.5,420.5L551.1,379.8L463.1,380.1L462.9,435.3L455.8,435.3L455.9,465.0L460.1,464.4L461.9,461.3L461.9,465.0ZM460.7,462.2L460.7,462.5L461.2,462.5L461.2,462.2Z" fill-rule="evenodd"/>
-              <path class="county" data-id="08125" d="M648.8,466.9L648.8,427.6L602.0,427.7L600.6,501.8L649.0,501.3Z" fill-rule="evenodd"/>
+            <text class="state-label" x="241" y="103" text-anchor="middle">WYOMING</text>
+            <text class="state-label co" x="350" y="691" text-anchor="middle">COLORADO</text>
 
-              <!-- WYOMING COUNTIES -->
-              <path class="county" data-id="56001" d="M441.5,370.0L441.2,258.1L436.8,260.4L435.3,270.1L425.6,270.2L420.0,268.9L420.0,262.7L422.5,262.7L423.7,258.2L390.5,257.9L390.8,346.3L374.5,346.3L374.6,380.0L441.7,380.1Z" fill-rule="evenodd"/>
-              <path class="county outside" data-id="56003" d="M226.8,40.9L229.9,110.3L321.6,110.5L321.7,97.0L318.8,95.0L320.6,93.2L318.0,86.6L311.7,85.5L312.1,82.0L306.4,73.9L297.1,70.6L295.7,66.8L291.4,64.9L288.0,66.8L283.2,63.7L282.5,59.0L277.5,57.4L273.8,40.2Z" fill-rule="evenodd"/>
-              <path class="county outside" data-id="56005" d="M393.6,41.2L394.1,167.6L454.3,167.3L454.5,39.5L400.8,39.5Z" fill-rule="evenodd"/>
-              <path class="county outside" data-id="56007" d="M374.5,347.4L390.8,346.3L390.5,257.9L297.4,257.9L298.2,324.0L271.3,323.8L272.0,379.8L374.6,380.0Z" fill-rule="evenodd"/>
-              <path class="county" data-id="56009" d="M390.2,168.9L390.4,257.9L423.7,258.2L422.5,262.7L420.0,262.7L420.0,268.9L435.3,270.1L436.8,260.4L441.3,258.1L441.1,243.3L466.4,243.0L465.9,167.2Z" fill-rule="evenodd"/>
-              <path class="county outside" data-id="56011" d="M494.1,109.2L520.2,109.2L520.0,39.7L454.5,39.5L454.2,109.6Z" fill-rule="evenodd"/>
-              <path class="county outside" data-id="56013" d="M181.6,220.9L188.8,226.8L187.4,229.4L194.0,232.1L193.9,235.7L197.8,235.8L199.7,272.4L297.4,272.5L297.8,169.5L296.6,167.0L292.8,167.0L292.8,169.5L245.1,170.6L237.4,169.3L237.4,166.9L229.8,166.9L229.8,164.4L222.1,164.4L222.1,160.7L214.4,160.7L214.4,158.2L191.5,157.0L191.5,150.2L171.9,129.0L163.6,129.0L159.8,137.7L151.9,141.5L147.5,139.2L150.3,136.4L146.4,130.5L147.4,128.2L138.7,128.9L134.9,123.9L135.0,170.2L154.1,170.3L154.1,178.6L157.9,178.6L159.1,191.4L167.0,203.6L167.0,208.6L178.7,214.3Z" fill-rule="evenodd"/>
-              <path class="county" data-id="56015" d="M481.6,242.9L481.7,331.8L520.3,331.9L520.3,242.8Z" fill-rule="evenodd"/>
-              <path class="county outside" data-id="56017" d="M182.4,140.6L191.5,150.2L191.5,157.0L214.4,158.2L214.4,160.7L222.1,160.7L222.1,164.4L229.8,164.4L229.8,166.9L237.4,166.9L237.4,169.3L292.8,169.5L292.8,154.7L285.0,154.8L285.0,147.3L269.6,147.3L269.6,140.0L246.9,137.7L246.9,132.8L239.2,132.8L239.3,125.3L235.3,125.3L235.3,117.8L215.9,117.8L215.9,125.4L207.9,125.4L208.1,132.7L196.6,132.7L196.5,140.1Z" fill-rule="evenodd"/>
-              <path class="county outside" data-id="56019" d="M307.1,77.2L312.1,82.0L311.7,85.5L318.0,86.6L320.6,93.2L318.8,95.0L321.7,97.0L323.9,167.8L394.1,167.6L394.6,76.6Z" fill-rule="evenodd"/>
-              <path class="county" data-id="56021" d="M499.8,379.8L520.3,379.8L520.3,331.9L481.7,331.8L481.7,324.4L441.6,324.0L441.7,380.1Z" fill-rule="evenodd"/>
-              <path class="county outside" data-id="56023" d="M71.0,254.9L71.1,330.6L135.2,330.7L134.8,271.8L103.5,271.2L103.4,256.6L100.4,256.6L100.4,234.4L98.2,234.4L98.2,228.5L100.5,228.5L101.1,189.7L86.0,189.7L86.0,183.0L71.2,182.8Z" fill-rule="evenodd"/>
-              <path class="county" data-id="56025" d="M390.5,220.8L390.2,167.6L296.6,167.0L298.8,228.3L296.1,228.3L296.2,257.9L390.4,257.9Z" fill-rule="evenodd"/>
-              <path class="county" data-id="56027" d="M496.0,242.9L520.3,242.8L520.2,166.9L465.9,167.2L466.4,243.0Z" fill-rule="evenodd"/>
-              <path class="county outside" data-id="56029" d="M70.6,39.5L70.6,67.9L95.4,67.9L95.4,75.0L114.2,75.0L113.6,76.6L119.4,78.1L119.3,88.0L125.2,98.6L129.0,100.5L130.6,113.3L134.9,113.3L134.9,123.9L138.7,128.9L147.4,128.2L146.4,130.5L150.3,136.4L147.6,137.5L148.4,140.0L151.9,141.5L159.8,137.7L161.1,131.3L167.7,127.9L174.1,130.5L182.4,140.5L196.5,140.1L196.6,132.7L208.1,132.7L207.9,125.4L215.9,125.4L215.9,117.8L231.4,117.8L226.8,39.5Z" fill-rule="evenodd"/>
-              <path class="county" data-id="56031" d="M454.4,243.1L441.1,243.3L441.6,324.0L481.7,324.4L481.6,242.9Z" fill-rule="evenodd"/>
-              <path class="county outside" data-id="56033" d="M311.9,77.0L394.6,76.6L393.6,40.0L272.4,39.4L276.2,46.7L277.5,57.4L282.5,59.0L283.2,63.7L288.0,66.8L291.4,64.9L295.7,66.8L297.1,70.6L306.4,73.9L307.2,77.0Z" fill-rule="evenodd"/>
-              <path class="county outside" data-id="56035" d="M100.5,206.3L100.5,228.5L98.2,228.5L98.2,234.4L100.4,234.4L100.4,256.6L103.4,256.6L103.5,271.2L199.7,272.4L197.8,235.8L193.9,235.7L194.0,232.1L187.3,229.4L188.8,226.8L182.0,221.7L178.7,214.3L167.0,208.6L167.0,203.6L159.1,191.4L157.9,178.6L154.1,178.6L154.1,170.3L134.6,170.2L134.6,177.6L116.2,177.6L116.2,184.9L101.1,184.9Z" fill-rule="evenodd"/>
-              <path class="county outside" data-id="56037" d="M166.2,380.1L272.0,379.8L271.3,323.8L298.2,324.0L297.4,272.5L134.8,271.8L135.2,380.1Z" fill-rule="evenodd"/>
-              <path class="county outside" data-id="56039" d="M70.6,67.9L71.2,182.8L86.0,183.0L86.0,189.7L101.1,189.7L101.1,184.9L116.2,184.9L116.2,177.6L134.6,177.6L134.9,113.3L130.6,113.3L129.0,100.5L125.2,98.6L119.3,88.0L119.7,78.4L113.6,76.6L114.2,75.0L95.4,75.0L95.4,67.9Z" fill-rule="evenodd"/>
-              <path class="county outside" data-id="56041" d="M71.1,366.6L71.1,380.1L135.2,380.1L135.2,330.7L71.1,330.6Z" fill-rule="evenodd"/>
-              <path class="county outside" data-id="56043" d="M231.4,113.7L231.4,117.8L235.3,117.8L235.3,125.3L239.3,125.3L239.2,132.8L246.9,132.8L246.9,137.7L269.6,140.0L269.6,147.3L285.0,147.3L285.0,154.8L292.8,154.7L292.8,167.0L323.9,167.1L322.7,110.5L231.4,110.3Z" fill-rule="evenodd"/>
-              <path class="county outside" data-id="56045" d="M454.2,139.3L454.3,167.3L520.2,166.9L520.2,109.2L454.4,109.6Z" fill-rule="evenodd"/>
+            <!-- MAJOR CITIES -->
+            <g>
+              <circle class="city-dot" cx="454.03" cy="415.22" r="4.5"/>
+              <text class="city-label" x="464.03" y="421.22">Fort Collins</text>
 
-              <!-- STATE OUTLINES -->
-              <path class="state-outline" d="M449.5,720.8L649.4,721.0L648.8,379.7L199.3,379.9L199.6,720.4Z"/>
-              <path class="state-outline" d="M374.6,380.0L520.3,379.8L520.0,39.7L70.6,39.4L71.1,380.1Z"/>
+              <circle class="city-dot" cx="442.08" cy="463.75" r="4.5"/>
+              <text class="city-label" x="432.08" y="466.75" text-anchor="end">Boulder</text>
 
-              <!-- STATE LABELS -->
-              <text class="state-label" x="241.07" y="103.32" text-anchor="middle">
-                WYOMING
-              </text>
+              <circle class="city-dot" cx="460.08" cy="487.23" r="4.5"/>
+              <text class="city-label" x="470.08" y="494.23">Denver</text>
 
-              <text class="state-label co" x="350.26" y="690.57" text-anchor="middle">
-                COLORADO
-              </text>
+              <circle class="city-dot" cx="470.92" cy="564.27" r="4.5"/>
+              <text class="city-label" x="480.92" y="571.27">Colorado Springs</text>
 
-              <!-- MAJOR CITIES -->
-              <g class="city">
-                <circle class="city-dot" cx="454.03" cy="415.22" r="4.5"/>
-                <text class="city-label" x="464.03" y="421.22">Fort Collins</text>
-              </g>
+              <circle class="city-dot" cx="484.56" cy="613.59" r="4.5"/>
+              <text class="city-label" x="494.56" y="620.59">Pueblo</text>
 
-              <g class="city">
-                <circle class="city-dot" cx="442.08" cy="463.75" r="4.5"/>
-                <text class="city-label" x="432.08" y="466.75" text-anchor="end">
-                  Boulder
-                </text>
-              </g>
+              <circle class="city-dot" cx="231.39" cy="544.70" r="4.5"/>
+              <text class="city-label" x="241.39" y="534.70">Grand Junction</text>
 
-              <g class="city">
-                <circle class="city-dot" cx="460.08" cy="487.23" r="4.5"/>
-                <text class="city-label" x="470.08" y="494.23">Denver</text>
-              </g>
+              <circle class="city-dot" cx="374.33" cy="222.47" r="4.5"/>
+              <text class="city-label" x="384.33" y="239.47">Casper</text>
 
-              <g class="city">
-                <circle class="city-dot" cx="470.92" cy="564.27" r="4.5"/>
-                <text class="city-label" x="480.92" y="571.27">Colorado Springs</text>
-              </g>
+              <circle class="city-dot" cx="421.49" cy="353.42" r="4.5"/>
+              <text class="city-label" x="411.49" y="366.42" text-anchor="end">Laramie</text>
 
-              <g class="city">
-                <circle class="city-dot" cx="484.56" cy="613.59" r="4.5"/>
-                <text class="city-label" x="494.56" y="620.59">Pueblo</text>
-              </g>
+              <circle class="city-dot" cx="471.00" cy="368.01" r="4.5"/>
+              <text class="city-label" x="481.00" y="381.01">Cheyenne</text>
+            </g>
 
-              <g class="city">
-                <circle class="city-dot" cx="231.39" cy="544.70" r="4.5"/>
-                <text class="city-label" x="241.39" y="534.70">Grand Junction</text>
-              </g>
+          </svg>
 
-              <g class="city">
-                <circle class="city-dot" cx="374.33" cy="222.47" r="4.5"/>
-                <text class="city-label" x="384.33" y="239.47">Casper</text>
-              </g>
+          <figcaption>
+            <span>
+              <i class="key" aria-hidden="true"></i>
+              Local 58 jurisdiction
+            </span>
+            <span>
+              <i class="key outside" aria-hidden="true"></i>
+              Outside our jurisdiction
+            </span>
+          </figcaption>
+        </figure>
 
-              <g class="city">
-                <circle class="city-dot" cx="421.49" cy="353.42" r="4.5"/>
-                <text class="city-label" x="411.49" y="366.42" text-anchor="end">
-                  Laramie
-                </text>
-              </g>
+        <div class="coverage">
+          <h3>Colorado</h3>
+          <p>We serve the entire state of Colorado.</p>
 
-              <g class="city">
-                <circle class="city-dot" cx="471.00" cy="368.01" r="4.5"/>
-                <text class="city-label" x="481.00" y="381.01">Cheyenne</text>
-              </g>
+          <h3>Wyoming</h3>
+          <p>We serve the following Wyoming counties:</p>
 
-            </svg>
-
-            <figcaption>
-
-              <span>
-                <i class="key" aria-hidden="true"></i>
-                Local 58 jurisdiction
-              </span>
-
-              <span>
-                <i class="key outside" aria-hidden="true"></i>
-                Outside our jurisdiction
-              </span>
-
-            </figcaption>
-
-          </figure>
-
-          <div class="coverage">
-
-            <h2>Colorado</h2>
-            <p>We serve the entire state of Colorado.</p>
-
-            <h2>Wyoming</h2>
-            <p>We serve the following Wyoming counties:</p>
-
-            <ul>
-              <li>Albany</li>
-              <li>Converse</li>
-              <li>Goshen</li>
-              <li>Laramie</li>
-              <li>Natrona</li>
-              <li>Niobrara</li>
-              <li>Platte</li>
-            </ul>
-
-          </div>
-
+          <ul>
+            <li>Albany</li>
+            <li>Converse</li>
+            <li>Goshen</li>
+            <li>Laramie</li>
+            <li>Natrona</li>
+            <li>Niobrara</li>
+            <li>Platte</li>
+          </ul>
         </div>
 
-        <p class="source">
-          Map boundaries:
-          <a
-            href="https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer"
-            target="_blank"
-            rel="noopener noreferrer">
-            U.S. Census Bureau
-          </a>
-        </p>
-
       </div>
+
+      <p class="text-sm text-gray-500 mt-4">
+        Map boundaries:
+        <a
+          href="https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline">
+          U.S. Census Bureau
+        </a>
+      </p>
     </div>
 
   </section>
@@ -1507,7 +1338,6 @@
     </p>
 
     <p class="mt-4">
-
       <a
         href="https://www.facebook.com/proudroofer"
         target="_blank"
@@ -1523,11 +1353,9 @@
         class="text-blue-600 hover:underline">
         Instagram
       </a>
-
     </p>
 
     <div class="mt-6">
-
       <iframe
         src="https://maps.google.com/maps?q=404%20N.%20Spruce%20St.%20Colorado%20Springs%20CO%2080905&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
         width="100%"
@@ -1536,7 +1364,6 @@
         title="Roofers Local 58 Office Location"
         loading="lazy">
       </iframe>
-
     </div>
 
   </section>
